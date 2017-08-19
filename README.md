@@ -1,6 +1,6 @@
 # bookAtable
 An Angular SPA project for Telerik Academy
-
+-----------------------------------------------------------------------------------------------------------------------------
 Course Project Requirements
 
 Web Applications with Angular
