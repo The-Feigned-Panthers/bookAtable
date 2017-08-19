@@ -1,0 +1,25 @@
+BookATable
+Logic
+Web app where users can browse through places, make bookings and leave reviews for the visited places. Owners can add their places 
+User 
+	- not logged in can:
+		- browse all pages
+		- read information about places
+		- share on social channels
+	- logged in
+		- can make a booking
+		- amend a booking
+		- cancel a booking
+		- leave a review(only if he has already visited a place)
+User Owner 
+	- not logged in can:
+		- browse all pages
+		- read information about places
+		- share on social channels
+	- logged in
+		- can create a new place
+		- edit a place
+		- can make a booking
+		- amend a booking
+		- cancel a booking
+		- leave a review(only if he has already visited a place)
