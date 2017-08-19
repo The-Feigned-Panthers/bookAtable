@@ -1,0 +1,91 @@
+{
+  "users": {
+    "_id1234567890": {
+      "username": "username",
+      "email": "email",
+      "name": {
+        "firstName": "First",
+        "lastName": "Last"
+      },
+      "bookings": {
+        "bookingId": true
+      }
+    }
+  },
+  "places": {
+    "_id1234567890": {
+        "name": "The Three Lions",
+        "address": {
+          "city" : "Sofia",
+          "area": "Centre",
+          "street": "Street",
+          "number": "12",
+          "details": "details"
+        },
+        "images": {
+          "main":"umageURL",
+          "image1": "umageURL",
+          "image2": "umageURL",
+          "image3": "umageURL"
+        },
+        "opening times weekdays": "12:00 - 23:00",
+        "opening times wekend": "12:00 - 23:00",
+        "type" : "pub",
+        "cuisine" : "fast food",
+        "description": "description",
+        "menu": {
+          "salads": [{
+            "name": "Salad",
+            "price": "12"
+          }],
+          "starters": {
+            "name": "Starter",
+            "price": "12"
+          },
+          "mains": {
+            "name": "Main",
+            "price": "12"
+          },
+          "specials": {
+            "name": "Special",
+            "price": "12"
+          },
+          "deserts": {
+            "name": "Desert",
+            "price": "12"
+          },
+          "drinks": {
+            "name": "Drink",
+            "price": "12"
+          }
+        },
+        "rating": {
+          "stars": 1,
+          "reviews": {
+            "reviewId": true
+          }
+        }
+    }
+  },
+  "bookings": {
+    "bookingId": {
+      "userId": "usernId",
+      "place": "placeId",
+      "details": {
+        "date": "date",
+        "time": "time",
+        "numberPersons": "5",
+        "special requiremetns": "special requiremetns"
+      },
+      "status": "Confirmed"
+    }
+  },
+  "reviews": {
+    "reviewId": {
+      "placeId": "placeId",
+      "userId": "userId",
+      "stars": 1,
+      "content": "Review content"
+  }
+}
+}
