@@ -73,3 +73,4 @@ The public defense includes:
 ### Give Feedback about Your Teammates
 
 You will be invited to **provide feedback** about all your teammates, their attitude to this project, their technical skills, their team working skills, their contribution to the project, etc. The feedback is a mandatory, important part of the project evaluation, so **take it seriously**. You will be provided a template, by which to write your review.
+!
