@@ -1,3 +1,5 @@
+import { ReviewsComponent } from './details-restaurant/reviews/reviews.component';
+import { OverviewComponent } from './details-restaurant/overview/overview.component';
 import { RestaurantsRoutes } from './restaurants.routing';
 import { RestaurantsService } from './../services/restaurants.service';
 import { RestaurantPartialComponent } from './list-restaurants/restaurant-partial/restaurant-partial.component';
@@ -16,7 +18,9 @@ import { DetailsRestaurantComponent } from './details-restaurant/details-restaur
   declarations: [
     ListRestaurantsComponent,
     RestaurantPartialComponent,
-    DetailsRestaurantComponent
+    DetailsRestaurantComponent,
+    OverviewComponent,
+    ReviewsComponent
 ],
   providers: [RestaurantsService],
 })

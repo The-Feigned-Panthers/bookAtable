@@ -1,26 +1,18 @@
-<div class="jumbotron">
+<div *ngIf="restaurant" class="container">
   <h1>
     {{restaurant.name}}
   </h1>
   <div>
     <img [src]="restaurant.photos[0]" alt="">
   </div>
-    <div>
-    Rating: {{restaurant.rating}}
-  </div>
-  <div>
-    Place: {{restaurant.address.city}}, {{restaurant.address.area}}, {{restaurant.address.street}}, {{restaurant.address.number}}
-  </div>
-  <div>
-    Type of restaurant: {{restaurant.type}}
-  </div>
-  <div>
-    Average Bill: {{restaurant.averageBill}}
-  </div>
-  <div>
-    Opening hours:
-    <p>
-      Weekdays: {{restaurant.openingHoursWeekdays}}
-    </p>
-  </div>
+  <ul>
+    <li>
+      <button (click)="goToOverview()">Overview</button>
+    </li>
+    <li>
+      <button (click)="goToReviews()">Reviews</button>
+    </li>
+  </ul>
+  <app-overview *ngIf="isOnOverview" [restaurant]="restaurant"></app-overview>
+  <app-reviews *ngIf="!isOnOverview" [restaurant]="restaurant"></app-reviews>
 </div>
