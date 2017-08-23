@@ -15,13 +15,15 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { HttpModule } from '@angular/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ListRestaurantsComponent,
-    RestaurantPartialComponent
+    RestaurantPartialComponent,
+    HomeComponent
 ],
   imports: [
     BrowserModule,
