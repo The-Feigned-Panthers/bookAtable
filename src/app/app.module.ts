@@ -1,3 +1,5 @@
+import { RestaurantPartialComponent } from './restaurants/list-restaurants/restaurant-partial/restaurant-partial.component';
+import { ListRestaurantsComponent } from './restaurants/list-restaurants/list-restaurants.component';
 import { firebaseConfig } from './firebase.config';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +18,8 @@ import * as firebase from 'firebase/app';
   declarations: [
     AppComponent,
     LoginComponent,
+    ListRestaurantsComponent,
+    RestaurantPartialComponent
 ],
   imports: [
     BrowserModule,
