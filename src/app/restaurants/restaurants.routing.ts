@@ -1,3 +1,4 @@
+import { DetailsRestaurantComponent } from './details-restaurant/details-restaurant.component';
 import { ListRestaurantsComponent } from './list-restaurants/list-restaurants.component';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -7,9 +8,8 @@ const routes: Routes = [
     component: ListRestaurantsComponent
   },
   {
-    path: '',
-    redirectTo: 'restaurants',
-    pathMatch: 'full'
+    path: 'restaurants/:name',
+    component: DetailsRestaurantComponent
   }
 ];
 

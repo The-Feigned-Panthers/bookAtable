@@ -32,8 +32,7 @@ export class RestaurantsService {
   }
 
   deleteRestaurant(name: string) {
-    return this.http.delete(`/api/${name}`, )
-      .map(res => res.json());
+
   }
 
   bookATable(name: string) {

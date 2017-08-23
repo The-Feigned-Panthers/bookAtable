@@ -5,17 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
   },
   {
-    path: '#restaurants',
-    component: ListRestaurantsComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  }
 ];
 
 export const AppRoutes = RouterModule.forRoot(routes);
