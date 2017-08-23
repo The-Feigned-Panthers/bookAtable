@@ -17,12 +17,12 @@ export class LoginComponent implements OnInit {
   msgVal = '';
 
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
-    // this.items = af.list('/messages', {
-    //   query: {
-    //     limitToLast: 50
-    //   }
-    // });
-    // this.user = this.afAuth.authState;
+    this.items = af.list('/messages', {
+      query: {
+        limitToLast: 50
+      }
+    });
+    this.user = this.afAuth.authState;
   }
 
   loginAnonimous() {
