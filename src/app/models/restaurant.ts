@@ -1,29 +1,34 @@
+import { Address } from './address';
 export class Restaurant {
-    private name: string;
-    private place: string;
-    private type: string;
-    private rating: number;
-    private averageBill: number;
-    private reviews: string[];
-    private openingHours: string;
-    private contact: string;
-    private details: string;
-    private reservations: Date[];
-    private photos: string[];
+    public name: string;
+    public address: Address;
+    public type: string;
+    public rating: number;
+    public averageBill: number;
+    public reviews: string[];
+    public openingHoursWeekdays: string;
+    public openingHoursWeekends: string;
+    public contact: string;
+    public details: string;
+    public reservations: Date[];
+    public photos: string[];
+    public addedAt: Date;
 
-    constructor(name: string, place: string, type: string,
+    constructor(name: string, address: Address, type: string,
         rating: number, averageBill: number,
-        openingHours: string, contact: string, details: string) {
+        openingHoursWeekdays: string, openingHoursWeekends: string, contact: string, details: string) {
         this.name = name;
-        this.place = place;
+        this.address = address;
         this.type = type;
         this.rating = rating;
         this.averageBill = averageBill;
         this.reviews = [];
-        this.openingHours = openingHours;
+        this.openingHoursWeekdays = openingHoursWeekdays;
+        this.openingHoursWeekends = openingHoursWeekends;
         this.contact = contact;
         this.details = details;
         this.reservations = [];
         this.photos = [];
+        this.addedAt = new Date();
     }
 }
