@@ -15,9 +15,8 @@ export class RestaurantsService {
     return this.af.list('/places');
   }
 
-  getDetails(name: string) {
-    return this.http.get(`/api/${name}`)
-      .map(res => res.json());
+  getDetails(name: string): Observable<Restaurant> {
+    return this.af.object(`/places/${name}`);
   }
 
   addRestaurant() {

@@ -1,0 +1,26 @@
+<div class="jumbotron">
+  <h1>
+    {{restaurant.name}}
+  </h1>
+  <div>
+    <img [src]="restaurant.photos[0]" alt="">
+  </div>
+    <div>
+    Rating: {{restaurant.rating}}
+  </div>
+  <div>
+    Place: {{restaurant.address.city}}, {{restaurant.address.area}}, {{restaurant.address.street}}, {{restaurant.address.number}}
+  </div>
+  <div>
+    Type of restaurant: {{restaurant.type}}
+  </div>
+  <div>
+    Average Bill: {{restaurant.averageBill}}
+  </div>
+  <div>
+    Opening hours:
+    <p>
+      Weekdays: {{restaurant.openingHoursWeekdays}}
+    </p>
+  </div>
+</div>
