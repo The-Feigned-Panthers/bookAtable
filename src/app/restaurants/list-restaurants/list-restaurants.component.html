@@ -1,6 +1,11 @@
 <p>
   list-restaurants works!
 </p>
+
+<button class="btn-primary" (click)="getAll()">All</button>
+<button class="btn-primary" (click)="getMostPopular()">Most Popular</button>
+<button class="btn-primary" (click)="getLatest()">Latest</button>
+
 <app-restaurant-partial *ngFor="let restaurant of restaurants"
 				[restaurant]="restaurant">
 </app-restaurant-partial>

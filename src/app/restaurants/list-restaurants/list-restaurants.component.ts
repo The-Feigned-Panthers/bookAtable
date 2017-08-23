@@ -11,9 +11,28 @@ export class ListRestaurantsComponent implements OnInit {
 
   private restaurants: Restaurant[];
 
-  constructor() {
-    this.restaurants = [new Restaurant('Rest', 'Somewhere', 'Italian kitchen', 5, 24, '10-21h', '058485', 'details'),
-  new Restaurant('Other', 'place', 'Asian kitchen', 2, 10, '12-19', '6255562', 'efwgrwrwgw')];
+  constructor(private service: RestaurantsService) {
+    this.getAll();
+  }
+
+  getLatest() {
+    this.service.getAll().subscribe(res => {
+      this.restaurants = res.sort((a, b) => {
+          return a.addedAt > b.addedAt ? -1 : a.addedAt < b.addedAt ? 1 : 0;
+        });
+    });
+  }
+
+  getMostPopular() {
+    this.service.getAll().subscribe(res => {
+      this.restaurants = res.sort((a, b) => b.rating - a.rating).slice(0, 4);
+    });
+  }
+
+  getAll() {
+    this.service.getAll().subscribe(res => {
+        this.restaurants = res;
+    });
   }
 
   ngOnInit() {

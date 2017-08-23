@@ -1,3 +1,4 @@
+import { RestaurantsService } from './services/restaurants.service';
 import { RestaurantPartialComponent } from './restaurants/list-restaurants/restaurant-partial/restaurant-partial.component';
 import { ListRestaurantsComponent } from './restaurants/list-restaurants/list-restaurants.component';
 import { firebaseConfig } from './firebase.config';
@@ -13,6 +14,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,12 @@ import * as firebase from 'firebase/app';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [RestaurantsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
