@@ -1,0 +1,69 @@
+<div *ngIf="restaurant" class="container">
+  <div class="row">
+    <div class="col-lg-5">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              Place:
+            </td>
+            <td>
+              {{restaurant.address.city}}, {{restaurant.address.area}}, {{restaurant.address.street}}, {{restaurant.address.number}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Type of restaurant:
+            </td>
+            <td>
+              {{restaurant.type}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      {{restaurant.details}}
+    </div>
+    <div class="col-lg-3">
+      <table class="table-user-information">
+        <tbody>
+          <tr clss="info">
+            <td>
+              Average Bill:
+            </td>
+            <td class="data">
+              {{restaurant.averageBill}}
+            </td>
+          </tr>
+          <tr clss="info">
+            Opening hours
+          </tr>
+          <tr>
+            <td>
+              Weekdays:
+            </td>
+            <td class="data">
+              {{restaurant.openingHoursWeekdays}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Weekdends:
+            </td>
+            <td class="data">
+              {{restaurant.openingHoursWeekend}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Contact:
+            </td>
+            <td class="data">
+              {{restaurant.contact}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+      </div>
+    </div>
+  </div>

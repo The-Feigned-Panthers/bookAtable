@@ -1,11 +1,13 @@
+import { Review } from './review';
 import { Address } from './address';
+
 export class Restaurant {
     public name: string;
     public address: Address;
     public type: string;
     public rating: number;
     public averageBill: number;
-    public reviews: string[];
+    public reviews: Review[];
     public openingHoursWeekdays: string;
     public openingHoursWeekends: string;
     public contact: string;
