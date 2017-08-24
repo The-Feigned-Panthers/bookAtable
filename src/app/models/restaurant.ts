@@ -1,9 +1,13 @@
 import { Review } from './review';
-import { Address } from './address';
 
 export class Restaurant {
     public name: string;
-    public address: Address;
+    public address: {
+        city: string,
+        area: string,
+        street: string,
+        number: number
+    };
     public type: string;
     public rating: number;
     public averageBill: number;
@@ -16,7 +20,7 @@ export class Restaurant {
     public photos: string[];
     public addedAt: Date;
 
-    constructor(name: string, address: Address, type: string,
+    constructor(name: string, address: any, type: string,
         rating: number, averageBill: number,
         openingHoursWeekdays: string, openingHoursWeekends: string, contact: string, details: string) {
         this.name = name;
