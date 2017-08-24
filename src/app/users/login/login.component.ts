@@ -10,42 +10,64 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./login.component.css'],
   providers: []
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   user: Observable<firebase.User>;
   items: FirebaseListObservable<any[]>;
   msgVal = '';
 
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
-    // this.items = af.list('/messages', {
+    // this.appUser = af.list('/users', {
     //   query: {
     //     limitToLast: 50
     //   }
     // });
-    // this.user = this.afAuth.authState;
+    this.user = this.afAuth.authState;
   }
 
-  loginAnonimous() {
-    this.afAuth.auth.signInAnonymously();
-  }
+  // loginAnonimous() {
+  //   this.afAuth.auth.signInAnonymously();
+  // }
 
   loginWithEmail(email, pass) {
-    this.afAuth.auth.signInWithEmailAndPassword(email, pass);
+    this.afAuth.auth.signInWithEmailAndPassword(email, pass)
+      .then((success) => {
+        console.log(success);
+        const userId = success.uid;
+      })
+      .catch((error: any) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        console.log(errorCode);
+      });
   }
 
   signupWithEmail(email, pass) {
-    this.afAuth.auth.createUserWithEmailAndPassword(email, pass);
+    this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
+      .then((success) => console.log(success))
+      .catch((error: any) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        console.log(errorCode);
+      });
   }
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.afAuth.auth.signOut()
+      .then((success) => console.log(success))
+      .catch((error: any) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        console.log(errorCode);
+      });
   }
 
-  Send(desc: string) {
-    this.items.push({message: desc});
-    this.msgVal = '';
-  }
-  ngOnInit() {
-  }
+  // Send(desc: string) {
+  //   this.items.push({message: desc});
+  //   this.msgVal = '';
+  // }
 
 }

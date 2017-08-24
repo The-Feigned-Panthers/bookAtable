@@ -41,4 +41,7 @@ export class User {
         this.validator.validateEmail(email);
         this._email = email;
     }
+    get email() {
+        return this._email;
+    }
 }

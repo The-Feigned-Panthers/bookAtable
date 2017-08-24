@@ -1,9 +1,8 @@
-<p>
-  login works!
-</p>
+<h3>LOGIN PAGE</h3>
 
 <input type="text" #username>
 <input type="text" #password>
 <button (click)="loginWithEmail(username.value, password.value)" *ngIf="!(user | async)?.uid">Login</button>
 <button (click)="signupWithEmail(username.value, password.value)" *ngIf="!(user | async)?.uid">Signup</button>
 <button (click)="logout()" *ngIf="(user | async)?.uid">Logout</button>
+<h2 *ngIf="(user | async)?.uid">{{userId}}</h2>
