@@ -16,6 +16,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { HttpModule } from '@angular/http';
+import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -32,7 +33,8 @@ import { HomeComponent } from './home/home.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RestaurantsModule,
-    UsersModule
+    UsersModule,
+    SharedModule
   ],
   providers: [RestaurantsService],
   bootstrap: [AppComponent]
