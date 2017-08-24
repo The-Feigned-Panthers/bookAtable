@@ -17,12 +17,11 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { HttpModule } from '@angular/http';
 import { SharedModule } from './shared/shared.module';
-import { HomeComponent } from './home/home.component';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
 ],
   imports: [
     BrowserModule,
@@ -34,7 +33,8 @@ import { HomeComponent } from './home/home.component';
     AngularFireAuthModule,
     RestaurantsModule,
     UsersModule,
-    SharedModule
+    SharedModule,
+    HomeModule
   ],
   providers: [RestaurantsService],
   bootstrap: [AppComponent]
