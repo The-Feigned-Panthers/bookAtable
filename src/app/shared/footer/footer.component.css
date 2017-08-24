@@ -1,0 +1,13 @@
+.noBullets{
+    list-style:none;
+    padding:auto;
+}
+
+#last-footer h5{
+    text-align:center;
+}
+.footlinks li a{
+text-align:center;
+margin-left:5px ;
+}
+.subscribe li{padding:3px;}
