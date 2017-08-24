@@ -5,9 +5,10 @@ export class User {
     private _firstname: string;
     private _lastname: string;
     private _email: string;
+    private _owner: boolean;
 
 
-    constructor(private validator: UserValidatorService, id, username, firstname, lastname, email) {
+    constructor(private validator: UserValidatorService, id, username, firstname, lastname, email, owner) {
         this.validator = validator;
    }
 
