@@ -34,10 +34,4 @@ export class LoginComponent {
         console.log(errorCode);
       });
   }
-
-  // Send(desc: string) {
-  //   this.items.push({message: desc});
-  //   this.msgVal = '';
-  // }
-
 }

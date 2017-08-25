@@ -18,7 +18,7 @@ import * as firebase from 'firebase/app';
 import { HttpModule } from '@angular/http';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
-// import { UserService } from './services/user.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   imports: [
@@ -39,7 +39,7 @@ import { HomeModule } from './home/home.module';
     AppComponent,
 ],
   providers: [RestaurantsService,
-    // UserService
+    UserService
   ],
   bootstrap: [AppComponent]
 })

@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
 export class SignupComponent {
 
   user: Observable<firebase.User>;
-  // items: FirebaseListObservable<any[]>;
 
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private router: Router) {
     this.user = this.afAuth.authState;
