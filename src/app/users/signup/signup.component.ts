@@ -20,13 +20,14 @@ export class SignupComponent {
     this.user = this.afAuth.authState;
   }
 
-    signupWithEmail(email, pass, username, firstname, lastname) {
+    signupWithEmail(email, pass, username, firstname, lastname, type) {
       this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
         .then((success) => {
-          console.log(success);
+          success.updateProfile({displayName: username, photoUrl: null});
+          // console.log(success);
           const id = success.uid;
-          alert(id);
-          const appUser = new User(id , username, firstname, lastname, email, []);
+          // alert(id);
+          const appUser = new User(id , username, firstname, lastname, email, type);
           firebase.database().ref('/users/' + id).set(appUser);
           this.router.navigateByUrl('/home');
         }

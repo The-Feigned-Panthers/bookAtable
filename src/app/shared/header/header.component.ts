@@ -11,8 +11,12 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class HeaderComponent implements OnInit {
   user: Observable<firebase.User>;
+  username: string;
   constructor(public afAuth: AngularFireAuth) {
     this.user = this.afAuth.authState;
+    this.afAuth.authState.subscribe((auth) => {
+      this.username = auth.displayName;
+    });
    }
 
   // export class HeaderComponent implements OnInit {
