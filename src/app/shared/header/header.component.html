@@ -13,6 +13,9 @@
       <li routerLinkActive="active">
         <a [routerLink]="[ '/contacts' ]">Contacts</a>
       </li>
+      <li>
+        <a (click)="searchField()">Search <span class="glyphicon glyphicon-search"></span></a>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li routerLinkActive="active" *ngIf="!(user | async)?.uid">
