@@ -15,8 +15,11 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+        <li routerLinkActive="active">
+          <a [routerLink]="[ '/login' ]"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+      </li>
       <li routerLinkActive="active">
-        <a [routerLink]="[ '/login' ]"><span class="glyphicon glyphicon-log-in"></span> Login / Register</a>
+          <a [routerLink]="[ '/signup' ]"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
       </li>
     </ul>
   </div>
