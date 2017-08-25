@@ -26,6 +26,7 @@ export class SignupComponent {
           const id = success.uid;
           alert(id);
           const appUser = new User(id , username, firstname, lastname, email, isOwner);
+          firebase.database().ref('/users' + id).set(appUser);
         }
       )
         .catch((error: any) => {

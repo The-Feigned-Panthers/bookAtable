@@ -18,11 +18,9 @@ import * as firebase from 'firebase/app';
 import { HttpModule } from '@angular/http';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
+// import { UserService } from './services/user.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-],
   imports: [
     BrowserModule,
     FormsModule,
@@ -36,7 +34,12 @@ import { HomeModule } from './home/home.module';
     SharedModule,
     HomeModule
   ],
-  providers: [RestaurantsService],
+  declarations: [
+    AppComponent,
+],
+  providers: [RestaurantsService,
+    // UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

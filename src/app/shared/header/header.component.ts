@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
+// import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,12 @@ export class HeaderComponent implements OnInit {
   constructor(public afAuth: AngularFireAuth) {
     this.user = this.afAuth.authState;
    }
+
+  // export class HeaderComponent implements OnInit {
+  // user: Observable<firebase.User>;
+  // constructor(public afAuth: AngularFireAuth, userService: UserService) {
+  //   this.user = userService.user;
+  //   }
 
   logout() {
     this.afAuth.auth.signOut()
