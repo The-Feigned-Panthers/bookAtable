@@ -14,38 +14,18 @@ export class LoginComponent {
 
   user: Observable<firebase.User>;
   items: FirebaseListObservable<any[]>;
-  msgVal = '';
 
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
-    // this.appUser = af.list('/users', {
-    //   query: {
-    //     limitToLast: 50
-    //   }
-    // });
     this.user = this.afAuth.authState;
   }
-
-  // loginAnonimous() {
-  //   this.afAuth.auth.signInAnonymously();
-  // }
 
   loginWithEmail(email, pass) {
     this.afAuth.auth.signInWithEmailAndPassword(email, pass)
       .then((success) => {
         console.log(success);
         const userId = success.uid;
+        alert(userId);
       })
-      .catch((error: any) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
-        console.log(errorCode);
-      });
-  }
-
-  signupWithEmail(email, pass) {
-    this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
-      .then((success) => console.log(success))
       .catch((error: any) => {
         const errorCode = error.code;
         const errorMessage = error.message;

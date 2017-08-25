@@ -17,6 +17,7 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { HttpModule } from '@angular/http';
 import { HomeComponent } from './home/home.component';
+import { UserValidatorService } from './services/userValidator.service';
 
 @NgModule({
   declarations: [

@@ -20,9 +20,8 @@ export class Restaurant {
     public photos: string[];
     public addedAt: Date;
 
-    constructor(name: string, address: any, type: string,
-        rating: number, averageBill: number,
-        openingHoursWeekdays: string, openingHoursWeekends: string, contact: string, details: string) {
+    constructor(name, address, type, rating, averageBill,
+        openingHoursWeekdays, openingHoursWeekends, contact, details) {
         this.name = name;
         this.address = address;
         this.type = type;
