@@ -15,21 +15,12 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
       <li routerLinkActive="active" *ngIf="!(user | async)?.uid">
 				<a [routerLink]="[ '/login' ]"><span class="glyphicon glyphicon-log-in"></span> Login </a>
 			<li routerLinkActive="active" *ngIf="!(user | async)?.uid">
-				<a [routerLink]="[ '/signup' ]"> Register</a>
+				<a [routerLink]="[ '/signup' ]"> Sign Up</a>
 			<li routerLinkActive="active" *ngIf="(user | async)?.uid">
-        <button (click)="logout()">Logout</button>
-=======
-        <li routerLinkActive="active">
-          <a [routerLink]="[ '/login' ]"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-      </li>
-      <li routerLinkActive="active">
-          <a [routerLink]="[ '/signup' ]"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
->>>>>>> 268c74891242a92dc6895d6ee56667c0ff551e97
-      </li>
+        <a class="tempStyling" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log Out</a>
     </ul>
   </div>
 </nav>
