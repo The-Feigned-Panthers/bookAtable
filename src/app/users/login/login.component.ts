@@ -3,6 +3,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,8 @@ import * as firebase from 'firebase/app';
 export class LoginComponent {
 
   user: Observable<firebase.User>;
-  items: FirebaseListObservable<any[]>;
 
-  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
+  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private router: Router) {
     this.user = this.afAuth.authState;
   }
 
@@ -25,6 +25,7 @@ export class LoginComponent {
         console.log(success);
         const userId = success.uid;
         alert(userId);
+        this.router.navigateByUrl('/home');
       })
       .catch((error: any) => {
         const errorCode = error.code;

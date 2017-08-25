@@ -1,11 +1,11 @@
 <h3>SIGNUP PAGE</h3>
 
-<input type="text" #username placeholder="uername" class="form-control" required>
+<input type="text" #username placeholder="username" class="form-control" required>
 <input type="email" #email placeholder="email" class="form-control" required>
 <input type="text" #firstname placeholder="first name" class="form-control" required>
 <input type="text" #lastname placeholder="last name" class="form-control" required>
 <input type="password" #password placeholder="password" class="form-control" required>
 <input type="password" #passwordcheck placeholder="repeat password" class="form-control" required>
-<input type="radio" value="owner" name="isOwner"> Owner
-<input type="radio" value="user" name="isOwner"> User
-<button (click)="signupWithEmail(email.value, password.value, username.value, firstname.value, lastname.value, isOwner.value)" *ngIf="!(user | async)?.uid">Signup</button>
+<!-- <input type="radio" value="owner" name="isOwner"> Owner
+<input type="radio" value="user" name="isOwner"> User -->
+<button (click)="signupWithEmail(email.value, password.value, username.value, firstname.value, lastname.value)" *ngIf="!(user | async)?.uid">Signup</button>
