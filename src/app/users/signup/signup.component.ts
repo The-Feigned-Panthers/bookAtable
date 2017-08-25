@@ -21,6 +21,7 @@ export class SignupComponent {
   }
 
     signupWithEmail(email, pass, username, firstname, lastname, type) {
+      console.log(type);
       this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
         .then((success) => {
           success.updateProfile({displayName: username, photoUrl: null});

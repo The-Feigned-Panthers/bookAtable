@@ -6,6 +6,6 @@
 <input type="text" #lastname placeholder="last name" class="form-control" required>
 <input type="password" #password placeholder="password" class="form-control" required>
 <input type="password" #passwordcheck placeholder="repeat password" class="form-control" required>
-<input type="radio" value="owner" name="type"> Owner
-<input type="radio" value="user" name="type"> User
-<button (click)="signupWithEmail(email.value, password.value, username.value, firstname.value, lastname.value, type.value)" *ngIf="!(user | async)?.uid">Signup</button>
+<input type="radio" [(ngModel)]="type" value="owner" name="type"> Owner
+<input type="radio" [(ngModel)]="type" value="user" name="type"> User
+<button (click)="signupWithEmail(email.value, password.value, username.value, firstname.value, lastname.value, type)" *ngIf="!(user | async)?.uid">Signup</button>

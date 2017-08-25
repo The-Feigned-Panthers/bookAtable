@@ -14,8 +14,10 @@ export class HeaderComponent implements OnInit {
   username: string;
   constructor(public afAuth: AngularFireAuth) {
     this.user = this.afAuth.authState;
-    this.afAuth.authState.subscribe((auth) => {
-      this.username = auth.displayName;
+    this.afAuth.authState.subscribe(auth => {
+      if (auth) {
+        this.username = auth.displayName;
+      }
     });
    }
 

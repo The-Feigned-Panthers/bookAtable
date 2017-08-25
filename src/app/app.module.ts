@@ -5,7 +5,7 @@ import { RestaurantsModule } from './restaurants/restaurants.module';
 import { RestaurantsService } from './services/restaurants.service';
 import { firebaseConfig } from './firebase.config';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -24,6 +24,7 @@ import { HomeModule } from './home/home.module';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AppRoutes,
     AngularFireModule.initializeApp(firebaseConfig),
