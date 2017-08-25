@@ -13,15 +13,17 @@
       <li routerLinkActive="active">
         <a [routerLink]="[ '/contacts' ]">Contacts</a>
       </li>
+      <li>
+        <a (click)="searchField()">Search <span class="glyphicon glyphicon-search"></span></a>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li routerLinkActive="active" *ngIf="!(user | async)?.uid">
 				<a [routerLink]="[ '/login' ]"><span class="glyphicon glyphicon-log-in"></span> Login </a>
 			<li routerLinkActive="active" *ngIf="!(user | async)?.uid">
-				<a [routerLink]="[ '/signup' ]"> Register</a>
+				<a [routerLink]="[ '/signup' ]"> Sign Up</a>
 			<li routerLinkActive="active" *ngIf="(user | async)?.uid">
-        <button (click)="logout()">Logout</button>
-      </li>
+        <a class="tempStyling" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log Out</a>
     </ul>
   </div>
 </nav>

@@ -31,6 +31,11 @@ export class HeaderComponent implements OnInit {
         console.log(errorCode);
       });
   }
+
+  searchField(){
+    // TODO Display search field instead of text 'search'
+  }
+
   ngOnInit() {
   }
 }
