@@ -13,7 +13,7 @@ import * as firebase from 'firebase/app';
 export class SignupComponent {
 
   user: Observable<firebase.User>;
-  // items: FirebaseListObservable<any[]>;
+  items: FirebaseListObservable<any[]>;
 
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
     this.user = this.afAuth.authState;

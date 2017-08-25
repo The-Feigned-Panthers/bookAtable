@@ -34,17 +34,6 @@ export class LoginComponent {
       });
   }
 
-  logout() {
-    this.afAuth.auth.signOut()
-      .then((success) => console.log(success))
-      .catch((error: any) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
-        console.log(errorCode);
-      });
-  }
-
   // Send(desc: string) {
   //   this.items.push({message: desc});
   //   this.msgVal = '';

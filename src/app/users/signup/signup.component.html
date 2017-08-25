@@ -9,4 +9,3 @@
 <input type="radio" value="owner" name="isOwner"> Owner
 <input type="radio" value="user" name="isOwner"> User
 <button (click)="signupWithEmail(email.value, password.value, username.value, firstname.value, lastname.value, isOwner.value)" *ngIf="!(user | async)?.uid">Signup</button>
-<button (click)="logout()" *ngIf="(user | async)?.uid">Logout</button>

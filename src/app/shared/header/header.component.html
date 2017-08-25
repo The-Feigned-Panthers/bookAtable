@@ -15,8 +15,12 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li routerLinkActive="active">
-        <a [routerLink]="[ '/login' ]"><span class="glyphicon glyphicon-log-in"></span> Login / Register</a>
+      <li routerLinkActive="active" *ngIf="!(user | async)?.uid">
+				<a [routerLink]="[ '/login' ]"><span class="glyphicon glyphicon-log-in"></span> Login </a>
+			<li routerLinkActive="active" *ngIf="!(user | async)?.uid">
+				<a [routerLink]="[ '/signup' ]"> Register</a>
+			<li routerLinkActive="active" *ngIf="(user | async)?.uid">
+        <button (click)="logout()">Logout</button>
       </li>
     </ul>
   </div>
