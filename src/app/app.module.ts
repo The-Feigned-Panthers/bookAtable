@@ -16,13 +16,12 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { HttpModule } from '@angular/http';
-import { HomeComponent } from './home/home.component';
-import { UserValidatorService } from './services/userValidator.service';
+import { SharedModule } from './shared/shared.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
 ],
   imports: [
     BrowserModule,
@@ -33,7 +32,9 @@ import { UserValidatorService } from './services/userValidator.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RestaurantsModule,
-    UsersModule
+    UsersModule,
+    SharedModule,
+    HomeModule
   ],
   providers: [RestaurantsService],
   bootstrap: [AppComponent]
