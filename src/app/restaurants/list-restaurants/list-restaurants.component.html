@@ -1,7 +1,5 @@
-<button class="btn-primary" (click)="getAll()">All</button>
-<button class="btn-primary" (click)="getMostPopular()">Most Popular</button>
-<button class="btn-primary" (click)="getLatest()">Latest</button>
-
-<app-restaurant-partial *ngFor="let restaurant of restaurants"
-				[restaurant]="restaurant">
+<button class="btn-primary" (click)="filterProperty = 'name';">All</button>
+<button class="btn-primary" (click)="filterProperty = 'rating';">Most Popular</button>
+<button class="btn-primary" (click)="filterProperty = 'addedAt';">Latest</button>
+<app-restaurant-partial *ngFor="let restaurant of restaurants | orderBy: filterProperty : true" [restaurant]="restaurant">
 </app-restaurant-partial>

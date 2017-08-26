@@ -9,12 +9,14 @@ import { NgModule } from '@angular/core';
 import { ListRestaurantsComponent } from './list-restaurants/list-restaurants.component';
 import { DetailsRestaurantComponent } from './details-restaurant/details-restaurant.component';
 import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 @NgModule({
   imports: [
     SharedModule,
     CoreModule,
     FormsModule,
+    Ng2OrderModule,
     RestaurantsRoutes
   ],
   declarations: [
