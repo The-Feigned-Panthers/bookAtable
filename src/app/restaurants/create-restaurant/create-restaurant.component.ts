@@ -1,3 +1,5 @@
+import { RestaurantsService } from './../../core/services/restaurants.service';
+import { Restaurant } from './../../models/restaurant';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateRestaurantComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: RestaurantsService) { }
 
   ngOnInit() {
   }
 
+  create(name, details, city, area, street, number, type, bill, weekdays, weekends, contact) {
+    const address = {
+      city: city,
+      area: area,
+      street: street,
+      number: number
+    };
+    const restaurant = new Restaurant(name, address, type, bill, weekdays, weekends, contact, details);
+    this.service.addRestaurant(restaurant);
+  }
 }

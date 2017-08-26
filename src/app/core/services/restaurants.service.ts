@@ -19,8 +19,8 @@ export class RestaurantsService {
     return this.af.object(`/places/${name}`);
   }
 
-  addRestaurant() {
-
+  addRestaurant(restaurant: Restaurant) {
+    this.af.database.ref('/places').child(restaurant.name).set(restaurant);
   }
 
   rateRestaurant() {

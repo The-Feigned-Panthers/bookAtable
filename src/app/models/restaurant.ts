@@ -20,12 +20,12 @@ export class Restaurant {
     public photos: string[];
     public addedAt: Date;
 
-    constructor(name, address, type, rating, averageBill,
+    constructor(name, address, type, averageBill,
         openingHoursWeekdays, openingHoursWeekends, contact, details) {
         this.name = name;
         this.address = address;
         this.type = type;
-        this.rating = rating;
+        this.rating = 0;
         this.averageBill = averageBill;
         this.reviews = [];
         this.openingHoursWeekdays = openingHoursWeekdays;
