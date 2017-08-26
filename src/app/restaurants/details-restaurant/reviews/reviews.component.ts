@@ -9,11 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ReviewsComponent implements OnInit {
   @Input()
   restaurant: Restaurant;
-
+  starStyle: Array<boolean>;
   constructor() { }
 
   ngOnInit() {
-    console.log(this.restaurant.reviews);
+    this.starStyle = new Array<boolean>(6);
+    for (let i = 1; i <= this.restaurant.rating; i++) {
+      this.starStyle[i] = true;
+    }
   }
 
 }

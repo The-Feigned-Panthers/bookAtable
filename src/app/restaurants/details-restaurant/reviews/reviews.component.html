@@ -1,6 +1,44 @@
 <div *ngIf="restaurant" class="container">
-  <div *ngFor="let review of restaurant.reviews">
-    <div>{{review?.message}}</div>
-    <div>{{review?.user}}</div>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="rating-block">
+          <h4>Average user rating</h4>
+          <h2 class="bold padding-bottom-7"> {{restaurant?.rating}} <small>/ 5</small></h2>
+          <button type="button" [class.btn-warning]=starStyle[1] class="btn btn-sm" aria-label="Left Align">
+          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        </button>
+          <button type="button" [class.btn-warning]=starStyle[2] class="btn btn-sm" aria-label="Left Align">
+          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        </button>
+          <button type="button" [class.btn-warning]=starStyle[3] class="btn  btn-sm" aria-label="Left Align">
+          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        </button>
+          <button type="button" [class.btn-warning]=starStyle[4] class="btn btn-sm" aria-label="Left Align">
+          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        </button>
+          <button type="button" [class.btn-warning]=starStyle[5] class="btn btn-sm" aria-label="Left Align">
+          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-7">
+        <hr/>
+        <div class="review-block" *ngFor="let review of restaurant?.reviews">
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+              <div class="review-block-name"><a href="#">{{review?.user}}</a></div>
+              <div class="review-block-date">{{review?.date}}</div>
+            </div>
+            <div class="review-block-description">{{review?.message}}</div>
+          </div>
+          <hr/>
+        </div>
+      </div>
+    </div>
   </div>
-</div>

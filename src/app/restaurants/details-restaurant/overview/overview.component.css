@@ -1,7 +1,12 @@
-dl {
-    display: block;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-left: 0;
-    margin-right: 0;
+.prop {
+    font-weight: bold;
+}
+
+td {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.tab-content {
+    margin-top: 20px;
 }
