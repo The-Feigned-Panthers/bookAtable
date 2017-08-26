@@ -1,14 +1,28 @@
-<div class="container">
-  <h1>
-    {{restaurant?.name}}
-  </h1>
-  <div>
-    Place: {{restaurant?.address.city}}, {{restaurant?.address.area}}, {{restaurant?.address.street}}, {{restaurant?.address.number}}
+<div class="row restaurant">
+  <div class="col-xs-12 col-sm-3 col-md-3">
+    <a [href]="'/restaurants/' + restaurant?.name">
+    <img class="img-responsive img-box img-thumbnail" [src]=restaurant?.photos[0]>
+  </a>
   </div>
-  <div>
-    Type: {{restaurant?.type}}
+  <div class="col-xs-12 col-sm-9 col-md-8">
+    <h4>
+      <a [href]="'/restaurants/' + restaurant?.name">{{restaurant?.name}}</a>
+    </h4>
+    <p>
+      <span class="glyphicon glyphicon-map-marker"></span> {{restaurant?.address.city}}, {{restaurant?.address.area}}, {{restaurant?.address.street}}, {{restaurant?.address.number}}
+    </p>
+    <p>
+      <span class="glyphicon glyphicon-tags"></span>
+      {{restaurant?.type}}
+    </p>
+    <p>
+        <span class="glyphicon glyphicon-phone"></span>
+        {{restaurant?.contact}}
+      </p>
+      <p>
+          <span class="glyphicon glyphicon-usd"></span>
+          {{restaurant?.averageBill}} BGN
+        </p>
   </div>
-  <div>
-    Rating: {{restaurant?.rating}}
-  </div>
+
 </div>
