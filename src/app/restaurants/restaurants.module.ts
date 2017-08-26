@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { ListRestaurantsComponent } from './list-restaurants/list-restaurants.component';
 import { DetailsRestaurantComponent } from './details-restaurant/details-restaurant.component';
+import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { DetailsRestaurantComponent } from './details-restaurant/details-restaur
     RestaurantPartialComponent,
     DetailsRestaurantComponent,
     OverviewComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    CreateRestaurantComponent
 ],
   providers: [],
 })
