@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'restaurants',
-    component: ListRestaurantsComponent
+    component: ListRestaurantsComponent,
   },
   {
     path: 'restaurants/:name',

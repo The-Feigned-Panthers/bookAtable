@@ -1,8 +1,8 @@
+import { CoreModule } from './core/core.module';
 import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app.routing';
 import { RestaurantsModule } from './restaurants/restaurants.module';
-import { RestaurantsService } from './services/restaurants.service';
 import { firebaseConfig } from './firebase.config';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,7 +18,6 @@ import * as firebase from 'firebase/app';
 import { HttpModule } from '@angular/http';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
-import { UserService } from './services/user.service';
 
 @NgModule({
   imports: [
@@ -33,14 +32,13 @@ import { UserService } from './services/user.service';
     RestaurantsModule,
     UsersModule,
     SharedModule,
-    HomeModule
+    HomeModule,
+    CoreModule
   ],
   declarations: [
     AppComponent,
 ],
-  providers: [RestaurantsService,
-    UserService
-  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

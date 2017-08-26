@@ -1,7 +1,9 @@
+import { CoreModule } from './../core/core.module';
+import { SharedModule } from './../shared/shared.module';
 import { ReviewsComponent } from './details-restaurant/reviews/reviews.component';
 import { OverviewComponent } from './details-restaurant/overview/overview.component';
 import { RestaurantsRoutes } from './restaurants.routing';
-import { RestaurantsService } from './../services/restaurants.service';
+import { RestaurantsService } from './../core/services/restaurants.service';
 import { RestaurantPartialComponent } from './list-restaurants/restaurant-partial/restaurant-partial.component';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -11,7 +13,8 @@ import { DetailsRestaurantComponent } from './details-restaurant/details-restaur
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
+    CoreModule,
     FormsModule,
     RestaurantsRoutes
   ],

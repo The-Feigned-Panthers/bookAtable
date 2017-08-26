@@ -1,6 +1,6 @@
 <div *ngIf="restaurant" class="container">
   <div *ngFor="let review of restaurant.reviews">
-    <div>{{review.message}}</div>
-    <div>{{review.user}}</div>
+    <div>{{review?.message}}</div>
+    <div>{{review?.user}}</div>
   </div>
 </div>

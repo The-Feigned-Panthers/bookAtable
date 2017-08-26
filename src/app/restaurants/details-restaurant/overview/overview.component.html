@@ -8,7 +8,7 @@
               Place:
             </td>
             <td>
-              {{restaurant.address.city}}, {{restaurant.address.area}}, {{restaurant.address.street}}, {{restaurant.address.number}}
+              {{restaurant?.address.city}}, {{restaurant?.address.area}}, {{restaurant?.address.street}}, {{restaurant?.address.number}}
             </td>
           </tr>
           <tr>
@@ -16,12 +16,12 @@
               Type of restaurant:
             </td>
             <td>
-              {{restaurant.type}}
+              {{restaurant?.type}}
             </td>
           </tr>
         </tbody>
       </table>
-      {{restaurant.details}}
+      {{restaurant?.details}}
     </div>
     <div class="col-lg-3">
       <table class="table-user-information">
@@ -31,7 +31,7 @@
               Average Bill:
             </td>
             <td class="data">
-              {{restaurant.averageBill}}
+              {{restaurant?.averageBill}}
             </td>
           </tr>
           <tr clss="info">
@@ -42,7 +42,7 @@
               Weekdays:
             </td>
             <td class="data">
-              {{restaurant.openingHoursWeekdays}}
+              {{restaurant?.openingHoursWeekdays}}
             </td>
           </tr>
           <tr>
@@ -50,7 +50,7 @@
               Weekdends:
             </td>
             <td class="data">
-              {{restaurant.openingHoursWeekend}}
+              {{restaurant?.openingHoursWeekend}}
             </td>
           </tr>
           <tr>
@@ -58,7 +58,7 @@
               Contact:
             </td>
             <td class="data">
-              {{restaurant.contact}}
+              {{restaurant?.contact}}
             </td>
           </tr>
         </tbody>

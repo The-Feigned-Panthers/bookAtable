@@ -1,6 +1,6 @@
 <div *ngIf="restaurant" class="container">
   <h1>
-    {{restaurant.name}}
+    {{restaurant?.name}}
   </h1>
   <div>
     <img [src]="restaurant.photos[0]" alt="">
