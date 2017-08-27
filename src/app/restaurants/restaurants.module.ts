@@ -11,6 +11,7 @@ import { ListRestaurantsComponent } from './list-restaurants/list-restaurants.co
 import { DetailsRestaurantComponent } from './details-restaurant/details-restaurant.component';
 import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
 import { Ng2OrderModule } from 'ng2-order-pipe';
+import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
     OverviewComponent,
     ReviewsComponent,
     CreateRestaurantComponent,
-    BookingComponent
+    BookingComponent,
+    UploadPhotoComponent
 ],
   providers: [],
 })

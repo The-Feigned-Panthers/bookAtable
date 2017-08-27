@@ -21,7 +21,7 @@ export class Restaurant {
     public contact: string;
     public details: string;
     public reservations: Date[];
-    public photos: string[];
+    public photo: string;
     public addedAt: string;
 
     constructor(name, address, type, averageBill,
@@ -41,8 +41,7 @@ export class Restaurant {
         this.contact = contact;
         this.details = details;
         this.reservations = [];
-        this.photos = [];
-        this.photos.push('http://spizzico.org/wp-content/uploads/2015/03/spizzico1.jpg');
+        this.photo = 'http://spizzico.org/wp-content/uploads/2015/03/spizzico1.jpg';
         this.addedAt = new Date().toString();
     }
 }
