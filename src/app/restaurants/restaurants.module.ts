@@ -1,3 +1,4 @@
+import { BookingComponent } from './details-restaurant/booking/booking.component';
 import { CoreModule } from './../core/core.module';
 import { SharedModule } from './../shared/shared.module';
 import { ReviewsComponent } from './details-restaurant/reviews/reviews.component';
@@ -25,7 +26,8 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
     DetailsRestaurantComponent,
     OverviewComponent,
     ReviewsComponent,
-    CreateRestaurantComponent
+    CreateRestaurantComponent,
+    BookingComponent
 ],
   providers: [],
 })
