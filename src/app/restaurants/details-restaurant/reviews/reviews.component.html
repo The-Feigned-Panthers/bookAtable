@@ -1,44 +1,66 @@
 <div *ngIf="restaurant" class="container">
   <div class="container">
-
     <div class="row">
-      <div class="col-sm-3">
+      <div class="col-md-3">
         <div class="rating-block">
           <h4>Average user rating</h4>
-          <h2 class="bold padding-bottom-7"> {{restaurant?.rating}} <small>/ 5</small></h2>
-          <button type="button" [class.btn-warning]=starStyle[1] class="btn btn-sm" aria-label="Left Align">
+          <h2 class="bold padding-bottom-7"> {{restaurant?.rating.average | number : '1.2-2'}} <small>/ 5</small></h2>
+          <button type="button" [class.btn-warning]=starStyle[1] (click)="vote(1)" class="btn btn-sm" aria-label="Left Align">
           <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
         </button>
-          <button type="button" [class.btn-warning]=starStyle[2] class="btn btn-sm" aria-label="Left Align">
+          <button type="button" [class.btn-warning]=starStyle[2] (click)="vote(2)" class="btn btn-sm" aria-label="Left Align">
           <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
         </button>
-          <button type="button" [class.btn-warning]=starStyle[3] class="btn  btn-sm" aria-label="Left Align">
+          <button type="button" [class.btn-warning]=starStyle[3] (click)="vote(3)" class="btn  btn-sm" aria-label="Left Align">
           <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
         </button>
-          <button type="button" [class.btn-warning]=starStyle[4] class="btn btn-sm" aria-label="Left Align">
+          <button type="button" [class.btn-warning]=starStyle[4] (click)="vote(4)" class="btn btn-sm" aria-label="Left Align">
           <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
         </button>
-          <button type="button" [class.btn-warning]=starStyle[5] class="btn btn-sm" aria-label="Left Align">
+          <button type="button" [class.btn-warning]=starStyle[5] (click)="vote(5)" class="btn btn-sm" aria-label="Left Align">
           <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
         </button>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-sm-7">
-        <hr/>
-        <div class="review-block" *ngFor="let review of restaurant?.reviews">
-          <div class="row">
-            <div class="col-sm-3">
-              <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-              <div class="review-block-name"><a href="#">{{review?.user}}</a></div>
-              <div class="review-block-date">{{review?.date}}</div>
-            </div>
-            <div class="review-block-description">{{review?.message}}</div>
-          </div>
-          <hr/>
+    <div class="row" *ngFor="let review of restaurant?.reviews">
+      <div class="col-sm-1">
+        <div class="thumbnail">
+          <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
         </div>
       </div>
+
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong>{{review.user}}</strong> <span class="text-muted">commented on {{review?.date}}</span>
+          </div>
+          <div class="panel-body">
+            {{review?.message}}
+          </div>
+          <!-- /panel-body -->
+        </div>
+        <!-- /panel panel-default -->
+      </div>
+      <!-- /col-sm-5 -->
+
+
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="widget-area no-padding blank">
+          <div class="status-upload">
+            <form>
+              <textarea #reviewText placeholder="Share your review..."></textarea>
+              <button type="submit" class="btn btn-warning" (click)="addReview(reviewText.value)"><i class="fa fa-share"></i> Share</button>
+            </form>
+          </div>
+          <!-- Status Upload  -->
+        </div>
+        <!-- Widget Area -->
+      </div>
+
     </div>
   </div>

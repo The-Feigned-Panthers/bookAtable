@@ -1,3 +1,4 @@
+import { Review } from './../../models/review';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Restaurant } from './../../models/restaurant';
 import { Observable } from 'rxjs/Observable';
@@ -23,8 +24,12 @@ export class RestaurantsService {
     this.af.database.ref('/places').child(restaurant.name).set(restaurant);
   }
 
-  rateRestaurant() {
+  rateRestaurant(restaurant: Restaurant) {
+    this.af.database.ref('/places').child(restaurant.name).set(restaurant);
+  }
 
+  addReview(restaurant: Restaurant) {
+    this.af.database.ref('/places').child(restaurant.name).set(restaurant);
   }
 
   updateRestaurant(name: string) {
