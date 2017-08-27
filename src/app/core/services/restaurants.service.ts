@@ -23,20 +23,8 @@ export class RestaurantsService {
     return this.db.object(`/places/${name}`);
   }
 
-  addRestaurant(restaurant: Restaurant) {
+  updateRestaurant(restaurant: Restaurant) {
     this.db.database.ref('/places').child(restaurant.name).set(restaurant);
-  }
-
-  rateRestaurant(restaurant: Restaurant) {
-    this.db.database.ref('/places').child(restaurant.name).set(restaurant);
-  }
-
-  addReview(restaurant: Restaurant) {
-    this.db.database.ref('/places').child(restaurant.name).set(restaurant);
-  }
-
-  updateRestaurant(name: string) {
-
   }
 
   uploadPhoto(name: string, upload: Upload) {

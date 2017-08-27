@@ -56,10 +56,18 @@
     </div>
   </section>
 </div>
-<div class="row">
+<div *ngIf="currentUser?.username === restaurant?.owner.username" class="row">
   <div class="col-md-offset-2">
-  <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Upload photo</button>
+  <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#uploadModal">
+    <span class="glyphicon glyphicon-picture"></span>
+    Update photo
+  </button>
+  <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#editModal">
+      <span class="glyphicon glyphicon-pencil"></span>
+      Edit restaurant
+  </button>  
   </div>
 </div>
 
 <app-upload-photo [restaurant]="restaurant"></app-upload-photo>
+<app-edit [restaurant]="restaurant"></app-edit>

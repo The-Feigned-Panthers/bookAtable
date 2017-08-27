@@ -13,6 +13,7 @@ export class UserService {
             this.id = auth.uid;
         });
      }
+
     getUser() {
         console.log(this.id);
         return firebase.database().ref('/users/' + this.id).once('value')
@@ -34,7 +35,6 @@ export class UserService {
                 };
             });
     }
-
 }
 
 

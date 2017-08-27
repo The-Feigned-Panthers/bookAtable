@@ -30,7 +30,7 @@ export class ReviewsComponent implements OnInit {
     this.restaurant.rating.voters++;
     this.restaurant.rating.sum = +this.restaurant.rating.sum + vote;
     this.restaurant.rating.average = +this.restaurant.rating.sum / +this.restaurant.rating.voters;
-    this.service.rateRestaurant(this.restaurant);
+    this.service.updateRestaurant(this.restaurant);
     this.stylizeStars();
   }
 
@@ -39,6 +39,6 @@ export class ReviewsComponent implements OnInit {
     const newReview = new Review(user, message);
     console.log(newReview);
     this.restaurant.reviews.push(newReview);
-    this.service.addReview(this.restaurant);
+    this.service.updateRestaurant(this.restaurant);
   }
 }

@@ -12,6 +12,7 @@ import { DetailsRestaurantComponent } from './details-restaurant/details-restaur
 import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
     ReviewsComponent,
     CreateRestaurantComponent,
     BookingComponent,
-    UploadPhotoComponent
+    UploadPhotoComponent,
+    EditComponent
 ],
   providers: [],
 })

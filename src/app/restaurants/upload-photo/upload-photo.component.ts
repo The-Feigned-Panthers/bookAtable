@@ -16,7 +16,7 @@ export class UploadPhotoComponent implements OnInit {
   currentUpload: Upload;
   @Input()
   restaurant: Restaurant;
-  constructor(private upSvc: RestaurantsService) { }
+  constructor(private service: RestaurantsService) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +28,6 @@ export class UploadPhotoComponent implements OnInit {
   uploadSingle() {
     const file = this.selectedFiles.item(0);
     this.currentUpload = new Upload(file);
-    this.upSvc.uploadPhoto(this.restaurant.name, this.currentUpload);
+    this.service.uploadPhoto(this.restaurant.name, this.currentUpload);
   }
 }

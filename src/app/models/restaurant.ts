@@ -1,3 +1,4 @@
+import { User } from './user';
 import { Review } from './review';
 
 export class Restaurant {
@@ -23,9 +24,10 @@ export class Restaurant {
     public reservations: Date[];
     public photo: string;
     public addedAt: string;
+    public owner: User;
 
     constructor(name, address, type, averageBill,
-        openingHoursWeekdays, openingHoursWeekends, contact, details) {
+        openingHoursWeekdays, openingHoursWeekends, contact, details, owner) {
         this.name = name;
         this.address = address;
         this.type = type;
@@ -43,5 +45,6 @@ export class Restaurant {
         this.reservations = [];
         this.photo = 'http://spizzico.org/wp-content/uploads/2015/03/spizzico1.jpg';
         this.addedAt = new Date().toString();
+        this.owner = owner;
     }
 }
