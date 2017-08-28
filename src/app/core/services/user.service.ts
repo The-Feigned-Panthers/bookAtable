@@ -15,7 +15,7 @@ export class UserService {
      }
 
     getUser() {
-        console.log(this.id);
+        //console.log(this.id);
         return firebase.database().ref('/users/' + this.id).once('value')
             .then((snapshot) => {
                 const user = {};
@@ -34,6 +34,10 @@ export class UserService {
                     bookings
                 };
             });
+    }
+
+    getCurrentUser() {
+        return this.afAuth.auth.currentUser;
     }
 }
 

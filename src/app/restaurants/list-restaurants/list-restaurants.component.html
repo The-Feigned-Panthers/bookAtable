@@ -6,12 +6,12 @@
                     <ul class="nav nav-tabs" id="myTab">
                         <div class="liner"></div>
                         <li class="active">
-                            <a href="#all" data-toggle="tab" title="all" (click)="filterProperty = 'name'"> All restaurants</a>
+                            <a href="#all" data-toggle="tab" title="all"> All restaurants</a>
                         </li>
 
                         <li><a href="#latest" data-toggle="tab" title="latest" (click)="filterProperty = 'addedAt'"> Latest</a>
                         </li>
-                        <li><a href="#popular" data-toggle="tab" title="popular" (click)="filterProperty = 'rating.average'"> Most popular</a>
+                        <li><a href="#popular" data-toggle="tab" title="popular"> Most popular</a>
                         </li>
                     </ul>
                 </div>
@@ -22,11 +22,11 @@
                         </app-restaurant-partial>
                     </div>
                     <div class="tab-pane fade" id="latest">
-                        <app-restaurant-partial *ngFor="let restaurant of restaurants | orderBy: filterProperty : true" [restaurant]="restaurant">
+                        <app-restaurant-partial *ngFor="let restaurant of (restaurants | orderBy: filterProperty : true)" [restaurant]="restaurant">
                         </app-restaurant-partial>
                     </div>
                     <div class="tab-pane fade" id="popular">
-                        <app-restaurant-partial *ngFor="let restaurant of restaurants | orderBy: filterProperty : true" [restaurant]="restaurant">
+                        <app-restaurant-partial *ngFor="let restaurant of (restaurants | sortByRating)" [restaurant]="restaurant">
                         </app-restaurant-partial>
                     </div>
 

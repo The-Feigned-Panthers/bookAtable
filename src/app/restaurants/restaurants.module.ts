@@ -1,3 +1,4 @@
+import { SortByRatingPipe } from './../pipes/sort-by-rating.pipe';
 import { BookingComponent } from './details-restaurant/booking/booking.component';
 import { CoreModule } from './../core/core.module';
 import { SharedModule } from './../shared/shared.module';
@@ -31,7 +32,8 @@ import { EditComponent } from './edit/edit.component';
     CreateRestaurantComponent,
     BookingComponent,
     UploadPhotoComponent,
-    EditComponent
+    EditComponent,
+    SortByRatingPipe
 ],
   providers: [],
 })
