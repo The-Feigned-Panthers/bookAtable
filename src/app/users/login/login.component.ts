@@ -1,3 +1,4 @@
+import { UserService } from './../../core/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -15,7 +16,7 @@ export class LoginComponent {
 
   user: Observable<firebase.User>;
 
-  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private router: Router) {
+  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private router: Router, private userService: UserService) {
     this.user = this.afAuth.authState;
   }
 
@@ -24,6 +25,9 @@ export class LoginComponent {
       .then((success) => {
         console.log(success);
         const userId = success.uid;
+        this.userService.getUser().then((user) => {
+          localStorage.setItem('currentUser', user.username);
+        });
         alert(userId);
         this.router.navigateByUrl('/home');
       })

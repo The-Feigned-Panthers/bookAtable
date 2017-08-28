@@ -17,13 +17,9 @@ export class DetailsRestaurantComponent implements OnInit {
   private isOnOverview: boolean;
   private currentUser;
 
-  constructor(private service: RestaurantsService, private userServie: UserService, private route: ActivatedRoute) {
+  constructor(private service: RestaurantsService, private route: ActivatedRoute) {
     this.isOnOverview = true;
-    setTimeout(() => {
-      this.userServie.getUser().then(user => {
-        this.currentUser = user;
-      });
-    }, 5000);
+    this.currentUser = localStorage.getItem('currentUser');
    }
 
   ngOnInit() {
