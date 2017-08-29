@@ -4,10 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  {
-    path: ':username',
-    component: UserComponent
-  },
+
   {
     path: 'login',
     component: LoginComponent
@@ -15,7 +12,11 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
-  }
+  },
+  {
+    path: ':username',
+    component: UserComponent
+  },
 ];
 
 export const UsersRoutes = RouterModule.forChild(routes);

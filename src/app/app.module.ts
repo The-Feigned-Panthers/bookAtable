@@ -38,7 +38,7 @@ import { HomeModule } from './home/home.module';
   declarations: [
     AppComponent,
 ],
-
+  providers: [AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
