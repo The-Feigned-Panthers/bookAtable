@@ -1,7 +1,7 @@
 import { CoreModule } from './core/core.module';
 import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
-import { AppRoutes } from './app.routing';
+import { AppRoutingModule } from './app.routing';
 import { RestaurantsModule } from './restaurants/restaurants.module';
 import { firebaseConfig } from './firebase.config';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,7 +25,7 @@ import { HomeModule } from './home/home.module';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutes,
+    AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -33,7 +33,7 @@ import { HomeModule } from './home/home.module';
     UsersModule,
     SharedModule,
     HomeModule,
-    CoreModule
+    CoreModule.forRoot()
   ],
   declarations: [
     AppComponent,

@@ -1,3 +1,4 @@
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -8,36 +9,16 @@ export class UserService {
 
     user: Observable<firebase.User>;
     private id: string;
-    constructor(public afAuth: AngularFireAuth) {
-        this.afAuth.authState.subscribe(auth => {
-            this.id = auth.uid;
-        });
+    constructor(public afAuth: AngularFireAuth, private db: AngularFireDatabase) {
      }
 
     getUser() {
-        //console.log(this.id);
-        return firebase.database().ref('/users/' + this.id).once('value')
-            .then((snapshot) => {
-                const user = {};
-                const username = snapshot.val().username;
-                const firstname = snapshot.val().firstname;
-                const lastname = snapshot.val().lastname;
-                const email = snapshot.val().email;
-                const type = snapshot.val().type;
-                const bookings = snapshot.val().bookings || [];
-                return {
-                    username,
-                    firstname,
-                    lastname,
-                    email,
-                    type,
-                    bookings
-                };
-            });
-    }
+        return this.afAuth.authState.map(auth => {
+            this.id = auth.uid;
+            console.log(this.id);
+        return this.db.object(`/users/${this.id}`, { preserveSnapshot: true });
+        });
 
-    getCurrentUser() {
-        return this.afAuth.auth.currentUser;
     }
 }
 

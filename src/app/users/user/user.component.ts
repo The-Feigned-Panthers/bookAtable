@@ -7,14 +7,14 @@ import { UserService } from '../../core/services/user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  @Input()
-  public user;
+  private currentUser;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getUser()
-      .then(user => this.user = user);
+    this.userService.getUser().subscribe((res) => {
+
+    })
   }
 
 }

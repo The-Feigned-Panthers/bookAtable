@@ -1,11 +1,11 @@
 <div class="user" *ngIf="!user?.uid">
-    <h3>{{user?.username}}</h3>
+    <h3>{{currentUser?.username}}</h3>
     <h4>User Details:</h4>
-    <p>First name: {{user?.firstname}}</p>
-    <p>Last name: {{user?.lastname}}</p>
-    <p>Username: {{user?.usertname}}</p>
-    <p>Email: {{user?.email}}</p>
-    <div class="bookings">
+    <p>First name: {{currentUser?.firstname}}</p>
+    <p>Last name: {{currentUser?.lastname}}</p>
+    <p>Username: {{currentUser?.usertname}}</p>
+    <p>Email: {{currentUser?.email}}</p>
+    <!-- <div class="bookings">
         <h3>Your bookings</h3>
         <table *ngIf="user?.bookings.length > 0"></table>
     </div>
@@ -14,5 +14,5 @@
         <table></table>
         <button type="button">Add restaurant</button>
         <form></form>
-    </div>
+    </div> -->
 </div>

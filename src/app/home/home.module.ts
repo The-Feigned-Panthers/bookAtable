@@ -7,7 +7,6 @@ import { HomeComponent } from './home.component';
 @NgModule({
   imports: [
     SharedModule,
-    CoreModule,
     RouterModule
   ],
   declarations: [

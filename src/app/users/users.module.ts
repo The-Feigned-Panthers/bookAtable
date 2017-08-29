@@ -9,7 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CoreModule,
     SharedModule,
     UsersRoutes,
     FormsModule,

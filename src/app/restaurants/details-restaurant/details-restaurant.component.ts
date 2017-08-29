@@ -1,3 +1,4 @@
+import { User } from './../../models/user';
 import { UserService } from './../../core/services/user.service';
 // import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/Rx';
@@ -15,15 +16,10 @@ export class DetailsRestaurantComponent implements OnInit {
   private restaurant: Restaurant;
   private name: string;
   private isOnOverview: boolean;
-  private currentUser;
+  private currentUser: User;
 
   constructor(private service: RestaurantsService, private userServie: UserService, private route: ActivatedRoute) {
     this.isOnOverview = true;
-    setTimeout(() => {
-      this.userServie.getUser().then(user => {
-        this.currentUser = user;
-      });
-    }, 5000);
    }
 
   ngOnInit() {
@@ -34,6 +30,12 @@ export class DetailsRestaurantComponent implements OnInit {
         return this.service.getDetails(name);
       })
       .subscribe(res => this.restaurant = res);
+
+      // this.userServie.getUser().subscribe(user => {
+      //   user
+      //     this.currentUser = user;
+
+      // });
   }
 
   goToOverview() {

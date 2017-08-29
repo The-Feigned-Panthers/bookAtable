@@ -22,7 +22,7 @@ export class LoginComponent {
   loginWithEmail(email, pass) {
     this.afAuth.auth.signInWithEmailAndPassword(email, pass)
       .then((success) => {
-        console.log(success);
+        // console.log(success);
         const userId = success.uid;
         alert(userId);
         this.router.navigateByUrl('/home');
@@ -31,7 +31,7 @@ export class LoginComponent {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage);
-        console.log(errorCode);
+        // console.log(errorCode);
       });
   }
 }

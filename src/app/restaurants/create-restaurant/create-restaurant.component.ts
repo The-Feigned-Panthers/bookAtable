@@ -13,11 +13,6 @@ import { Component, OnInit } from '@angular/core';
 export class CreateRestaurantComponent implements OnInit {
   currentUser: User;
   constructor(private service: RestaurantsService, private userService: UserService, private router: Router) {
-    setTimeout(() => {
-      this.userService.getUser().then(user => {
-        this.currentUser = user;
-      });
-    }, 5000);
    }
 
   ngOnInit() {

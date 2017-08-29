@@ -1,3 +1,4 @@
+import { RestaurantsGuardService } from './restaurants-guard.service';
 import { SortByRatingPipe } from './../pipes/sort-by-rating.pipe';
 import { BookingComponent } from './details-restaurant/booking/booking.component';
 import { CoreModule } from './../core/core.module';
@@ -18,7 +19,6 @@ import { EditComponent } from './edit/edit.component';
 @NgModule({
   imports: [
     SharedModule,
-    CoreModule,
     FormsModule,
     Ng2OrderModule,
     RestaurantsRoutes
@@ -35,6 +35,6 @@ import { EditComponent } from './edit/edit.component';
     EditComponent,
     SortByRatingPipe
 ],
-  providers: [],
+  providers: [RestaurantsGuardService],
 })
 export class RestaurantsModule { }

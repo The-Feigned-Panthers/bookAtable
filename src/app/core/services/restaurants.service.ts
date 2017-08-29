@@ -4,7 +4,6 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { Restaurant } from './../../models/restaurant';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import * as firebase from 'firebase';
 
@@ -13,7 +12,7 @@ export class RestaurantsService {
   private basePath = '/imgs';
   private uploadTask: firebase.storage.UploadTask;
   uploads: FirebaseListObservable<Upload[]>;
-  constructor(private http: Http, public db: AngularFireDatabase) { }
+  constructor(public db: AngularFireDatabase) { }
 
   getAll(): Observable<Restaurant[]> {
     return this.db.list('/places');
@@ -24,7 +23,9 @@ export class RestaurantsService {
   }
 
   updateRestaurant(restaurant: Restaurant) {
-    this.db.database.ref('/places').child(restaurant.name).set(restaurant);
+    this.db.database.ref('/places')
+      .child(restaurant.name)
+      .set(restaurant);
   }
 
   uploadPhoto(name: string, upload: Upload) {
