@@ -9,9 +9,7 @@ const routes: Routes = [
   { path: 'restaurants', loadChildren: './restaurants/restaurants.module#RestaurantsModule' },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  {path: 'users', loadChildren: './users/users.module#UsersModule'},
-
-  { path: 'login', component: LoginComponent },
+  { path: 'users', loadChildren: './users/users.module#UsersModule'},
   { path: '**', component: NotFoundComponent }
 
 ];
