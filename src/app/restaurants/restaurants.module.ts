@@ -1,7 +1,7 @@
 import { RestaurantsGuardService } from './restaurants-guard.service';
 import { SortByRatingPipe } from './../pipes/sort-by-rating.pipe';
 import { BookingComponent } from './details-restaurant/booking/booking.component';
-import { CoreModule } from './../core/core.module';
+// import { CoreModule } from './../core/core.module';
 import { SharedModule } from './../shared/shared.module';
 import { ReviewsComponent } from './details-restaurant/reviews/reviews.component';
 import { OverviewComponent } from './details-restaurant/overview/overview.component';

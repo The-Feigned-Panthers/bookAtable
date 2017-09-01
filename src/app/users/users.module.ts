@@ -1,7 +1,7 @@
 import { SharedModule } from './../shared/shared.module';
-import { CoreModule } from './../core/core.module';
+// import { CoreModule } from './../core/core.module';
 import { LoginComponent } from './login/login.component';
-import { UsersRoutes } from './users.routing';
+import { UsersRouterModule } from './users.routing';
 import { NgModule } from '@angular/core';
 import { UserComponent } from './user/user.component';
 import { SignupComponent } from './signup/signup.component';
@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     SharedModule,
-    UsersRoutes,
+    UsersRouterModule,
     FormsModule,
     ReactiveFormsModule
   ],

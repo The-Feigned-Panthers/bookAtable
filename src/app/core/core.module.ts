@@ -1,6 +1,7 @@
 import { UserService } from './services/user.service';
 import { RestaurantsService } from './services/restaurants.service';
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ export class CoreModule {
       ngModule: CoreModule,
       providers: [
         RestaurantsService,
-        UserService
+        UserService,
+        AngularFireAuth
       ]
     };
 }

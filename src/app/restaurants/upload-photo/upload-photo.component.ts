@@ -2,7 +2,7 @@ import { Upload } from './../../models/upload';
 import { RestaurantsService } from './../../core/services/restaurants.service';
 import { Restaurant } from './../../models/restaurant';
 import { Component, Input, OnInit } from '@angular/core';
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 
 
 @Component({

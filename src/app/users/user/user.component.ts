@@ -1,4 +1,5 @@
-import { FirebaseListObservable } from 'angularfire2/database';
+// import { AngularFireAuth } from 'angularfire2/auth';
+import { FirebaseObjectObservable } from 'angularfire2/database';
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../core/services/user.service';
 
@@ -8,14 +9,18 @@ import { UserService } from '../../core/services/user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  private currentUser: FirebaseListObservable<any[]>;
+  private currentUser: FirebaseObjectObservable<any>;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getUser().subscribe(users => {
-    this.currentUser = users[0];
+    this.userService.afAuth.authState.subscribe(user => {
+      if (user) {
+        const id = user.uid;
+      this.userService.getUser(id).subscribe(us => {
+        this.currentUser = us;
       });
-  }
-
+    }
+  });
+}
 }

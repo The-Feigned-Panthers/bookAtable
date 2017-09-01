@@ -11,7 +11,6 @@ export class RestaurantsGuardService implements CanActivate {
             if (!!restaurant.name) {
                 return true;
             }
-            
             this.router.navigate(['home']);
             return false;
         });
