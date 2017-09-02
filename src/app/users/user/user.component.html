@@ -5,14 +5,14 @@
     <p>Last name: {{currentUser?.lastname}}</p>
     <p>Username: {{currentUser?.username}}</p>
     <p>Email: {{currentUser?.email}}</p>
-    <!-- <div class="bookings">
+    <div class="bookings">
         <h3>Your bookings</h3>
-        <table *ngIf="user?.bookings.length > 0"></table>
+        <table *ngIf="currentUser?.bookings"></table>
     </div>
-    <div *ngIf="user?.type === owner">
+    <div *ngIf="currentUser?.type === 'owner'">
         <h3>Your restaurants</h3>
         <table></table>
         <button type="button">Add restaurant</button>
         <form></form>
-    </div> -->
+    </div>
 </div>

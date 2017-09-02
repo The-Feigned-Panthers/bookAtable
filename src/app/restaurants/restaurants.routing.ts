@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core';
 import { RestaurantsGuardService } from './restaurants-guard.service';
 import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
 import { DetailsRestaurantComponent } from './details-restaurant/details-restaurant.component';
@@ -7,7 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: ListRestaurantsComponent
+    component: ListRestaurantsComponent,
   },
   {
     path: 'create',
@@ -20,4 +21,16 @@ const routes: Routes = [
   }
 ];
 
-export const RestaurantsRoutes = RouterModule.forChild(routes);
+@NgModule({
+  imports: [
+    RouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule
+  ],
+  providers: [
+    RestaurantsGuardService
+  ]
+})
+
+export class RestaurantsRoutingModule {}

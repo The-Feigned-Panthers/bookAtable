@@ -16,10 +16,10 @@ export class LoginComponent {
 
   user: Observable<firebase.User>;
   id;
-  constructor(private service: UserService) {
+  constructor(private userService: UserService) {
   }
 
   loginWithEmail(email, pass) {
-    this.service.login(email, pass);
+    this.userService.login(email, pass);
   }
 }

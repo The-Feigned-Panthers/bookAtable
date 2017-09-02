@@ -1,3 +1,4 @@
+// import { AuthGuard } from './services/auth-guard.service';
 import { UserService } from './services/user.service';
 import { RestaurantsService } from './services/restaurants.service';
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
@@ -22,7 +23,7 @@ export class CoreModule {
       providers: [
         RestaurantsService,
         UserService,
-        AngularFireAuth
+        AngularFireAuth,
       ]
     };
 }

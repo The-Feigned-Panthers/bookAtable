@@ -1,11 +1,11 @@
-import { RestaurantsGuardService } from './restaurants-guard.service';
+// import { RestaurantsGuardService } from './restaurants-guard.service';
 import { SortByRatingPipe } from './../pipes/sort-by-rating.pipe';
 import { BookingComponent } from './details-restaurant/booking/booking.component';
 // import { CoreModule } from './../core/core.module';
 import { SharedModule } from './../shared/shared.module';
 import { ReviewsComponent } from './details-restaurant/reviews/reviews.component';
 import { OverviewComponent } from './details-restaurant/overview/overview.component';
-import { RestaurantsRoutes } from './restaurants.routing';
+import { RestaurantsRoutingModule } from './restaurants.routing';
 import { RestaurantPartialComponent } from './list-restaurants/restaurant-partial/restaurant-partial.component';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -21,7 +21,7 @@ import { EditComponent } from './edit/edit.component';
     SharedModule,
     FormsModule,
     Ng2OrderModule,
-    RestaurantsRoutes
+    RestaurantsRoutingModule
   ],
   declarations: [
     ListRestaurantsComponent,
@@ -35,6 +35,6 @@ import { EditComponent } from './edit/edit.component';
     EditComponent,
     SortByRatingPipe
 ],
-  providers: [RestaurantsGuardService],
+  // providers: [RestaurantsGuardService],
 })
 export class RestaurantsModule { }

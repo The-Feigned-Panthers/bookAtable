@@ -15,7 +15,7 @@ export class SignupComponent {
 
   user: Observable<firebase.User>;
 
-  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private router: Router) {
+  constructor(private afAuth: AngularFireAuth, private af: AngularFireDatabase, private router: Router) {
     this.user = this.afAuth.authState;
   }
 
@@ -24,9 +24,7 @@ export class SignupComponent {
       this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
         .then((success) => {
           success.updateProfile({displayName: username, photoUrl: null});
-          // console.log(success);
           const id = success.uid;
-          // alert(id);
           const appUser = new User(id , username, firstname, lastname, email, type);
           firebase.database().ref('/users/' + id).set(appUser);
           this.router.navigateByUrl('/home');

@@ -4,6 +4,7 @@ import { ListRestaurantsComponent } from './restaurants/list-restaurants/list-re
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { NgModule } from '@angular/core';
+import { SignupComponent } from './users/signup/signup.component';
 
 const routes: Routes = [
   { path: 'restaurants', loadChildren: './restaurants/restaurants.module#RestaurantsModule' },
@@ -16,6 +17,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: []
 })
 export class AppRoutingModule { }

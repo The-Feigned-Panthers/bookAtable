@@ -9,12 +9,16 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class UserService {
     user: Observable<firebase.User>;
-    public userId: string;
+    userId: string;
+    reidrectUrl = '/home';
+    isLoggedIn = false;
     constructor(public afAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
         this.user = this.afAuth.authState;
+        console.log('From UserService ' + this.isLoggedIn);
      }
 
     getUser(id) {
+        console.log('From getUser ' + this.isLoggedIn);
         // console.log('userID' + this.userId);
         // console.log(id);
         return this.db.object(`users/${id}`);
@@ -24,7 +28,9 @@ export class UserService {
         this.afAuth.auth.signInWithEmailAndPassword(email, pass)
         .then((success) => {
           const userId = success.uid;
-          this.router.navigateByUrl('/home');
+          this.isLoggedIn = true;
+          this.router.navigateByUrl(this.reidrectUrl);
+          console.log('From login ' + this.isLoggedIn);
         })
         .catch((error: any) => {
           const errorCode = error.code;
@@ -38,7 +44,8 @@ export class UserService {
         .then((success) => {
             this.userId = undefined;
             this.user = undefined;
-            this.router.navigateByUrl('/home');
+            this.isLoggedIn = false;
+            this.router.navigate(['/home']);
         })
         .catch((error: any) => {
           const errorCode = error.code;

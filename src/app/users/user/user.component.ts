@@ -9,14 +9,14 @@ import { UserService } from '../../core/services/user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  private currentUser: FirebaseObjectObservable<any>;
+  private currentUser: {};
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.userService.afAuth.authState.subscribe(user => {
       if (user) {
-        const id = user.uid;
+        const id: string = user.uid;
       this.userService.getUser(id).subscribe(us => {
         this.currentUser = us;
       });
