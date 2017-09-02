@@ -1,3 +1,4 @@
+import { UserGuardService } from './user/user-guard.servise';
 import { NgModule } from '@angular/core';
 import { UserComponent } from './user/user.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -5,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 const userRoutes: Routes = [
         {
           path: ':username',
-          // canActivate: [AuthGuard],
+          canActivate: [UserGuardService],
           component: UserComponent
         }
 ];
@@ -13,6 +14,6 @@ const userRoutes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(userRoutes)],
   exports: [RouterModule],
-  providers: []
+  providers: [UserGuardService]
 })
 export class UsersRouterModule {}

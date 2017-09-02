@@ -5,9 +5,10 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 
 @Injectable()
 export class RestaurantsGuardService implements CanActivate {
+    constructor(private restaurantService: RestaurantsService, private router: Router) { }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const name = route.params['name'];
-        return this.service.getDetails(name).map((restaurant) => {
+        return this.restaurantService.getDetails(name).map((restaurant) => {
             if (!!restaurant.name) {
                 return true;
             }
@@ -15,6 +16,4 @@ export class RestaurantsGuardService implements CanActivate {
             return false;
         });
     }
-
-constructor(private service: RestaurantsService, private router: Router) { }
 }

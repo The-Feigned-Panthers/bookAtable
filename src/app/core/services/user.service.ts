@@ -10,27 +10,33 @@ import * as firebase from 'firebase/app';
 export class UserService {
     user: Observable<firebase.User>;
     userId: string;
-    reidrectUrl = '/home';
+    username: string;
+    redirectUrl = '/home';
     isLoggedIn = false;
     constructor(public afAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
         this.user = this.afAuth.authState;
-        console.log('From UserService ' + this.isLoggedIn);
+        this.user.subscribe(us => {
+            if (us) {
+                this.isLoggedIn = true;
+                this.userId = us.uid;
+                this.username = us.displayName;
+            }
+        });
+        // console.log('From UserService ' + this.isLoggedIn);
      }
 
     getUser(id) {
-        console.log('From getUser ' + this.isLoggedIn);
-        // console.log('userID' + this.userId);
-        // console.log(id);
         return this.db.object(`users/${id}`);
     }
 
     login(email, pass) {
         this.afAuth.auth.signInWithEmailAndPassword(email, pass)
         .then((success) => {
-          const userId = success.uid;
-          this.isLoggedIn = true;
-          this.router.navigateByUrl(this.reidrectUrl);
-          console.log('From login ' + this.isLoggedIn);
+        //   this.userId = success.uid;
+        //   this.username = success.displayName;
+        //   this.isLoggedIn = true;
+          this.router.navigateByUrl(this.redirectUrl);
+        //   console.log('From login ' + this.isLoggedIn);
         })
         .catch((error: any) => {
           const errorCode = error.code;
@@ -44,6 +50,7 @@ export class UserService {
         .then((success) => {
             this.userId = undefined;
             this.user = undefined;
+            this.username = undefined;
             this.isLoggedIn = false;
             this.router.navigate(['/home']);
         })

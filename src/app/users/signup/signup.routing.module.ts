@@ -1,3 +1,4 @@
+import { LoginSignupGuardService } from './../login/login-sugnup-guard.service';
 import { SignupComponent } from './signup.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -5,7 +6,7 @@ import { NgModule } from '@angular/core';
 const loginRoutes: Routes = [
     {
         path: 'signup',
-        // canActivate: [LoginSignupGuardService],
+        canActivate: [LoginSignupGuardService],
         component: SignupComponent
     }
 ];
@@ -13,6 +14,6 @@ const loginRoutes: Routes = [
 @NgModule({
     imports: [RouterModule.forChild(loginRoutes)],
     exports: [RouterModule],
-    providers: []
+    providers: [LoginSignupGuardService]
 })
 export class SignupRoutingModule { }
