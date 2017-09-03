@@ -1,6 +1,7 @@
-// import { AngularFireAuth } from 'angularfire2/auth';
+import { User } from './../../models/user';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../core/services/user.service';
 
 @Component({
@@ -11,14 +12,20 @@ import { UserService } from '../../core/services/user.service';
 export class UserComponent implements OnInit {
   private currentUser: {};
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    // this.route.data
+    //   .subscribe((data: {user: User}) => {
+    //     console.log(data.user);
+    //     this.currentUser = data.user;
+    //   });
+
     this.userService.afAuth.authState.subscribe(user => {
       if (user) {
         const id: string = user.uid;
-      this.userService.getUser(id).subscribe(us => {
-        this.currentUser = us;
+        this.userService.getUser(id).subscribe(us => {
+          this.currentUser = us;
       });
     }
   });

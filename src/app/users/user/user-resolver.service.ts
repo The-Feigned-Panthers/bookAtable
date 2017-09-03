@@ -15,17 +15,17 @@ export class UserResolver implements Resolve<User> {
             return this.savedUser;
         }
         const id = this.userServise.userId;
-        // console.log(id);
+        console.log(id);
         return this.userServise.getUser(id)
             .map(user => {
                 if (user) {
-                    // console.log(user);
+                    console.log(user);
                     this.savedUser = user;
                     return user;
                 }
                 this.router.navigate(['home']);
                 return null;
-            });
-            // .catch(err => Observable.throw(err));
+            })
+            .catch(err => Observable.throw(err));
     }
 }

@@ -32,9 +32,9 @@ export class UserService {
     login(email, pass) {
         this.afAuth.auth.signInWithEmailAndPassword(email, pass)
         .then((success) => {
-        //   this.userId = success.uid;
-        //   this.username = success.displayName;
-        //   this.isLoggedIn = true;
+          this.userId = success.uid;
+          this.username = success.displayName;
+          this.isLoggedIn = true;
           this.router.navigateByUrl(this.redirectUrl);
         //   console.log('From login ' + this.isLoggedIn);
         })
