@@ -1,5 +1,5 @@
 <h3>LOGIN PAGE</h3>
 
-<input type="email" #username class="form-control" placeholder="email" reqired>
+<input type="email" #username class="form-control" placeholder="email" reqired autofocus>
 <input type="password" #password class="form-control" placeholder="password" reqired>
 <button (click)="loginWithEmail(username.value, password.value)" *ngIf="!(user | async)?.uid">Login</button>

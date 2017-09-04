@@ -20,6 +20,7 @@ import { firebaseConfig } from './firebase.config';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './users/signup/signup.component';
 import { LoginComponent } from './users/login/login.component';
+import { PasswordMatchDirective } from './users/signup/password-match.directive';
 
 
 
@@ -41,7 +42,8 @@ import { LoginComponent } from './users/login/login.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    PasswordMatchDirective
 ],
   providers: [],
   bootstrap: [AppComponent]

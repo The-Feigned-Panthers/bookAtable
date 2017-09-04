@@ -1,3 +1,4 @@
+import { PasswordMatchDirective } from './password-match.directive';
 import { User } from './../../models/user';
 import { Component } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -14,19 +15,21 @@ import { Router } from '@angular/router';
 export class SignupComponent {
 
   user: Observable<firebase.User>;
-
+  appUser: User;
+  userPassword: string;
+  passwordCheck: string;
   constructor(private afAuth: AngularFireAuth, private af: AngularFireDatabase, private router: Router) {
     this.user = this.afAuth.authState;
+    this.appUser = new User('', '', '', '', '');
   }
 
-    signupWithEmail(email, pass, username, firstname, lastname, type) {
-      console.log(type);
-      this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
+    signupWithEmail() {
+      // console.log(type);
+      this.afAuth.auth.createUserWithEmailAndPassword(this.appUser.email, this.userPassword)
         .then((success) => {
-          success.updateProfile({displayName: username, photoUrl: null});
+          success.updateProfile({displayName: this.appUser.username, photoUrl: null});
           const id = success.uid;
-          const appUser = new User(id , username, firstname, lastname, email, type);
-          firebase.database().ref('/users/' + id).set(appUser);
+          firebase.database().ref('/users/' + id).set(this.appUser);
           this.router.navigateByUrl('/home');
         }
       )
