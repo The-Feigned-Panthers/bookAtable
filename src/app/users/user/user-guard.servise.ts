@@ -13,15 +13,18 @@ export class UserGuardService implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const username = route.params['username'];
-        if (this.userService.isLoggedIn) {
-            console.log("has logged user");
-            if (username === this.userService.username) {
-                return true;
+        return this.userService.user.map(user => {
+            if (!!user) {
+                console.log("has logged user");
+                if (username === this.userService.username) {
+                    return true;
+                }
+                this.router.navigate(['home']);
+                return false;
             }
-            this.router.navigate(['home']);
+
+            this.router.navigate(['login']);
             return false;
-        }
-        this.router.navigate(['login']);
-        return false;
+        });
     }
 }
