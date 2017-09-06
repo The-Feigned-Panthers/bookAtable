@@ -12,7 +12,7 @@ import { UserService } from '../../core/services/user.service';
 export class UserComponent implements OnInit {
   currentUser: {};
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     // this.route.data

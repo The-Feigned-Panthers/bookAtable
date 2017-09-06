@@ -1,3 +1,4 @@
+import { UserService } from './core/services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -45,7 +46,7 @@ import { PasswordMatchDirective } from './users/signup/password-match.directive'
     SignupComponent,
     PasswordMatchDirective
 ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
