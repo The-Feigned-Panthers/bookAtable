@@ -1,6 +1,4 @@
-import { User } from './../../models/user';
-import { UserService } from './../../core/services/user.service';
-// import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { Restaurant } from './../../models/restaurant';
 import { RestaurantsService } from './../../core/services/restaurants.service';
@@ -16,9 +14,8 @@ export class DetailsRestaurantComponent implements OnInit {
   private restaurant: Restaurant;
   private name: string;
   private isOnOverview: boolean;
-  private currentUser: User;
 
-  constructor(private service: RestaurantsService, private userServie: UserService, private route: ActivatedRoute) {
+  constructor(private service: RestaurantsService, private route: ActivatedRoute) {
     this.isOnOverview = true;
    }
 
@@ -30,12 +27,6 @@ export class DetailsRestaurantComponent implements OnInit {
         return this.service.getDetails(name);
       })
       .subscribe(res => this.restaurant = res);
-
-      // this.userServie.getUser().subscribe(user => {
-      //   user
-      //     this.currentUser = user;
-
-      // });
   }
 
   goToOverview() {
