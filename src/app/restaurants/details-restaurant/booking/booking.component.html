@@ -2,43 +2,27 @@
     <fieldset>
       <legend>Book a table</legend>
       <div class="form-group">
-          <label class="col-md-4 control-label" for="date">Date:</label>  
+          <label class="col-md-4 control-label" for="date">Date*</label>  
           <div class="col-md-5">
             <input id="date" name="date" type="date" class="form-control"
               #date="ngModel" [(ngModel)]="booking.date" required >
           </div>
         </div>
       <div class="form-group">
-          <label class="col-md-4 control-label" for="type">Time:</label>
+          <label class="col-md-4 control-label" for="type">Time*</label>
           <div class="col-md-5">
-          <!-- <select id="hours" name="hours" class="form-control" #hours="ngModel" [(ngModel)]="hours" required>
-                <option value="9" disabled>select hours</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option> 
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-              </select> -->
-              <!-- <select id="minutes" name="minutes" class="form-control" required>
+            <select id="hours" name="hours" class="form-control" required>
+                <option value="" disabled>select hours</option>
+                <option *ngFor="let hour of hours" [value]="hour" required>{{hour}}</option>
+              </select>
+              <select id="minutes" name="minutes" class="form-control" required>
                   <option value="" disabled>select minutes</option>
-                  <option *ngFor="let minute of minutes"
-                  [value]="minute">
-                  {{minute}}
-                  </option>
-                </select> -->
+                  <option *ngFor="let minute of minutes" [value]="minute" required>{{minute}}</option>
+              </select>
           </div>
       </div>
       <div class="form-group">
-        <label class="col-md-4 control-label" for="numberofpeople"> People: </label>
+        <label class="col-md-4 control-label" for="numberofpeople">People*</label>
         <div class="col-md-5">
           <input id="numberofpeople" name="numberofpeople" class="form-control" type="number" placeholder="number of people" 
             #numberofpeople="ngModel" [(ngModel)]="booking.numberOfPeople" required/>
