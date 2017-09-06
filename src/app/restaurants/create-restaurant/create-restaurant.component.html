@@ -76,8 +76,11 @@
   </div>
  
   <div class="form-group">
-    <div class="col-md-offset-5">
-      <button id="add-btn" class="btn-block" name="add" class="btn btn-primary" (click)="create(name.value, details.value, city.value, area.value, street.value, number.value, type.value, bill.value, weekdays.value, weekends.value, contact.value)">Add</button>
+    <div class="col-md-offset-4 col-md-5">
+      <button id="add-btn" class="btn-block" name="add" class="btn btn-primary" 
+        (click)="create(name.value, details.value, city.value, area.value, street.value,
+          number.value, type.value, bill.value, weekdays.value, weekends.value, contact.value)">Add</button>
+      <a class="btn btn-danger" [routerLink]="[ 'users', currentUser.username ]" routerLinkActive="active">Cancel</a>
     </div>
   </div>
   

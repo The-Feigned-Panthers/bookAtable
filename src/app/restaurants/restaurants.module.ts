@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { ListRestaurantsComponent } from './list-restaurants/list-restaurants.component';
 import { DetailsRestaurantComponent } from './details-restaurant/details-restaurant.component';
-import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
+// import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 import { EditComponent } from './edit/edit.component';
@@ -29,7 +29,7 @@ import { EditComponent } from './edit/edit.component';
     DetailsRestaurantComponent,
     OverviewComponent,
     ReviewsComponent,
-    CreateRestaurantComponent,
+    // CreateRestaurantComponent,
     BookingComponent,
     UploadPhotoComponent,
     EditComponent,

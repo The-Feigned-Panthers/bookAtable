@@ -25,6 +25,7 @@ export class Restaurant {
     public photo: string;
     public addedAt: string;
     public owner: User;
+    // to take only the user id?
 
     constructor(name, address, type, averageBill,
         openingHoursWeekdays, openingHoursWeekends, contact, details, owner) {

@@ -1,18 +1,27 @@
-<div class="user" >
-    <h3>{{currentUser?.username}}</h3>
-    <h4>User Details:</h4>
-    <p>First name: {{currentUser?.firstname}}</p>
-    <p>Last name: {{currentUser?.lastname}}</p>
-    <p>Username: {{currentUser?.username}}</p>
-    <p>Email: {{currentUser?.email}}</p>
-    <div class="bookings">
-        <h3>Your bookings</h3>
+<div class="row">
+<div class="col-md-offset-1 col-md-2 user" > 
+    <fieldset>
+    <legend>User Details</legend>
+        <p>First name: {{currentUser?.firstname}}</p>
+        <p>Last name: {{currentUser?.lastname}}</p>
+        <p>Username: {{currentUser?.username}}</p>
+        <p>Email: {{currentUser?.email}}</p>
+    </fieldset>
+    <fieldset>
+        <legend>Your Bookings</legend>
         <table *ngIf="currentUser?.bookings"></table>
-    </div>
+    </fieldset>
     <div *ngIf="currentUser?.type === 'owner'">
-        <h3>Your restaurants</h3>
-        <table></table>
-        <button type="button">Add restaurant</button>
-        <form></form>
+        <fieldset>
+            <legend>Your Restaurants</legend>
+            <table></table>
+        </fieldset>
+        <a class="btn btn-success" [routerLink]="[ 'create' ]">Add new restaurant</a>
+        <!-- <a class='btn btn-default' [routerLink]=['users', currentUser?.username, 'create'] routerLinkActive="active">Add new restaurant</a> -->
     </div>
+</div>
+
+<div class="col-md-8">
+    <router-outlet></router-outlet>
+</div>
 </div>

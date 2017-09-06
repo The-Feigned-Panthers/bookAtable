@@ -23,7 +23,7 @@
 			<li routerLinkActive="active" *ngIf="!(user | async)?.uid">
         <a [routerLink]="[ '/signup' ]"> Sign Up</a>
       <li routerLinkActive="active" *ngIf="(user | async)?.uid">
-          <a [routerLink]="[ '/users/' + username ]">Welcome, {{username}}</a>
+          <a [routerLink]="[ 'users', username ]">Welcome, {{username}}</a>
 			<li routerLinkActive="active" *ngIf="(user | async)?.uid">
         <a class="tempStyling" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log Out</a>
     </ul>

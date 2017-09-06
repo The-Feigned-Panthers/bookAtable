@@ -12,6 +12,7 @@ export class UserService {
     userId: string;
     username: string;
     redirectUrl = '/home';
+    usertype: string;
     isLoggedIn = false;
     constructor(public afAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
         this.user = this.afAuth.authState;
@@ -35,6 +36,7 @@ export class UserService {
           this.userId = success.uid;
           this.username = success.displayName;
           this.isLoggedIn = true;
+          this.usertype = 'Owner';
           this.router.navigateByUrl(this.redirectUrl);
         //   console.log('From login ' + this.isLoggedIn);
         })

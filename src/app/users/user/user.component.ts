@@ -10,7 +10,7 @@ import { UserService } from '../../core/services/user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  private currentUser: {};
+  currentUser: {};
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
