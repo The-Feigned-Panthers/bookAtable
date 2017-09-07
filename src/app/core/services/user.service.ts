@@ -30,7 +30,7 @@ export class UserService {
     login(email, pass) {
         this.afAuth.auth.signInWithEmailAndPassword(email, pass)
         .then((success) => {
-        //   this.usertype = 'Owner';
+          this.usertype = 'Owner';
           this.router.navigateByUrl(this.redirectUrl);
         })
         .catch((error: any) => {

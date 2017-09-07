@@ -25,7 +25,7 @@ export class UserResolver implements Resolve<User> {
                 }
                 this.router.navigate(['home']);
                 return null;
-            })
-            .catch(err => Observable.throw(err));
+            });
+            // .catch(err => Observable.throw(err));
     }
 }

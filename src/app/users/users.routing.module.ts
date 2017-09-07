@@ -20,7 +20,7 @@ const userRoutes: Routes = [
           {
             path: 'create',
             component: CreateRestaurantComponent,
-            // canActivate: [UserAddRestaurantGuardService]
+            canActivate: [UserAddRestaurantGuardService]
           }
         ]
       }

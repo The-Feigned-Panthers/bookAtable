@@ -12,10 +12,10 @@ import { UserService } from '../../core/services/user.service';
 export class UserComponent implements OnInit {
   currentUser: {};
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // this.route.data
+    // this.route.snapshot.data
     //   .subscribe((data: {user: User}) => {
     //     console.log(data.user);
     //     this.currentUser = data.user;

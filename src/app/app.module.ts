@@ -1,5 +1,6 @@
 import { UserService } from './core/services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -17,6 +18,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { firebaseConfig } from './firebase.config';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './users/signup/signup.component';
@@ -28,6 +30,7 @@ import { PasswordMatchDirective } from './users/signup/password-match.directive'
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -35,6 +38,7 @@ import { PasswordMatchDirective } from './users/signup/password-match.directive'
     AngularFireAuthModule,
     SharedModule,
     HomeModule,
+    ToastModule.forRoot(),
     CoreModule.forRoot(),
     LoginRoutingModule,
     SignupRoutingModule,
@@ -46,7 +50,7 @@ import { PasswordMatchDirective } from './users/signup/password-match.directive'
     SignupComponent,
     PasswordMatchDirective
 ],
-  providers: [UserService],
+  providers: [UserService, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
