@@ -8,7 +8,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   imports: [
   ],
   declarations: [],
-  providers: [RestaurantsService]
+  providers: [RestaurantsService, SearchService]
 })
 export class CoreModule {
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
@@ -27,5 +27,5 @@ export class CoreModule {
         // AngularFireAuth,
       ]
     };
-}
+  }
 }

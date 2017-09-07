@@ -21,6 +21,10 @@ export class SearchComponent implements OnInit {
 
   search($event) {
     let q = $event.target.value;
+    if (!($event.keyCode >= 65 && $event.keyCode <= 90 || $event.keyCode >= 48 && $event.keyCode <= 57)) {
+      return;
+    }
+
     this.startAt.next(q);
     this.endAt.next(q + "\uf8ff");
   }
