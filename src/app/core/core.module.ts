@@ -1,3 +1,4 @@
+import { SearchService } from './services/search.service';
 import { UserService } from './services/user.service';
 import { RestaurantsService } from './services/restaurants.service';
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
@@ -7,7 +8,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   imports: [
   ],
   declarations: [],
-  providers: [RestaurantsService]
+  providers: [RestaurantsService, SearchService]
 })
 export class CoreModule {
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
@@ -21,8 +22,9 @@ export class CoreModule {
       ngModule: CoreModule,
       providers: [
         RestaurantsService,
+        SearchService
         // AngularFireAuth,
       ]
     };
-}
+  }
 }
