@@ -55,6 +55,10 @@ export class UserService {
                 console.log(errorCode);
             });
     }
+
+    bookATable(bookingId: string) {
+        this.db.database.ref(`/users/${this.userId}/bookings/${bookingId}`).set(true);
+    }
 }
 
 

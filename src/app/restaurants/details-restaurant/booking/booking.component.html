@@ -19,11 +19,11 @@
       <div class="form-group">
           <label class="col-md-4 control-label" for="type">Time*</label>
           <div class="col-md-5">
-            <select id="hours" name="hours" class="form-control" required>
+            <select id="hours" name="hours" class="form-control" required #hourInput>
                 <option value="" disabled>select hours</option>
                 <option *ngFor="let hour of hours" [value]="hour" required>{{hour}}</option>
               </select>
-              <select id="minutes" name="minutes" class="form-control"  required>
+              <select id="minutes" name="minutes" class="form-control" required #minuteInput>
                   <option value="" disabled>select minutes</option>
                   <option *ngFor="let minute of minutes" name="minute" [value]="minute">{{minute}}</option>
               </select>
@@ -52,7 +52,7 @@
       <div class="form-group">
         <div class="col-md-offset-4 col-md-5">
           <button class="btn btn-success" [disabled]="!bookingForm.form.valid" 
-          (click)="book()" *ngIf="!(user | async)?.uid">Book</button>
+          (click)="book(hourInput.value, minuteInput.value)" *ngIf="!(user | async)?.uid">Book</button>
         </div>
       </div>
     </fieldset>

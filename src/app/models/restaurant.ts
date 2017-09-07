@@ -21,7 +21,7 @@ export class Restaurant {
     public openingHoursWeekends: string;
     public contact: string;
     public details: string;
-    public reservations: Date[];
+    public bookings: any;
     public photo: string;
     public addedAt: string;
     public owner: User;
@@ -43,7 +43,7 @@ export class Restaurant {
         this.openingHoursWeekends = openingHoursWeekends;
         this.contact = contact;
         this.details = details;
-        this.reservations = [];
+        this.bookings = [];
         this.photo = 'http://spizzico.org/wp-content/uploads/2015/03/spizzico1.jpg';
         this.addedAt = new Date().toString();
         this.owner = owner;

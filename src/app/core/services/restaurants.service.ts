@@ -1,3 +1,4 @@
+import { Booking } from './../../models/booking';
 import { Upload } from './../../models/upload';
 import { Review } from './../../models/review';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -53,7 +54,11 @@ export class RestaurantsService {
 
   }
 
-  bookATable(name: string) {
+  saveBookingInRestaurant(name: string, id: string) {
+    this.db.database.ref('/places').child(`/${name}/bookings/${id}`).set(true);
+  }
 
+  saveBookingInBookings(booking: Booking) {
+    return this.db.database.ref('/bookings').push(booking);
   }
 }
