@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class SearchService {
 
-    constructor() { }
+    constructor(private db: AngularFireDatabase) { }
 
-    getbRestaurantsByName() {
-        alert('work');
+    getbRestaurantsByName(start, end): FirebaseListObservable<any> {
+        return this.db.list('/places', {
+            query: {
+                orderByChild: 'name',
+                limitToFirst: 10,
+                startAt: start,
+                endAt: end
+            }
+        });
     }
-
 }

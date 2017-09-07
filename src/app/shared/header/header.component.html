@@ -13,10 +13,10 @@
       <li routerLinkActive="active">
         <a [routerLink]="[ '/contacts' ]">Contacts</a>
       </li>
-      <li>
-        <a>
-          <input type="text" name="Search" id="searchValue"> 
-          <span (click)="searchField()" class="glyphicon glyphicon-search"></span>
+      <li routerLinkActive="active">
+        <a [routerLink]="[ '/search' ]">
+          Search 
+          <span class="glyphicon glyphicon-search"></span>
         </a>
       </li>
     </ul>

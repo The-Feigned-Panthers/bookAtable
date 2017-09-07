@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../../core/services/search.service';
+import { Subject } from 'rxjs/Subject'
 
 @Component({
   selector: 'app-search',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  places;
+  startAt = new Subject();
+  endAt = new Subject();
 
-  constructor() { }
+  constructor(private searchService: SearchService) { }
 
   ngOnInit() {
+    this.searchService.getbRestaurantsByName(this.startAt, this.endAt)
+      .subscribe(places => this.places = places);
   }
 
+  search($event) {
+    let q = $event.target.value;
+    this.startAt.next(q);
+    this.endAt.next(q + "\uf8ff");
+  }
 }

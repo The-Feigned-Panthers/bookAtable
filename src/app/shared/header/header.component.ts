@@ -23,10 +23,6 @@ export class HeaderComponent implements OnInit {
     this.toastr.success('Logged out!', 'Success');
   }
 
-  searchField() {
-    this.searchService.getbRestaurantsByName();
-  }
-
   ngOnInit() {
     this.user = this.userService.user;
     this.user.subscribe(us => {

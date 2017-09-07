@@ -1,3 +1,14 @@
-<p>
-  search works!
-</p>
+<h1>Restaurant Search</h1>
+<input type="text" (keydown)="search($event)" placeholder="search restaurants..." class="input">
+<div *ngFor="let place of places">
+  <h4>{{place?.name}}</h4>
+  <p>
+    {{place?.details}}
+  </p>
+</div>
+<div *ngIf="places?.length < 1">
+  <hr>
+  <p>
+    No results found :(
+  </p>
+</div>
