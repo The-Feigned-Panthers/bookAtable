@@ -43,9 +43,8 @@ export class UserService {
     logout() {
         this.afAuth.auth.signOut()
             .then((success) => {
-                // this.userId = undefined;
-                // this.user = undefined;
-                // this.username = undefined;
+                this.userId = undefined;
+                this.username = undefined;
                 this.router.navigate(['/home']);
             })
             .catch((error: any) => {

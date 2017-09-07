@@ -1,10 +1,10 @@
+import { ToastrService } from 'ngx-toastr';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { UserService } from './../../core/services/user.service';
 import { SearchService } from '../../core/services/search.service';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
-import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-header',
@@ -14,8 +14,7 @@ import { ToastsManager } from 'ng2-toastr';
 export class HeaderComponent implements OnInit {
   user: Observable<firebase.User>;
   username: string;
-  constructor(private userService: UserService, private searchService: SearchService, public toastr: ToastsManager, vcr: ViewContainerRef) {
-    this.toastr.setRootViewContainerRef(vcr);
+  constructor(private userService: UserService, private searchService: SearchService, private toastr: ToastrService) {
   }
 
   logout() {

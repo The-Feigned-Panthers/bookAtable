@@ -1,3 +1,4 @@
+import { SearchService } from './services/search.service';
 import { UserService } from './services/user.service';
 import { RestaurantsService } from './services/restaurants.service';
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
@@ -21,6 +22,8 @@ export class CoreModule {
       ngModule: CoreModule,
       providers: [
         RestaurantsService,
+        UserService,
+        SearchService
         // AngularFireAuth,
       ]
     };

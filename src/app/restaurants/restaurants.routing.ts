@@ -1,7 +1,6 @@
 import { RestaurantsListResolver } from './restaurants-list-resolver';
 import { NgModule } from '@angular/core';
 import { RestaurantsGuardService } from './restaurants-guard.service';
-// import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
 import { DetailsRestaurantComponent } from './details-restaurant/details-restaurant.component';
 import { ListRestaurantsComponent } from './list-restaurants/list-restaurants.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -14,10 +13,6 @@ const routes: Routes = [
     //   'restaurants': RestaurantsListResolver
     // }
   },
-  // {
-  //   path: 'create',
-  //   component: CreateRestaurantComponent
-  // },
   {
     path: ':name',
     component: DetailsRestaurantComponent,

@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +17,7 @@ export class LoginComponent {
 
   user: Observable<firebase.User>;
   id;
-  constructor(private userService: UserService, public toastr: ToastsManager, vcr: ViewContainerRef) {
-    this.toastr.setRootViewContainerRef(vcr);
+  constructor(private userService: UserService, private toastr: ToastrService) {
   }
 
   loginWithEmail(email, pass) {
