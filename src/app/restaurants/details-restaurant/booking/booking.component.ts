@@ -1,3 +1,4 @@
+import { DateCheckDirective } from './date-check.directive';
 import { UserService } from './../../../core/services/user.service';
 import { Restaurant } from './../../../models/restaurant';
 import { Booking } from './../../../models/booking';
@@ -16,6 +17,7 @@ export class BookingComponent implements OnInit {
   restaurantName: string;
   hour: string;
   minute: string;
+  minutess;
 
   minutes: string[] = [
     '00', '10', '20', '30', '40', '50'
@@ -28,10 +30,15 @@ export class BookingComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.booking = new Booking('', '', '', '', '');
+    this.booking = new Booking('', '', '', '', '', '');
     this.booking.time = this.hour + ':' + this.minute;
     this.booking.userId = this.UserService.userId;
     this.booking.restaurantName = this.restaurant.name;
+    this.booking.dateBooked = new Date();
+  }
+
+  book() {
+
   }
 
 }

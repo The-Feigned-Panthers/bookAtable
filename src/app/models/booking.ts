@@ -4,6 +4,7 @@ export class Booking {
     date: Date;
     time: string;
     numberOfPeople: number;
+    dateBooked: Date;
 
-    constructor(userId, restaurantName, date, time, numberOfPeople) {}
+    constructor(userId, restaurantName, date, time, numberOfPeople, dateBooked) {}
 }

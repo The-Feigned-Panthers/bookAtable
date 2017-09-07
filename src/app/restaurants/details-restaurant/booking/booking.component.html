@@ -5,7 +5,15 @@
           <label class="col-md-4 control-label" for="date">Date*</label>  
           <div class="col-md-5">
             <input id="date" name="date" type="date" class="form-control"
-              #date="ngModel" [(ngModel)]="booking.date" required >
+              #date="ngModel" [(ngModel)]="booking.date" required appDateCheck="date">
+              <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
+                  <div *ngIf="date.errors.required">
+                      Date is required!
+                  </div>
+                  <div *ngIf="date.errors.dateCheck">
+                      Date cannot be before today!
+                  </div>
+              </div>
           </div>
         </div>
       <div class="form-group">
@@ -15,17 +23,30 @@
                 <option value="" disabled>select hours</option>
                 <option *ngFor="let hour of hours" [value]="hour" required>{{hour}}</option>
               </select>
-              <select id="minutes" name="minutes" class="form-control" required>
+              <select id="minutes" name="minutes" class="form-control"  required>
                   <option value="" disabled>select minutes</option>
-                  <option *ngFor="let minute of minutes" [value]="minute" required>{{minute}}</option>
+                  <option *ngFor="let minute of minutes" name="minute" [value]="minute">{{minute}}</option>
               </select>
+              <!-- <div *ngIf="minutes.invalid && (minutes.dirty || minutes.touched)" class="alert alert-danger">
+                  <div *ngIf="minutes.errors.required">
+                      Minutes is required!
+                  </div> -->
+              <!-- </div> -->
           </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="numberofpeople">People*</label>
         <div class="col-md-5">
           <input id="numberofpeople" name="numberofpeople" class="form-control" type="number" placeholder="number of people" 
-            #numberofpeople="ngModel" [(ngModel)]="booking.numberOfPeople" required/>
+            #numberofpeople="ngModel" [(ngModel)]="booking.numberOfPeople" required pattern="^[^-]?[1-9]{1,1}">
+            <div *ngIf="numberofpeople.invalid && (numberofpeople.dirty || numberofpeople.touched)" class="alert alert-danger">
+                <div *ngIf="numberofpeople.errors.required">
+                    Number of people is required!
+                </div>
+                <div *ngIf="numberofpeople.errors.pattern">
+                    Number of people can be between 1 and 99!
+                </div>
+            </div>
         </div>
       </div>
       <div class="form-group">
