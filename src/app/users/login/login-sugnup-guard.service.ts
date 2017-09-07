@@ -8,10 +8,12 @@ export class LoginSignupGuardService implements CanActivate {
     constructor(private userService: UserService, private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (this.userService.isLoggedIn) {
+        return this.userService.user.map(user => {
+            if (!!user) {
             this.router.navigate(['home']);
             return false;
             }
         return true;
-    }
+    });
+}
 }

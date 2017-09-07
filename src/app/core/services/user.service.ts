@@ -13,17 +13,14 @@ export class UserService {
     username: string;
     redirectUrl = '/home';
     usertype: string;
-    isLoggedIn = false;
     constructor(public afAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
         this.user = this.afAuth.authState;
         this.user.subscribe(us => {
             if (us) {
-                this.isLoggedIn = true;
                 this.userId = us.uid;
                 this.username = us.displayName;
             }
         });
-        // console.log('From UserService ' + this.isLoggedIn);
      }
 
     getUser(id) {
@@ -33,12 +30,8 @@ export class UserService {
     login(email, pass) {
         this.afAuth.auth.signInWithEmailAndPassword(email, pass)
         .then((success) => {
-          this.userId = success.uid;
-          this.username = success.displayName;
-          this.isLoggedIn = true;
-          this.usertype = 'Owner';
+        //   this.usertype = 'Owner';
           this.router.navigateByUrl(this.redirectUrl);
-        //   console.log('From login ' + this.isLoggedIn);
         })
         .catch((error: any) => {
           const errorCode = error.code;
@@ -53,7 +46,6 @@ export class UserService {
             this.userId = undefined;
             this.user = undefined;
             this.username = undefined;
-            this.isLoggedIn = false;
             this.router.navigate(['/home']);
         })
         .catch((error: any) => {

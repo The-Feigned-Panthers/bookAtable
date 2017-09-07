@@ -15,7 +15,6 @@ export class UserGuardService implements CanActivate {
         const username = route.params['username'];
         return this.userService.user.map(user => {
             if (!!user) {
-                console.log("has logged user");
                 if (username === this.userService.username) {
                     return true;
                 }
