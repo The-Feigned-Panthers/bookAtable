@@ -17,6 +17,7 @@ export class ReviewsComponent implements OnInit {
 
   ngOnInit() {
     this.stylizeStars();
+    console.log(this.restaurant.reviews);
   }
 
   stylizeStars() {
@@ -37,8 +38,7 @@ export class ReviewsComponent implements OnInit {
   addReview(message: string) {
     const user = null;
     const newReview = new Review(user, message);
-    console.log(newReview);
-    this.restaurant.reviews.push(newReview);
-    this.service.updateRestaurant(this.restaurant);
+    console.log('in method')
+    this.service.addReview(this.restaurant.name, newReview);
   }
 }

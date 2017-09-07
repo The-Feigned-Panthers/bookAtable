@@ -1,3 +1,4 @@
+import { RestaurantsListResolver } from './restaurants-list-resolver';
 import { NgModule } from '@angular/core';
 import { RestaurantsGuardService } from './restaurants-guard.service';
 // import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
@@ -9,6 +10,9 @@ const routes: Routes = [
   {
     path: '',
     component: ListRestaurantsComponent,
+    // resolve: {
+    //   'restaurants': RestaurantsListResolver
+    // }
   },
   // {
   //   path: 'create',

@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Restaurant } from './../../models/restaurant';
 import { RestaurantsService } from './../../core/services/restaurants.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,7 @@ export class ListRestaurantsComponent implements OnInit {
   private restaurants: Restaurant[];
   private filterProperty: string;
 
-  constructor(private service: RestaurantsService) {
+  constructor(private service: RestaurantsService, private route: ActivatedRoute) {
   }
 
   getAll() {
@@ -23,7 +24,9 @@ export class ListRestaurantsComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('ngoninit');
     this.getAll();
+    //this.restaurants = this.route.snapshot.data['restaurants'];
     this.filterProperty = 'name';
   }
 
