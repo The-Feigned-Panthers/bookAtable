@@ -1,3 +1,4 @@
+import { SearchService } from './core/services/search.service';
 import { UserService } from './core/services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,7 +51,7 @@ import { PasswordMatchDirective } from './users/signup/password-match.directive'
     SignupComponent,
     PasswordMatchDirective
 ],
-  providers: [UserService, ],
+  providers: [UserService, SearchService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

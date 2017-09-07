@@ -1,3 +1,4 @@
+import { SearchComponent } from './shared/search/search.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './users/login/login.component';
 import { ListRestaurantsComponent } from './restaurants/list-restaurants/list-restaurants.component';
@@ -10,7 +11,8 @@ const routes: Routes = [
   { path: 'restaurants', loadChildren: './restaurants/restaurants.module#RestaurantsModule' },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'users', loadChildren: './users/users.module#UsersModule'},
+  { path: 'users', loadChildren: './users/users.module#UsersModule' },
+  { path: 'search', component: SearchComponent },
   { path: '**', component: NotFoundComponent }
 
 ];

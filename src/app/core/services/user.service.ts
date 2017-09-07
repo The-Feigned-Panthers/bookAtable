@@ -21,7 +21,7 @@ export class UserService {
                 this.username = us.displayName;
             }
         });
-     }
+    }
 
     getUser(id) {
         return this.db.object(`users/${id}`);
@@ -29,31 +29,31 @@ export class UserService {
 
     login(email, pass) {
         this.afAuth.auth.signInWithEmailAndPassword(email, pass)
-        .then((success) => {
-          this.usertype = 'Owner';
-          this.router.navigateByUrl(this.redirectUrl);
-        })
-        .catch((error: any) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode);
-        });
+            .then((success) => {
+                this.usertype = 'Owner';
+                this.router.navigateByUrl(this.redirectUrl);
+            })
+            .catch((error: any) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode);
+            });
     }
 
     logout() {
         this.afAuth.auth.signOut()
-        .then((success) => {
-            this.userId = undefined;
-            this.user = undefined;
-            this.username = undefined;
-            this.router.navigate(['/home']);
-        })
-        .catch((error: any) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert(errorMessage);
-          console.log(errorCode);
-        });
+            .then((success) => {
+                // this.userId = undefined;
+                // this.user = undefined;
+                // this.username = undefined;
+                this.router.navigate(['/home']);
+            })
+            .catch((error: any) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+                console.log(errorCode);
+            });
     }
 }
 

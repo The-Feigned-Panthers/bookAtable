@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" [routerLink] ="[ '/home' ]">BookATable</a>
+      <a class="navbar-brand" [routerLink]="[ '/home' ]">BookATable</a>
     </div>
     <ul class="nav navbar-nav">
       <li routerLinkActive="active">
@@ -14,18 +14,21 @@
         <a [routerLink]="[ '/contacts' ]">Contacts</a>
       </li>
       <li>
-        <a (click)="searchField()">Search <span class="glyphicon glyphicon-search"></span></a>
+        <a>
+          <input type="text" name="Search" id="searchValue"> 
+          <span (click)="searchField()" class="glyphicon glyphicon-search"></span>
+        </a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li routerLinkActive="active" *ngIf="!(user | async)?.uid">
-				<a [routerLink]="[ '/login' ]"><span class="glyphicon glyphicon-log-in"></span> Login </a>
-			<li routerLinkActive="active" *ngIf="!(user | async)?.uid">
-        <a [routerLink]="[ '/signup' ]"> Sign Up</a>
-      <li routerLinkActive="active" *ngIf="(user | async)?.uid">
-          <a [routerLink]="[ 'users', username ]">Welcome, {{username}}</a>
-			<li routerLinkActive="active" *ngIf="(user | async)?.uid">
-        <a class="tempStyling" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log Out</a>
+        <a [routerLink]="[ '/login' ]"><span class="glyphicon glyphicon-log-in"></span> Login </a>
+        <li routerLinkActive="active" *ngIf="!(user | async)?.uid">
+          <a [routerLink]="[ '/signup' ]"> Sign Up</a>
+          <li routerLinkActive="active" *ngIf="(user | async)?.uid">
+            <a [routerLink]="[ 'users', username ]">Welcome, {{username}}</a>
+            <li routerLinkActive="active" *ngIf="(user | async)?.uid">
+              <a class="tempStyling" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Log Out</a>
     </ul>
   </div>
 </nav>
