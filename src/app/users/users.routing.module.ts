@@ -9,9 +9,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 const userRoutes: Routes = [
   {
-    path: '',
-    children: [
-      {
         path: ':username',
         component: UserComponent,
         canActivate: [UserGuardService],
@@ -20,11 +17,9 @@ const userRoutes: Routes = [
           {
             path: 'create',
             component: CreateRestaurantComponent,
-            canActivate: [UserAddRestaurantGuardService]
+            //canActivate: [UserAddRestaurantGuardService]
           }
         ]
-      }
-    ]
   }
 ];
 

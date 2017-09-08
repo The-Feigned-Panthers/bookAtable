@@ -9,9 +9,6 @@ const routes: Routes = [
   {
     path: '',
     component: ListRestaurantsComponent,
-    // resolve: {
-    //   'restaurants': RestaurantsListResolver
-    // }
   },
   {
     path: ':name',

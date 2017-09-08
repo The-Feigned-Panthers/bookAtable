@@ -14,10 +14,18 @@ import { Component, OnInit } from '@angular/core';
 export class CreateRestaurantComponent implements OnInit {
   currentUser: User;
   constructor(private restaurantService: RestaurantsService, private userService: UserService, private router: Router,
-  private toastr: ToastrService) {
-   }
+    private toastr: ToastrService) {
+  }
 
   ngOnInit() {
+    this.userService.afAuth.authState.subscribe(user => {
+      if (user) {
+        const id: string = user.uid;
+        this.userService.getUser(id).subscribe(us => {
+          this.currentUser = us;
+        });
+      }
+    });
   }
 
   create(name, details, city, area, street, number, type, bill, weekdays, weekends, contact) {
