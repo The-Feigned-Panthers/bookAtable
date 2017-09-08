@@ -23,7 +23,7 @@ export class UserService {
         });
     }
 
-    getUser(id) {
+    getUser(id): Observable<User> {
         return this.db.object(`users/${id}`);
     }
 
