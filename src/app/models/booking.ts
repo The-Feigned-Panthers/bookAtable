@@ -4,7 +4,9 @@ export class Booking {
     date: Date;
     time: string;
     numberOfPeople: number;
-    dateBooked: Date;
+    dateBooked: string;
 
-    constructor(userId, restaurantName, date, time, numberOfPeople, dateBooked) {}
+    constructor(userId, restaurantName, date, time, numberOfPeople) {
+        this.dateBooked = new Date().toDateString();
+    }
 }
