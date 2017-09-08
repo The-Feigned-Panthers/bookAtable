@@ -29,5 +29,12 @@ export class ContactsComponent implements OnInit {
 
   send() {
     this.service.saveForm(this.message);
+    this.message = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      subject: '',
+      question: ''
+    };
   }
 }

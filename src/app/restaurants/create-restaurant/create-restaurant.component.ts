@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-restaurant.component.css']
 })
 export class CreateRestaurantComponent implements OnInit {
-  currentUser: User;
+  currentUser: string;
   restaurant: Restaurant;
   constructor(private restaurantService: RestaurantsService, private userService: UserService, private router: Router,
     private toastr: ToastrService) {
