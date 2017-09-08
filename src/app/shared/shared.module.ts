@@ -1,3 +1,5 @@
+import { SearchByPipe } from './../pipes/searchBy.pipe';
+import { RestaurantPartialComponent } from './../restaurants/list-restaurants/restaurant-partial/restaurant-partial.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -15,14 +17,19 @@ import { SearchComponent } from './search/search.component';
     HeaderComponent,
     NotFoundComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    RestaurantPartialComponent,
+    SearchByPipe
 ],
 providers: [
 ],
   exports: [
     CommonModule,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    RestaurantPartialComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+
+ }

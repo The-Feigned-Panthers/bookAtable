@@ -1,6 +1,6 @@
+import { Restaurant } from './../../models/restaurant';
+import { RestaurantsService } from './../../core/services/restaurants.service';
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from '../../core/services/search.service';
-import { Subject } from 'rxjs/Subject'
 
 @Component({
   selector: 'app-search',
@@ -8,24 +8,25 @@ import { Subject } from 'rxjs/Subject'
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  places;
-  startAt = new Subject();
-  endAt = new Subject();
+ 
+  private restaurants: Restaurant[];
+  private searchString: string;
 
-  constructor(private searchService: SearchService) { }
+  constructor(private restaurantsService: RestaurantsService) { }
 
-  ngOnInit() {
-    this.searchService.getbRestaurantsByName(this.startAt, this.endAt)
-      .subscribe(places => this.places = places);
+  getAll() {
+    this.restaurantsService.getAll()
+      .subscribe(res => {
+        this.restaurants = res;
+      });
   }
 
-  search($event) {
-    let q = $event.target.value;
-    if (!($event.keyCode >= 65 && $event.keyCode <= 90 || $event.keyCode >= 48 && $event.keyCode <= 57)) {
-      return;
-    }
+  ngOnInit() {
+    this.getAll();
+    this.searchString = '';
+  }
 
-    this.startAt.next(q);
-    this.endAt.next(q + "\uf8ff");
+  setSearchString(searchString: string) {
+    this.searchString = searchString;
   }
 }

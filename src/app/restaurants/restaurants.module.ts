@@ -24,7 +24,6 @@ import { EditComponent } from './edit/edit.component';
   ],
   declarations: [
     ListRestaurantsComponent,
-    RestaurantPartialComponent,
     DetailsRestaurantComponent,
     OverviewComponent,
     ReviewsComponent,

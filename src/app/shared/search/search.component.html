@@ -1,17 +1,27 @@
-<h1>Restaurant Search</h1>
-<input type="text" (keydown)="search($event)" placeholder="search restaurants..." class="input">
-<div *ngFor="let place of places">
-  <a [href]="'/restaurants/' + place?.name">
-    <h4>{{place?.name}}</h4>
-    <img class="img-responsive img-box img-thumbnail" [src]=place?.photo>
-  </a>
-  <p>
-    {{place?.details}}
-  </p>
-</div>
-<div *ngIf="places?.length < 1">
-  <hr>
-  <p>
-    No results found :(
-  </p>
-</div>
+<section>
+  <div class="container col-md-offset-2 col-md-8">
+    <div class="row">
+          <input type="search" name="search" id="" #searchValue>
+          <input type="button" (click)="setSearchString(searchValue.value)" value="Go">
+          <!-- <ul class="nav nav-tabs" id="myTab">
+                      <div class="liner"></div>
+                      <li [class.active]="filterProperty === 'name'">
+                          <a title="all" (click)="setProperty('name')"> All restaurants</a>
+                      </li>
+                      <li [class.active]="filterProperty === 'addedAt'">
+                          <a title="latest" (click)="setProperty('addedAt')"> Latest</a>
+                      </li>
+                      <li [class.active]="filterProperty === 'rating'">
+                          <a title="popular" (click)="setProperty('rating')"> Most popular</a>
+                      </li>
+                  </ul> -->
+        </div>
+
+        <div class="tab-content">
+          <div class="tab-pane fade in active">
+            <app-restaurant-partial *ngFor="let restaurant of (restaurants | searchBy: searchString)" [restaurant]="restaurant">
+            </app-restaurant-partial>
+          </div>
+        </div>
+      </div>
+</section>
