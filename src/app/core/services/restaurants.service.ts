@@ -13,7 +13,17 @@ export class RestaurantsService {
   private basePath = '/imgs';
   private uploadTask: firebase.storage.UploadTask;
   uploads: FirebaseListObservable<Upload[]>;
-  constructor(public db: AngularFireDatabase) { }
+  firebaseRestaurants: Observable<Restaurant[]>;
+  restaurants: Restaurant[];
+  constructor(public db: AngularFireDatabase) {
+    this.firebaseRestaurants = this.getAll();
+    this.firebaseRestaurants.subscribe(rest => {
+      if (rest) {
+        this.restaurants = rest;
+        console.log(this.restaurants);
+      }
+    });
+   }
 
   getAll(): Observable<Restaurant[]> {
     return this.db.list('/places');

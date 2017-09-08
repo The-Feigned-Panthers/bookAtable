@@ -37,6 +37,7 @@ export class CreateRestaurantComponent implements OnInit {
     };
     const restaurant = new Restaurant(name, address, type, bill, weekdays, weekends, contact, details, this.currentUser);
     this.restaurantService.updateRestaurant(restaurant);
+    this.userService.addRestaurant(restaurant.name);
     this.router.navigateByUrl(`/restaurants/${restaurant.name}`)
       .then(res => this.toastr.success('New restaurant created'));
   }

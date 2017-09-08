@@ -7,20 +7,45 @@
         <p>Username: {{currentUser?.username}}</p>
         <p>Email: {{currentUser?.email}}</p>
     </fieldset>
-    <fieldset>
-        <legend>Your Bookings</legend>
-        <table *ngIf="currentUser?.bookings"></table>
-    </fieldset>
-    <div *ngIf="currentUser?.usertype === 'owner'">
-        <fieldset>
-            <legend>Your Restaurants</legend>
-            <table></table>
-        </fieldset>
-        <a class="btn btn-success" [routerLink]="[ 'create' ]">Add new restaurant</a>
-    </div>
 </div>
-
 <div class="col-md-8">
+    <fieldset>
+            <legend>Your Bookings</legend>
+            <table *ngIf="currentUser?.bookings"></table>
+        </fieldset>
+        <div *ngIf="currentUser?.usertype === 'owner'">
+            <fieldset>
+                <legend>Your Restaurants</legend>
+                <table *ngIf="currentUser?.restaurants">
+                    <tr>
+                        <th>Name</th>
+                        <th>Details</th>
+                        <th>Address</th>
+                        <th>Contact</th>
+                        <th>O H wekdays</th>
+                        <th>O H weekends</th>
+                        <th>Photo</th>
+                        <th>Rating</th>
+                        <th>Type</th>
+                        <th>Avrg bill</th>
+                    </tr>
+                    <tr *ngFor="let restaurant of userRestaurants">
+                        <td>{{restaurant.name}}</td>
+                        <td>{{restaurant.details}}</td>
+                        <td>{{restaurant.address.city + ' ' + restaurant.address.area + ' '
+                            + restaurant.address.street + ' ' + restaurant.address.number}}</td>
+                        <td>{{restaurant.contact}}</td>
+                        <td>{{restaurant.openingHoursWeekdays}}</td>
+                        <td>{{restaurant.openingHoursWeekends}}</td>
+                        <td>{{restaurant.photo}}</td>
+                        <td>{{restaurant.rating.average}}</td>
+                        <td>{{restaurant.type}}</td>
+                        <td>{{restaurant.averageBill}}</td>
+                    </tr>
+                </table>
+            </fieldset>
+            <a class="btn btn-success" [routerLink]="[ 'create' ]">Add new restaurant</a>
     <router-outlet></router-outlet>
+</div>
 </div>
 </div>

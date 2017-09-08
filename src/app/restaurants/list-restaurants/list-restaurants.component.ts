@@ -13,6 +13,13 @@ export class ListRestaurantsComponent implements OnInit {
   private filterProperty: string;
 
   constructor(private service: RestaurantsService) {
+    if (!this.service.restaurants) {
+      setTimeout(() => {
+        this.restaurants = this.service.restaurants;
+      }, 1000);
+    } else {
+      this.restaurants = this.service.restaurants;
+    }
   }
 
   getAll() {
@@ -23,7 +30,8 @@ export class ListRestaurantsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAll();
+    // this.getAll();
+    // this.restaurants = this.service.restaurants;
     this.filterProperty = 'name';
   }
 

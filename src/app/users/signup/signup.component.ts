@@ -1,3 +1,4 @@
+import { UserService } from './../../core/services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { PasswordMatchDirective } from './password-match.directive';
 import { User } from './../../models/user';
@@ -19,28 +20,14 @@ export class SignupComponent {
   userPassword: string;
   passwordCheck: string;
   constructor(private afAuth: AngularFireAuth, private af: AngularFireDatabase, private router: Router,
-    private toastr: ToastrService) {
+    private toastr: ToastrService, private userService: UserService) {
 
     this.user = this.afAuth.authState;
     this.appUser = new User('', '', '', '', '');
   }
 
     signupWithEmail() {
-      this.afAuth.auth.createUserWithEmailAndPassword(this.appUser.email, this.userPassword)
-        .then((success) => {
-          success.updateProfile({displayName: this.appUser.username, photoUrl: null});
-          const id = success.uid;
-          firebase.database().ref('/users/' + id).set(this.appUser);
-          this.toastr.success('Sign up success!');
-          this.router.navigateByUrl('/home');
-        }
-      )
-        .catch((error: any) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          this.toastr.error('User with this email already exists!');
-          console.log(errorCode);
-        });
+      this.userService.signup(this.appUser, this.userPassword);
     }
 
 }

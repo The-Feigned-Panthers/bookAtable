@@ -22,6 +22,5 @@ export class LoginComponent {
 
   loginWithEmail(email, pass) {
     this.userService.login(email, pass);
-    this.toastr.success('Logged in!');
   }
 }
