@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SearchByPipe implements PipeTransform {
 
   transform(restaurants: any, args?: any): any {
-    if (restaurants) {
+    if (restaurants && args != '') {
       return restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(args.toLowerCase()));
     }
   }
