@@ -45,7 +45,7 @@ export class Restaurant {
         this.details = details;
         this.bookings = [];
         this.photo = 'http://spizzico.org/wp-content/uploads/2015/03/spizzico1.jpg';
-        this.addedAt = new Date().toString();
+        this.addedAt = new Date().toDateString();
         this.owner = owner;
     }
 }

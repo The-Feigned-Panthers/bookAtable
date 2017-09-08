@@ -23,6 +23,7 @@
         </div>
       </div>
     </div>
+    <div *ngIf="restaurant.reviews">
     <div class="row" *ngFor="let review of restaurant?.reviews">
       <div class="col-sm-1">
         <div class="thumbnail">
@@ -43,9 +44,7 @@
         <!-- /panel panel-default -->
       </div>
       <!-- /col-sm-5 -->
-
-
-
+    </div>
     </div>
     <div class="row">
 

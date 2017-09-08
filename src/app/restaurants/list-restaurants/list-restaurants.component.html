@@ -5,32 +5,23 @@
                 <div class="board-inner">
                     <ul class="nav nav-tabs" id="myTab">
                         <div class="liner"></div>
-                        <li class="active">
-                            <a href="#all" data-toggle="tab" title="all"> All restaurants</a>
+                        <li [class.active]="filterProperty === 'name'">
+                            <a title="all" (click)="setProperty('name')"> All restaurants</a>
                         </li>
-
-                        <li><a href="#latest" data-toggle="tab" title="latest" (click)="filterProperty = 'addedAt'"> Latest</a>
+                        <li [class.active]="filterProperty === 'addedAt'">
+                            <a title="latest" (click)="setProperty('addedAt')"> Latest</a>
                         </li>
-                        <li><a href="#popular" data-toggle="tab" title="popular"> Most popular</a>
+                        <li [class.active]="filterProperty === 'rating'">
+                            <a title="popular" (click)="setProperty('rating')"> Most popular</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id="all">
-                        <app-restaurant-partial *ngFor="let restaurant of restaurants" [restaurant]="restaurant">
+                    <div class="tab-pane fade in active">
+                        <app-restaurant-partial *ngFor="let restaurant of (restaurants | sortBy: filterProperty)" [restaurant]="restaurant">
                         </app-restaurant-partial>
                     </div>
-                    <div class="tab-pane fade" id="latest">
-                        <app-restaurant-partial *ngFor="let restaurant of (restaurants | orderBy: filterProperty : true)" [restaurant]="restaurant">
-                        </app-restaurant-partial>
-                    </div>
-                    <div class="tab-pane fade" id="popular">
-                        <app-restaurant-partial *ngFor="let restaurant of (restaurants | sortByRating)" [restaurant]="restaurant">
-                        </app-restaurant-partial>
-                    </div>
-
-                    <div class="clearfix"></div>
                 </div>
 
             </div>

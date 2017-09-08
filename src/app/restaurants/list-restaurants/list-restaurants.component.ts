@@ -27,4 +27,8 @@ export class ListRestaurantsComponent implements OnInit {
     this.filterProperty = 'name';
   }
 
+  setProperty(property: string) {
+    this.filterProperty = property;
+  }
+
 }

@@ -12,10 +12,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BookingComponent implements OnInit {
   @Input()
   restaurant: Restaurant;
-  @Input()
   booking: Booking;
   userId: string;
   restaurantName: string;
+  bookingIndex: number;
 
   minutes: string[] = [
     '00', '10', '20', '30', '40', '50'
@@ -28,10 +28,9 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.booking = new Booking('', '', '', '', '', '');
+    this.booking = new Booking('', '', '', '', '');
     this.booking.userId = this.userService.userId;
     this.booking.restaurantName = this.restaurant.name;
-    this.booking.dateBooked = new Date();
   }
 
   book(hour: string, minute: string) {

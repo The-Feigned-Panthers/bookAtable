@@ -15,14 +15,12 @@ export class DetailsRestaurantComponent implements OnInit {
   private restaurant: Restaurant;
   private name: string;
   private isOnOverview: boolean;
-  private booking: Booking;
 
   constructor(private service: RestaurantsService, private route: ActivatedRoute) {
     this.isOnOverview = true;
    }
 
   ngOnInit() {
-    this.booking = new Booking('', '', '', '', '', '');
     this.route.params
       .map(params => params['name'])
       .do(name => this.name = name)
