@@ -1,3 +1,4 @@
+import { ContactsComponent } from './contacts/contacts.component';
 import { SearchComponent } from './shared/search/search.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './users/login/login.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'users', loadChildren: './users/users.module#UsersModule' },
   { path: 'search', component: SearchComponent },
+  { path: 'contacts', component: ContactsComponent},
   { path: '**', component: NotFoundComponent }
 
 ];

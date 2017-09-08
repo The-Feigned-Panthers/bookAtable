@@ -1,3 +1,4 @@
+import { ContactsService } from './services/contacts.service';
 import { SearchService } from './services/search.service';
 import { UserService } from './services/user.service';
 import { RestaurantsService } from './services/restaurants.service';
@@ -8,7 +9,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   imports: [
   ],
   declarations: [],
-  providers: [RestaurantsService, SearchService]
+  providers: [RestaurantsService, SearchService, ContactsService]
 })
 export class CoreModule {
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
@@ -23,8 +24,8 @@ export class CoreModule {
       providers: [
         RestaurantsService,
         UserService,
-        SearchService
-        // AngularFireAuth,
+        SearchService,
+        ContactsService
       ]
     };
   }

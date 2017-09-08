@@ -5,13 +5,18 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UserAddRestaurantGuardService implements CanActivate {
-    constructor(private userService: UserService, private router: Router) { }
-
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (this.userService.usertype === 'Owner') {
-            return true;
-            }
-        this.router.navigate(['home']);
-        return false;
-        }
+    constructor(private userService: UserService, private router: Router) {
     }
+
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+        return this.userService.getUser(this.userService.userId).map(firebaseUser => {
+            if (firebaseUser) {
+                if (firebaseUser.usertype === 'owner') {
+                    return true;
+                }
+                this.router.navigate(['home']);
+                return false;
+            }
+        });
+    }
+}

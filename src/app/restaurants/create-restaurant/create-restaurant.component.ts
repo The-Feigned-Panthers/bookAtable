@@ -22,10 +22,7 @@ export class CreateRestaurantComponent implements OnInit {
   ngOnInit() {
     this.userService.afAuth.authState.subscribe(user => {
       if (user) {
-        const id: string = user.uid;
-        this.userService.getUser(id).subscribe(us => {
-          this.currentUser = us;
-        });
+          this.currentUser = user.uid;
       }
     });
   }

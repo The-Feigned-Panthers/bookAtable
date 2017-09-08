@@ -1,4 +1,3 @@
-import { User } from './user';
 import { Review } from './review';
 
 export class Restaurant {
@@ -24,7 +23,7 @@ export class Restaurant {
     public bookings: any;
     public photo: string;
     public addedAt: string;
-    public owner: User;
+    public owner: string;
     // to take only the user id?
 
     constructor(name, address, type, averageBill,

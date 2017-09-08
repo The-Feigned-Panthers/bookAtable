@@ -23,6 +23,7 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './users/signup/signup.component';
 import { LoginComponent } from './users/login/login.component';
 import { PasswordMatchDirective } from './users/signup/password-match.directive';
+import { ContactsComponent } from './contacts/contacts.component';
 
 
 
@@ -47,7 +48,8 @@ import { PasswordMatchDirective } from './users/signup/password-match.directive'
     AppComponent,
     LoginComponent,
     SignupComponent,
-    PasswordMatchDirective
+    PasswordMatchDirective,
+    ContactsComponent
 ],
   providers: [],
   bootstrap: [AppComponent]
