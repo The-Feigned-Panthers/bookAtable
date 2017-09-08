@@ -79,6 +79,13 @@ export class UserService {
     bookATable(bookingId: string) {
         this.db.database.ref(`/users/${this.userId}/bookings/${bookingId}`).set(true);
     }
+
+    getUserbookings() {
+        return this.db.list('/bookings', { query: {
+            orderByChild: 'userId',
+            equalTo: this.userId
+        }});
+    }
 }
 
 

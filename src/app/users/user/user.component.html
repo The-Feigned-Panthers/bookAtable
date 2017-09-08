@@ -12,6 +12,20 @@
     <fieldset>
             <legend>Your Bookings</legend>
             <table *ngIf="currentUser?.bookings"></table>
+            <tr>
+                <th>Booked on</th>
+                <th>Restaurant name</th>
+                <th>Booking date</th>
+                <th>Booking time</th>
+                <th>Number of People</th>
+            </tr>
+            <tr *ngFor="let booking of userBookings">
+                <td>{{booking.dateBooked}}</td>
+                <td>{{booking.restaurantName}}</td>
+                <td>{{booking.date}}</td>
+                <td>{{booking.time}}</td>
+                <td>{{booking.numberOfPeople}}</td>
+            </tr>
         </fieldset>
         <div *ngIf="currentUser?.usertype === 'owner'">
             <fieldset>
@@ -29,7 +43,7 @@
                         <th>Type</th>
                         <th>Avrg bill</th>
                     </tr>
-                    <tr *ngFor="let restaurant of userRestaurants">
+                    <tr *ngFor="let restaurant of ownerRestaurants">
                         <td>{{restaurant.name}}</td>
                         <td>{{restaurant.details}}</td>
                         <td>{{restaurant.address.city + ' ' + restaurant.address.area + ' '
