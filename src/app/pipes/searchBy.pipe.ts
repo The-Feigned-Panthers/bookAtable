@@ -8,7 +8,8 @@ export class SearchByPipe implements PipeTransform {
 
   transform(restaurants: any, args?: any): any {
     if (restaurants && args != '') {
-      return restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(args.toLowerCase()));
+      let searchedValue = args.toLowerCase();
+      return restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(searchedValue));
     }
   }
 
