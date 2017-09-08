@@ -13,8 +13,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateRestaurantComponent implements OnInit {
   currentUser: User;
+  restaurant: Restaurant;
   constructor(private restaurantService: RestaurantsService, private userService: UserService, private router: Router,
     private toastr: ToastrService) {
+    this.restaurant = new Restaurant('', {}, '', '', '', '', '', '', {});
   }
 
   ngOnInit() {
@@ -28,16 +30,10 @@ export class CreateRestaurantComponent implements OnInit {
     });
   }
 
-  create(name, details, city, area, street, number, type, bill, weekdays, weekends, contact) {
-    const address = {
-      city: city,
-      area: area,
-      street: street,
-      number: number
-    };
-    const restaurant = new Restaurant(name, address, type, bill, weekdays, weekends, contact, details, this.currentUser);
-    this.restaurantService.updateRestaurant(restaurant);
-    this.router.navigateByUrl(`/restaurants/${restaurant.name}`)
+  create() {
+    this.restaurant.owner = this.currentUser;
+    this.restaurantService.updateRestaurant(this.restaurant);
+    this.router.navigateByUrl(`/restaurants/${this.restaurant.name}`)
       .then(res => this.toastr.success('New restaurant created'));
   }
 }
