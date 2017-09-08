@@ -23,8 +23,8 @@ export class RestaurantsService {
     return this.db.object(`/places/${name}`);
   }
 
-  addReview(name: string, review: Review) {
-    this.db.database.ref(`/places/${name}/reviews`).push(review);
+  addReview(name: string, review: Review, index: number) {
+    this.db.database.ref(`/places/${name}`).child('reviews').child(`${index}`).set(review);
   }
 
   updateRestaurant(restaurant: Restaurant) {

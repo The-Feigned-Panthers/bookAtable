@@ -13,11 +13,11 @@ export class ReviewsComponent implements OnInit {
   @Input()
   restaurant: Restaurant;
   starStyle: Array<boolean>;
+  reviewIndex: number;
   constructor(private service: RestaurantsService) { }
 
   ngOnInit() {
     this.stylizeStars();
-    console.log(this.restaurant.reviews);
   }
 
   stylizeStars() {
@@ -36,9 +36,13 @@ export class ReviewsComponent implements OnInit {
   }
 
   addReview(message: string) {
+    if (this.restaurant.reviews) {
+      this.reviewIndex = this.restaurant.reviews.length;
+    } else {
+      this.reviewIndex = 0;
+    }
     const user = null;
     const newReview = new Review(user, message);
-    console.log('in method')
-    this.service.addReview(this.restaurant.name, newReview);
+    this.service.addReview(this.restaurant.name, newReview, this.reviewIndex);
   }
 }

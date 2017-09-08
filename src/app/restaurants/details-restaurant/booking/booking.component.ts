@@ -12,6 +12,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BookingComponent implements OnInit {
   @Input()
   restaurant: Restaurant;
+  @Input()
   booking: Booking;
   userId: string;
   restaurantName: string;
