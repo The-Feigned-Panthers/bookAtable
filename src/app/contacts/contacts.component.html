@@ -103,7 +103,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="submit" value="Send" (click)="send()" />
+                <input type="submit" value="Send" [disabled]="!contactForm.form.valid" (click)="send()" />
             </form>
             <small>*These fields are required.</small>
         </div>
