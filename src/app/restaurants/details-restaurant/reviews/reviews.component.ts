@@ -27,9 +27,9 @@ export class ReviewsComponent implements OnInit {
     this.currentUser = this.userService.userId;
     if (this.restaurant.voters) {
       if (this.restaurant.voters.indexOf(this.currentUser) < 0) {
-        this.canVote = true;
-      } else {
         this.canVote = false;
+      } else {
+        this.canVote = true;
       }
     }
   }
