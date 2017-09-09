@@ -24,7 +24,9 @@ export class RestaurantsService {
       }
     });
    }
-
+  start() {
+    return;
+  }
   getAll(): Observable<Restaurant[]> {
     return this.db.list('/places');
   }

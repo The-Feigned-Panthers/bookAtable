@@ -11,13 +11,14 @@
 <div class="col-md-8">
     <fieldset>
             <legend>Your Bookings</legend>
-            <table *ngIf="currentUser?.bookings"></table>
+            <table *ngIf="currentUser?.bookings" class="table table-bordered">
             <tr>
                 <th>Booked on</th>
                 <th>Restaurant name</th>
                 <th>Booking date</th>
                 <th>Booking time</th>
                 <th>Number of People</th>
+                <th>Status</th>
             </tr>
             <tr *ngFor="let booking of userBookings">
                 <td>{{booking.dateBooked}}</td>
@@ -26,11 +27,12 @@
                 <td>{{booking.time}}</td>
                 <td>{{booking.numberOfPeople}}</td>
             </tr>
+            </table>
         </fieldset>
         <div *ngIf="currentUser?.usertype === 'owner'">
             <fieldset>
                 <legend>Your Restaurants</legend>
-                <table *ngIf="currentUser?.restaurants">
+                <table *ngIf="currentUser?.restaurants" class="table table-bordered">
                     <tr>
                         <th>Name</th>
                         <th>Details</th>
@@ -42,6 +44,7 @@
                         <th>Rating</th>
                         <th>Type</th>
                         <th>Avrg bill</th>
+                        <th>Options</th>
                     </tr>
                     <tr *ngFor="let restaurant of ownerRestaurants">
                         <td>{{restaurant.name}}</td>
@@ -55,6 +58,7 @@
                         <td>{{restaurant.rating.average}}</td>
                         <td>{{restaurant.type}}</td>
                         <td>{{restaurant.averageBill}}</td>
+                        <td><button class="btn btn-default">Change Photo</button><button class="btn btn-default">Edit Restaurant</button></td>
                     </tr>
                 </table>
             </fieldset>

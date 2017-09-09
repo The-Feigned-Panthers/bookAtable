@@ -1,3 +1,4 @@
+import { RestaurantsService } from './restaurants.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from './../../models/user';
 import { Router } from '@angular/router';
@@ -17,7 +18,8 @@ export class UserService {
     appUser: User;
     usertype: string;
     constructor(public afAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router,
-        public toastr: ToastrService) {
+        public toastr: ToastrService, private restaurantsService: RestaurantsService) {
+        this.restaurantsService.start();
         this.user = this.afAuth.authState;
         this.user.subscribe(us => {
             if (us) {
@@ -37,7 +39,7 @@ export class UserService {
             .then((success) => {
                 this.router.navigateByUrl(this.redirectUrl)
                     .then(res => {
-                        this.toastr.success('Sign up success!');
+                        this.toastr.success('Login success!');
                     });
             })
             .catch((error: any) => {
@@ -50,7 +52,9 @@ export class UserService {
             .then((success) => {
                 this.userId = undefined;
                 this.username = undefined;
-                this.router.navigate(['/home']);
+                this.appUser = undefined;
+                this.router.navigate(['/home'])
+                    .then(() => this.toastr.success('Logged out!', 'Success'));
             })
             .catch((error: any) => {
                 this.toastr.error(error.message);
@@ -84,7 +88,16 @@ export class UserService {
         return this.db.list('/bookings', { query: {
             orderByChild: 'userId',
             equalTo: this.userId
-        }});
+            }
+        });
+    }
+
+    getRestaurantBookings(restaurantName) {
+        return this.db.list('/bookings', { query: {
+            orderByChild: 'restaurantName',
+            equalTo: restaurantName
+            }
+        });
     }
 }
 

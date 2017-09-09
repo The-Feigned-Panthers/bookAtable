@@ -20,6 +20,7 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute,
   private restaurantService: RestaurantsService) {
     this.ownerRestaurants = [];
+    this.currentUser = this.userService.appUser;
   }
 
   ngOnInit() {
@@ -37,34 +38,45 @@ export class UserComponent implements OnInit {
   //     }).subscribe(tr => this.getOwnerRestaurants());
   //   }
   // });
-  this.currentUser = this.userService.appUser;
-  if (!this.currentUser) {
-    setTimeout(this.getOwnerRestaurants(), 1000);
-  } else {
-    if (this.currentUser.usertype === 'owner') {
-      this.getOwnerRestaurants();
-    }
-    this.getUserBookings();
-  }
-}
-
-getOwnerRestaurants() {
-  if (this.currentUser.restaurants) {
-    const names = Object.keys(this.currentUser.restaurants);
-    names.forEach((name) => {
-      this.ownerRestaurants.push(this.restaurantService.restaurants.find((res) => res.name === name));
-    });
-  } else { return; }
-}
-
-getUserBookings() {
-  if (this.currentUser.bookings) {
-    this.userService.getUserbookings()
-    .subscribe(bookings => {
-      if (bookings) {
-        this.userBookings = bookings;
+    if (!this.currentUser) {
+      setTimeout(() => {
+        this.getOwnerRestaurants();
+      }, 1000);
+    } else {
+      console.log(this.currentUser.usertype);
+      if (this.currentUser.usertype === 'owner') {
+        this.getOwnerRestaurants();
       }
-    });
+      this.getUserBookings();
+    }
   }
-}
+
+  getOwnerRestaurants() {
+    if (this.currentUser.restaurants) {
+      const names = Object.keys(this.currentUser.restaurants);
+      names.forEach((name) => {
+        this.ownerRestaurants.push(this.restaurantService.restaurants.find((res) => res.name === name));
+        this.getRestaurantBookings(name);
+      });
+    } else { return; }
+  }
+
+  getRestaurantBookings(name) {
+      this.userService.getRestaurantBookings(name)
+        .subscribe(bookings => {
+          const restaurant = this.ownerRestaurants.find((res) => res.name === name);
+          restaurant.bookings = bookings;
+          });
+  }
+
+  getUserBookings() {
+    if (this.currentUser.bookings) {
+      this.userService.getUserbookings()
+      .subscribe(bookings => {
+        if (bookings) {
+          this.userBookings = bookings;
+        }
+      });
+    }
+  }
 }
