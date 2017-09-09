@@ -1,4 +1,9 @@
-/* tslint:disable:no-unused-variable */
+import { firebaseConfig } from './../firebase.config';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { ContactsService } from './../core/services/contacts.service';
+import { CoreModule } from './../core/core.module';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -11,9 +16,13 @@ describe('ContactsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContactsComponent ]
+      imports: [FormsModule,
+        CoreModule.forRoot(),
+        AngularFireModule.initializeApp(firebaseConfig)],
+      declarations: [ContactsComponent],
+      providers: [ContactsService, AngularFireDatabase]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

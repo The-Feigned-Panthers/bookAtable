@@ -1,6 +1,6 @@
 import { RestaurantsListResolver } from './restaurants-list-resolver';
 import { RestaurantsGuardService } from './restaurants-guard.service';
-import { SortByPipe } from './../pipes/sort-by-rating.pipe';
+import { SortByPipe } from './../pipes/sort-by.pipe';
 import { BookingComponent } from './details-restaurant/booking/booking.component';
 import { SharedModule } from './../shared/shared.module';
 import { ReviewsComponent } from './details-restaurant/reviews/reviews.component';

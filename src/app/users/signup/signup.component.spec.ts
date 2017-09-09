@@ -1,4 +1,11 @@
-/* tslint:disable:no-unused-variable */
+import { UserService } from './../../core/services/user.service';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Router } from '@angular/router';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+import { firebaseConfig } from './../../firebase.config';
+import { AngularFireModule } from 'angularfire2';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -8,10 +15,15 @@ import { SignupComponent } from './signup.component';
 describe('SignupComponent', () => {
   let component: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
+  const mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignupComponent ]
+      imports: [AngularFireModule.initializeApp(firebaseConfig), FormsModule, ToastrModule.forRoot()],
+      declarations: [ SignupComponent ],
+      providers: [UserService, AngularFireAuth, AngularFireDatabase, {provide: Router, useValue: mockRouter}, ToastrService]
     })
     .compileComponents();
   }));

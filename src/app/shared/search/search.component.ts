@@ -9,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
  
-  private restaurants: Restaurant[];
-  private searchString: string;
+  restaurants: Restaurant[];
+  searchString: string;
 
   constructor(private restaurantsService: RestaurantsService) { }
 

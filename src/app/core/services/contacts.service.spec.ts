@@ -1,12 +1,14 @@
-/* tslint:disable:no-unused-variable */
-
+import { firebaseConfig } from './../../firebase.config';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
 import { TestBed, async, inject } from '@angular/core/testing';
 import { ContactsService } from './contacts.service';
 
 describe('Service: Contacts', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ContactsService]
+      imports: [AngularFireModule.initializeApp(firebaseConfig)],
+      providers: [ContactsService, AngularFireDatabase]
     });
   });
 

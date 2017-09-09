@@ -70,8 +70,8 @@ export class RestaurantsService {
 
   }
 
-  saveBookingInRestaurant(name: string, id: string) {
-    this.db.database.ref('/places').child(`/${name}/bookings/${id}`).set(true);
+  saveBookingInRestaurant(name: string, booking: Booking) {
+    this.db.database.ref('/places').child(`/${name}/bookings`).push(booking);
   }
 
   saveBookingInBookings(booking: Booking) {

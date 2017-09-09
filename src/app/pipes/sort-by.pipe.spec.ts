@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { SortByRatingPipe } from './sort-by-rating.pipe';
+import { SortByPipe } from './sort-by.pipe';
 
 describe('Pipe: SortByRatinge', () => {
   it('create an instance', () => {
-    let pipe = new SortByRatingPipe();
+    const pipe = new SortByPipe();
     expect(pipe).toBeTruthy();
   });
 });

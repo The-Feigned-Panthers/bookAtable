@@ -1,12 +1,22 @@
-/* tslint:disable:no-unused-variable */
-
+import { ToastrService, ToastrModule } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { firebaseConfig } from './../../firebase.config';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
 import { TestBed, async, inject } from '@angular/core/testing';
 import { UserService } from './user.service';
 
 describe('Service: User', () => {
+  const mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  };
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UserService]
+      imports: [AngularFireModule.initializeApp(firebaseConfig),
+      ToastrModule.forRoot()],
+      providers: [UserService, AngularFireDatabase, AngularFireAuth, { provide: Router, useValue: mockRouter },
+      ToastrService]
     });
   });
 

@@ -9,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListRestaurantsComponent implements OnInit {
 
-  private restaurants: Restaurant[];
-  private filterProperty: string;
+  restaurants: Restaurant[];
+  filterProperty: string;
 
   constructor(private service: RestaurantsService) {
     if (!this.service.restaurants) {
@@ -30,8 +30,6 @@ export class ListRestaurantsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getAll();
-    // this.restaurants = this.service.restaurants;
     this.filterProperty = 'name';
   }
 

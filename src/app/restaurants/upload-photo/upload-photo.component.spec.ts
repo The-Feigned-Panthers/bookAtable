@@ -1,4 +1,7 @@
-/* tslint:disable:no-unused-variable */
+import { AngularFireDatabase } from 'angularfire2/database';
+import { firebaseConfig } from './../../firebase.config';
+import { AngularFireModule } from 'angularfire2';
+import { RestaurantsService } from './../../core/services/restaurants.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -11,7 +14,11 @@ describe('UploadPhotoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadPhotoComponent ]
+      imports: [
+        AngularFireModule.initializeApp(firebaseConfig),
+      ],
+      declarations: [ UploadPhotoComponent ],
+      providers: [RestaurantsService, AngularFireDatabase]
     })
     .compileComponents();
   }));
