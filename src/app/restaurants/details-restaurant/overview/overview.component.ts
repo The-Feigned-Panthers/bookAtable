@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class OverviewComponent implements OnInit {
   @Input()
-  private restaurant: Restaurant;
+  restaurant: Restaurant;
 
   constructor() { }
 
