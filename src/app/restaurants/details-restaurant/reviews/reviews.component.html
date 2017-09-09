@@ -24,7 +24,7 @@
       </div>
     </div>
     <div *ngIf="restaurant.reviews">
-    <div class="row" *ngFor="let review of restaurant?.reviews">
+    <div class="row" *ngFor="let review of restaurant?.reviews" class="review-info">
       <div class="col-sm-1">
         <div class="thumbnail">
           <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
@@ -34,9 +34,9 @@
       <div class="col-sm-5">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <strong>{{review.user}}</strong> <span class="text-muted">commented on {{review?.date}}</span>
+            <strong>{{review.user.username}}</strong> <span class="text-muted">commented on {{review?.date}}</span>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" class="review-message">
             {{review?.message}}
           </div>
           <!-- /panel-body -->
