@@ -16,12 +16,20 @@ export class ReviewsComponent implements OnInit {
   starStyle: Array<boolean>;
   reviewIndex: number;
   currentUser: string;
+  canVote: boolean;
+  wasVoted: boolean;
 
-  constructor(private restaurantService: RestaurantsService, private userService: UserService) { }
+  constructor(private restaurantService: RestaurantsService, private userService: UserService) {
+  }
 
   ngOnInit() {
     this.stylizeStars();
     this.currentUser = this.userService.userId;
+    if (this.restaurant.voters || this.restaurant.voters.indexOf(this.currentUser) < 0) {
+      this.canVote = true;
+    } else {
+      this.canVote = false;
+    }
   }
 
   stylizeStars() {
@@ -32,6 +40,7 @@ export class ReviewsComponent implements OnInit {
   }
 
   vote(vote) {
+    this.wasVoted = true;
     this.restaurant.rating.voters++;
     this.restaurant.rating.sum = +this.restaurant.rating.sum + vote;
     this.restaurant.rating.average = +this.restaurant.rating.sum / +this.restaurant.rating.voters;
