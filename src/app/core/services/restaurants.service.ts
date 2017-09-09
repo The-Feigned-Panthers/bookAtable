@@ -79,8 +79,10 @@ export class RestaurantsService {
 
   }
 
-  saveBookingInRestaurant(name: string, booking: Booking) {
-    this.db.database.ref('/places').child(`/${name}/bookings`).push(booking);
+  saveBookingInRestaurant(name: string, booking: Booking, index: number) {
+    this.db.database.ref('/places')
+      .child(`/${name}/bookings/${index.toString()}`)
+      .set(booking);
   }
 
   saveBookingInBookings(booking: Booking) {

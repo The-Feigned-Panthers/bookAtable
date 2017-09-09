@@ -42,7 +42,12 @@ export class BookingComponent implements OnInit {
     this.booking.user.lastName = this.currentUser.lastname;
     this.booking.user.email = this.currentUser.email;
     const id = this.restaurantsService.saveBookingInBookings(this.booking).key;
-    this.restaurantsService.saveBookingInRestaurant(this.restaurantName, this.booking);
+    if (this.restaurant.bookings) {
+      this.bookingIndex = this.restaurant.bookings.length;
+    } else {
+      this.bookingIndex = 0;
+    }
+    this.restaurantsService.saveBookingInRestaurant(this.restaurantName, this.booking, this.bookingIndex);
     this.userService.bookATable(id);
     this.booking = new Booking({firstName: '', lastName: '', email: ''}, '', '', '', '');
   }
