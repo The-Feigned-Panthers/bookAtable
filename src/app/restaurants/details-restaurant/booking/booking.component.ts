@@ -28,7 +28,7 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.booking = new Booking({firstName: '', lastName: '', email: ''}, '', '', '', '');
+    this.booking = new Booking({firstName: '', lastName: '', email: ''}, '', '', '', '', '');
     this.userService.getUser(this.userService.userId).subscribe((dbUser) => {
       this.currentUser = dbUser;
     } );
@@ -41,6 +41,7 @@ export class BookingComponent implements OnInit {
     this.booking.user.firstName = this.currentUser.firstname;
     this.booking.user.lastName = this.currentUser.lastname;
     this.booking.user.email = this.currentUser.email;
+    this.booking.userId = this.userService.userId;
     const id = this.restaurantsService.saveBookingInBookings(this.booking).key;
     if (this.restaurant.bookings) {
       this.bookingIndex = this.restaurant.bookings.length;

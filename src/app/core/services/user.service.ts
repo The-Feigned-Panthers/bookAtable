@@ -39,7 +39,7 @@ export class UserService {
             .then((success) => {
                 this.router.navigateByUrl(this.redirectUrl)
                     .then(res => {
-                        this.toastr.success('Loged in!', 'Success', { timeOut: 1000});
+                        this.toastr.success('Loged in!', 'Success', { timeOut: 1000, tapToDismiss: true});
                     });
             })
             .catch((error: any) => {
@@ -54,7 +54,7 @@ export class UserService {
                 this.username = undefined;
                 this.appUser = undefined;
                 this.router.navigate(['/home'])
-                    .then(() => this.toastr.success('Logged out!', 'Success', {timeOut: 1000}));
+                    .then(() => this.toastr.success('Logged out!', 'Success', {timeOut: 1000, tapToDismiss: true}));
             })
             .catch((error: any) => {
                 this.toastr.error(error.message);
@@ -67,7 +67,7 @@ export class UserService {
           success.updateProfile({displayName: user.username, photoUrl: null});
           const id = success.uid;
           firebase.database().ref('/users/' + id).set(user);
-          this.toastr.success('Signed up!', 'Success', {timeOut: 1000});
+          this.toastr.success('Signed up!', 'Success', {timeOut: 1000, tapToDismiss: true});
           this.router.navigateByUrl('/home');
         }
       )
@@ -82,7 +82,7 @@ export class UserService {
 
     bookATable(bookingId: string) {
         this.db.database.ref(`/users/${this.userId}/bookings/${bookingId}`).set(true)
-        .then(res => this.toastr.success('You just booked a table', 'Success', {timeOut: 1000}));
+        .then(res => this.toastr.success('You just booked a table', 'Success', {timeOut: 1000, tapToDismiss: true}));
     }
 
     getUserbookings() {
@@ -93,13 +93,11 @@ export class UserService {
         });
     }
 
-    getRestaurantBookings(restaurantName) {
-        return this.db.list('/bookings', { query: {
-            orderByChild: 'restaurantName',
-            equalTo: restaurantName
-            }
-        });
-    }
+    // getRestaurantBookings(restaurantName) {
+    //     return this.db.list('/bookings', { query: {
+    //         orderByChild: 'restaurantName',
+    //         equalTo: restaurantName
+    //         }
+    //     });
+    // }
 }
-
-
