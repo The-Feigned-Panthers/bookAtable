@@ -11,7 +11,8 @@ export class PasswordMatchDirective implements Validator {
     validate(control: AbstractControl): {[key: string]: any} {
         const compare = control.value;
         const pass = control.root.get(this.passwordMatch);
-
+        console.log('Compare ' + compare);
+        console.log('Pass ' + pass);
         if (pass && compare !== pass.value) {
             return {
             passwordMatch: {

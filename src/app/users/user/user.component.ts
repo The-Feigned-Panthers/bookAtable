@@ -21,6 +21,8 @@ export class UserComponent implements OnInit {
   private restaurantService: RestaurantsService) {
     this.ownerRestaurants = [];
     this.currentUser = this.userService.appUser;
+    console.log('init')
+    console.log(this.userService.appUser)
   }
 
   ngOnInit() {
@@ -41,7 +43,9 @@ export class UserComponent implements OnInit {
     if (!this.currentUser) {
       setTimeout(() => {
         console.log('waiting');
-        this.getOwnerRestaurants();
+        if (this.currentUser.usertype === 'owner') {
+          this.getOwnerRestaurants();
+        }
       }, 1000);
     } else {
       if (this.currentUser.usertype === 'owner') {

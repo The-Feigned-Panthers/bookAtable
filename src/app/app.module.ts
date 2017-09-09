@@ -24,8 +24,7 @@ import { SignupComponent } from './users/signup/signup.component';
 import { LoginComponent } from './users/login/login.component';
 import { PasswordMatchDirective } from './users/signup/password-match.directive';
 import { ContactsComponent } from './contacts/contacts.component';
-
-
+import { DateCheckDirective } from './restaurants/details-restaurant/booking/date-check.directive';
 
 @NgModule({
   imports: [
@@ -49,6 +48,7 @@ import { ContactsComponent } from './contacts/contacts.component';
     LoginComponent,
     SignupComponent,
     PasswordMatchDirective,
+    DateCheckDirective,
     ContactsComponent
 ],
   providers: [],

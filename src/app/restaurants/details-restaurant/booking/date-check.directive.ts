@@ -1,27 +1,36 @@
-import { Validator, AbstractControl, FormControl, NG_VALIDATORS } from '@angular/forms';
-import { Input, Directive, forwardRef, Attribute } from '@angular/core';
+import { Validator, AbstractControl, NG_VALIDATORS, FormControl, ValidatorFn } from '@angular/forms';
+import { Directive, forwardRef } from '@angular/core';
+
+function validateDate(): ValidatorFn  {
+            return (control: AbstractControl) => {
+                const dateBooking = Date.parse(control.value.toString());
+                const dateNow = Date.now();
+                console.log('checking date');
+                if (dateNow > dateBooking) {
+                    return {
+                    dateCheck: {
+                        valid: false
+                        }
+                    };
+                }
+                return null;
+            };
+        }
 
 @Directive({
-    selector: '[appDateCheck][formControlName],[appDateCheck][formControl],[appDateCheck][ngModel]',
-    providers: [{ provide: NG_VALIDATORS, useExisting: forwardRef(() => DateCheckDirective), multi: true }]
+    selector: '[appDateCheck][ngModel]',
+    providers: [{ provide: NG_VALIDATORS, useExisting: DateCheckDirective, multi: true }]
 })
 
 export class DateCheckDirective implements Validator {
+    validator: ValidatorFn;
 
-    // constructor() { }
-    constructor(@Attribute('appDateCheck') public dateCheck: string) { }
-    validate(control: FormControl): {[key: string]: any} {
+    constructor() {
+        console.log('constructing date');
+        this.validator = validateDate();
+     }
 
-        const dateBooking = Date.parse(control.value.toString());
-        const dateNow = Date.now();
-
-        if (dateNow > dateBooking) {
-            return {
-            dateCheck: {
-                valid: false
-                }
-            };
-        }
-        return null;
-    }
+     validate (control: FormControl) {
+         return this.validator;
+     }
 }

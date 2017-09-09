@@ -1,3 +1,4 @@
+import { DateCheckDirective } from './date-check.directive';
 import { RestaurantsService } from './../../../core/services/restaurants.service';
 import { UserService } from './../../../core/services/user.service';
 import { Restaurant } from './../../../models/restaurant';
