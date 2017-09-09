@@ -12,8 +12,6 @@ import { NgModule } from '@angular/core';
 import { ListRestaurantsComponent } from './list-restaurants/list-restaurants.component';
 import { DetailsRestaurantComponent } from './details-restaurant/details-restaurant.component';
 import { Ng2OrderModule } from 'ng2-order-pipe';
-import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
-import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   imports: [
@@ -28,8 +26,6 @@ import { EditComponent } from './edit/edit.component';
     OverviewComponent,
     ReviewsComponent,
     BookingComponent,
-    UploadPhotoComponent,
-    EditComponent,
     SortByPipe
 ],
   providers: [RestaurantsGuardService, RestaurantsListResolver],

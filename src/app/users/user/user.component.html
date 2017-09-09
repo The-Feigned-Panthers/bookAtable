@@ -11,15 +11,17 @@
 <div class="col-md-8">
     <fieldset>
             <legend>Your Bookings</legend>
-            <table *ngIf="currentUser?.bookings" class="table table-bordered">
-            <tr>
-                <th>Booked on</th>
-                <th>Restaurant name</th>
-                <th>Booking date</th>
-                <th>Booking time</th>
-                <th>Number of People</th>
-                <th>Status</th>
-            </tr>
+            <table *ngIf="currentUser?.bookings" class="table table-bordered table-inverse">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Booked on</th>
+                    <th>Restaurant name</th>
+                    <th>Booking date</th>
+                    <th>Booking time</th>
+                    <th>Number of People</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
             <tr *ngFor="let booking of userBookings">
                 <td>{{booking.dateBooked}}</td>
                 <td>{{booking.restaurantName}}</td>
@@ -34,6 +36,8 @@
                 <legend>Your Restaurants</legend>
                 <div *ngIf="currentUser?.restaurants" >
                     <table *ngFor="let restaurant of ownerRestaurants" class="table table-bordered table-responsive">
+                    <app-edit [restaurant]="restaurant"></app-edit>
+                    <app-upload-photo [restaurant]="restaurant"></app-upload-photo>
                     <tr>
                         <th>Name</th>
                         <th>Details</th>
@@ -59,11 +63,18 @@
                         <td><div class="table-cell-inner">{{restaurant.rating.average}}</div></td>
                         <td><div class="table-cell-inner">{{restaurant.type}}</div></td>
                         <td><div class="table-cell-inner">{{restaurant.averageBill}}</div></td>
-                        <td><div class="table-cell-inner"><button class="btn btn-default">Change Photo</button>
-                            <button class="btn btn-default">Edit Restaurant</button>
+                        <td><div class="table-cell-inner"><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#uploadModal">
+                                <span class="glyphicon glyphicon-picture"></span>
+                                Update photo
+                              </button>
+                              <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#editModal">
+                                  <span class="glyphicon glyphicon-pencil"></span>
+                                  Edit restaurant
+                              </button>  
                             <button class="btn btn-default">Show Bookings</button></div></td>
                     </tr>
                     <tr *ngIf="restaurant.bookings">
+                        <td colspan="11">
                         <table class="table table-bordered ">
                             <tr>
                                 <th>Booked on</th>
@@ -83,6 +94,7 @@
                                 <td>{{booking.user.firstName + ' ' + booking.user.lastName + ' ' + booking.user.email}}</td>
                             </tr>
                         </table>
+                    </td>
                     </tr>
                 </table>
             </div>
@@ -92,3 +104,5 @@
 </div>
 </div>
 </div>
+<app-edit></app-edit>
+<app-upload-photo></app-upload-photo>
