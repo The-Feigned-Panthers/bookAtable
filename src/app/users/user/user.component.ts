@@ -40,10 +40,10 @@ export class UserComponent implements OnInit {
   // });
     if (!this.currentUser) {
       setTimeout(() => {
+        console.log('waiting');
         this.getOwnerRestaurants();
       }, 1000);
     } else {
-      console.log(this.currentUser.usertype);
       if (this.currentUser.usertype === 'owner') {
         this.getOwnerRestaurants();
       }
@@ -56,19 +56,10 @@ export class UserComponent implements OnInit {
       const names = Object.keys(this.currentUser.restaurants);
       names.forEach((name) => {
         this.ownerRestaurants.push(this.restaurantService.restaurants.find((res) => res.name === name));
-        // this.getRestaurantBookings(name);
-        console.log(this.ownerRestaurants);
+        // console.log(this.ownerRestaurants);
       });
     } else { return; }
   }
-
-  // getRestaurantBookings(name) {
-  //     this.userService.getRestaurantBookings(name)
-  //       .subscribe(bookings => {
-  //         const restaurant = this.ownerRestaurants.find((res) => res.name === name);
-  //         restaurant.bookings = bookings;
-  //         });
-  // }
 
   getUserBookings() {
     if (this.currentUser.bookings) {

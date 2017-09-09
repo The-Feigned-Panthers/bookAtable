@@ -52,6 +52,7 @@ export class RestaurantsService {
     this.db.database.ref('/places')
       .child(restaurant.name)
       .set(restaurant);
+    this.db.database.ref('/users');
   }
 
   uploadPhoto(name: string, upload: Upload) {
