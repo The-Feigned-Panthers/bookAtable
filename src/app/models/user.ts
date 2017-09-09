@@ -7,6 +7,12 @@ export class User {
     restaurants: string[];
     bookings: string[];
 
-    constructor(username, firstname, lastname, email, usertype) {}
+    constructor(username, firstname, lastname, email, usertype) {
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.usertype = usertype;
+    }
 
 }
