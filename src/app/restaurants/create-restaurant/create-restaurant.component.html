@@ -113,7 +113,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="weekdays">Opening hours weekdays*</label>
       <div class="col-md-5">
-        <input id="weekdays" name="weekdays" type="text" pattern="^[0-9_ .-]*$" placeholder="09:00 - 22:00" class="form-control input-md"
+        <input id="weekdays" name="weekdays" type="text" pattern="^[0-9_ :-]*$" placeholder="09:00 - 22:00" class="form-control input-md"
           required #weekdays="ngModel" [(ngModel)]="restaurant.openingHoursWeekdays">
         <div *ngIf="weekdays.invalid && (weekdays.dirty || weekdays.touched)" class="alert alert-danger">
           <div *ngIf="weekdays.errors.required">
@@ -129,7 +129,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="weekends">Opening hours weekends*</label>
       <div class="col-md-5">
-        <input id="weekends" name="weekends" type="text" pattern="^[0-9_ .-]*$" placeholder="09:00 - 22:00" class="form-control input-md"
+        <input id="weekends" name="weekends" type="text" pattern="^[0-9_ :-]*$" placeholder="09:00 - 22:00" class="form-control input-md"
           required #weekends="ngModel" [(ngModel)]="restaurant.openingHoursWeekends">
         <div *ngIf="weekends.invalid && (weekends.dirty || weekends.touched)" class="alert alert-danger">
           <div *ngIf="weekends.errors.required">
@@ -161,7 +161,7 @@
     <div class="form-group">
       <div class="col-md-offset-4 col-md-5">
         <button id="add-btn" class="btn-block" [disabled]="!createForm.form.valid" name="add" class="btn btn-primary" (click)="create()">Add</button>
-        <!-- <a class="btn btn-danger" [routerLink]="[ 'users', currentUser.username ]" routerLinkActive="active">Cancel</a> -->
+        <div>*These fields are required.</div>
       </div>
     </div>
 
