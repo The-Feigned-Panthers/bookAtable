@@ -16,7 +16,7 @@ export class BookingComponent implements OnInit {
   userId: string;
   restaurantName: string;
   bookingIndex: number;
-
+  currentUser;
   minutes: string[] = [
     '00', '10', '20', '30', '40', '50'
   ];
@@ -28,15 +28,21 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.booking = new Booking('', '', '', '', '');
-    this.booking.userId = this.userService.userId;
+    this.booking = new Booking({firstName: '', lastName: '', email: ''}, '', '', '', '');
+    this.userService.getUser(this.userService.userId).subscribe((dbUser) => {
+      this.currentUser = dbUser;
+    } );
     this.booking.restaurantName = this.restaurant.name;
+    this.restaurantName = this.restaurant.name;
   }
 
   book(hour: string, minute: string) {
     this.booking.time = hour + ':' + minute;
+    this.booking.user.firstName = this.currentUser.firstname;
+    this.booking.user.lastName = this.currentUser.lastname;
+    this.booking.user.email = this.currentUser.email;
     const id = this.restaurantsService.saveBookingInBookings(this.booking).key;
-    this.restaurantsService.saveBookingInRestaurant(this.restaurantName, id);
+    this.restaurantsService.saveBookingInRestaurant(this.restaurantName, this.booking);
     this.userService.bookATable(id);
   }
 

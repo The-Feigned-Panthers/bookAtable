@@ -1,12 +1,21 @@
 export class Booking {
-    userId: string;
+    user: {
+        firstName: string,
+        lastName: string,
+        email: string
+    };
     restaurantName: string;
     date: Date;
     time: string;
     numberOfPeople: number;
     dateBooked: string;
 
-    constructor(userId, restaurantName, date, time, numberOfPeople) {
+    constructor(user, restaurantName, date, time, numberOfPeople) {
+        this.user = user;
+        this.restaurantName = restaurantName;
+        this.date = date;
+        this.time = time;
+        this.numberOfPeople = numberOfPeople;
         this.dateBooked = new Date().toDateString();
     }
 }
