@@ -1,30 +1,30 @@
 import { Review } from './review';
 
 export class Restaurant {
-    public name: string;
-    public address: {
+    name: string;
+    address: {
         city: string,
         area: string,
         street: string,
         number: number
     };
-    public type: string;
-    public rating: {
+    type: string;
+    rating: {
         voters: number,
         sum: number,
         average: number
     };
-    public averageBill: number;
-    public reviews: Review[];
-    public openingHoursWeekdays: string;
-    public openingHoursWeekends: string;
-    public contact: string;
-    public details: string;
-    public bookings: any;
-    public photo: string;
-    public addedAt: string;
-    public owner: string;
-    // to take only the user id?
+    averageBill: number;
+    reviews: Review[];
+    openingHoursWeekdays: string;
+    openingHoursWeekends: string;
+    contact: string;
+    details: string;
+    bookings: any;
+    photo: string;
+    addedAt: string;
+    owner: string;
+    voters: string[];
 
     constructor(name, address, type, averageBill,
         openingHoursWeekdays, openingHoursWeekends, contact, details, owner) {
@@ -46,5 +46,6 @@ export class Restaurant {
         this.photo = 'http://spizzico.org/wp-content/uploads/2015/03/spizzico1.jpg';
         this.addedAt = new Date().toDateString();
         this.owner = owner;
+        this.voters = [];
     }
 }

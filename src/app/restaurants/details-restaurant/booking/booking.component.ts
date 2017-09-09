@@ -44,6 +44,7 @@ export class BookingComponent implements OnInit {
     const id = this.restaurantsService.saveBookingInBookings(this.booking).key;
     this.restaurantsService.saveBookingInRestaurant(this.restaurantName, this.booking);
     this.userService.bookATable(id);
+    this.booking = new Booking({firstName: '', lastName: '', email: ''}, '', '', '', '');
   }
 
 }

@@ -12,11 +12,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./details-restaurant.component.css']
 })
 export class DetailsRestaurantComponent implements OnInit {
-restaurant: Restaurant;
-name: string;
+  restaurant: Restaurant;
+  name: string;
+  isOnOverview: boolean;
 
   constructor(private service: RestaurantsService, private route: ActivatedRoute) {
-   }
+    this.isOnOverview = true;
+  }
 
   ngOnInit() {
     this.route.params
@@ -26,5 +28,13 @@ name: string;
         return this.service.getDetails(name);
       })
       .subscribe(res => this.restaurant = res);
+  }
+
+  goToOverview() {
+    this.isOnOverview = true;
+  }
+
+  goToReviews() {
+    this.isOnOverview = false;
   }
 }

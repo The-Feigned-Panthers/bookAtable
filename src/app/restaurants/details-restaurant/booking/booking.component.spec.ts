@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Restaurant } from './../../../models/restaurant';
 import { Booking } from './../../../models/booking';
 import { RestaurantsService } from './../../../core/services/restaurants.service';
@@ -21,6 +22,7 @@ describe('BookingComponent', () => {
   const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
+
   const restServiceMock = {
     saveBookingInRestaurant(name: string, id: string) {
       return;
@@ -29,29 +31,38 @@ describe('BookingComponent', () => {
       return;
     }
   };
+
+  const user = {
+    username: 'test'
+  };
+
   const usersServiceMock = {
     bookATable(id) {
       return;
+    },
+    getUser() {
+      return Observable.of(user);
     }
   };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, AngularFireModule.initializeApp(firebaseConfig),
         ToastrModule.forRoot()],
-      declarations: [ BookingComponent ],
-      providers: [{provide: UserService, useValue: usersServiceMock}, {provide: RestaurantsService, useValue: restServiceMock},
+      declarations: [BookingComponent],
+      providers: [{ provide: UserService, useValue: usersServiceMock }, { provide: RestaurantsService, useValue: restServiceMock },
         AngularFireDatabase, AngularFireAuth, { provide: Router, useValue: mockRouter },
         ToastrService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BookingComponent);
     component = fixture.componentInstance;
     component.restaurant = new Restaurant('Test',
-    { city: 'city', area: 'area', street: 'street', number: '15' },
-    'Bistro', 14, '09:00-23:00', '09:00-23:00', '+3598888888', 'details', 'owner');
+      { city: 'city', area: 'area', street: 'street', number: '15' },
+      'Bistro', 14, '09:00-23:00', '09:00-23:00', '+3598888888', 'details', 'owner');
     fixture.detectChanges();
   });
 

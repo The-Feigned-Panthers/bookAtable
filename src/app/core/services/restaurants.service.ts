@@ -36,7 +36,16 @@ export class RestaurantsService {
   }
 
   addReview(name: string, review: Review, index: number) {
-    this.db.database.ref(`/places/${name}`).child('reviews').child(`${index}`).set(review);
+    this.db.database.ref(`/places/${name}`)
+      .child('reviews')
+      .child(`${index}`)
+      .set(review);
+  }
+
+  addVoter(name: string, userId: string, index: number) {
+    this.db.database.ref(`/places/${name}/voters`)
+      .child(index.toString())
+      .set(userId);
   }
 
   updateRestaurant(restaurant: Restaurant) {

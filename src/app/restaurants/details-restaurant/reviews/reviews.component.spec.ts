@@ -1,3 +1,5 @@
+import { UserService } from './../../../core/services/user.service';
+import { Observable } from 'rxjs/Observable';
 import { Restaurant } from './../../../models/restaurant';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { firebaseConfig } from './../../../firebase.config';
@@ -17,11 +19,18 @@ describe('ReviewsComponent', () => {
     }
   };
 
+  const userServiceMock = {
+    getUser(id) {
+      return Observable.of({});
+    }
+  };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AngularFireModule.initializeApp(firebaseConfig)],
       declarations: [ ReviewsComponent ],
       providers: [{provide: RestaurantsService, useValue: serviceMock},
+        {provide: UserService, useValue: userServiceMock},
       AngularFireDatabase]
     })
     .compileComponents();

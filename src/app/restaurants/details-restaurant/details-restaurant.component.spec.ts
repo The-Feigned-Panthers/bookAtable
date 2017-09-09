@@ -28,6 +28,9 @@ describe('DetailsRestaurantComponent', () => {
   const service = {
     getDetails(name) {
       return Observable.from([restaurant]);
+    },
+    start() {
+      return;
     }
   };
   const mockRouter = {
@@ -101,7 +104,7 @@ describe('DetailsRestaurantComponent', () => {
   });
 
   it('tabs element should contain bookings tab', () => {
-    debugElement = fixture.debugElement.query(By.css('#bookings'));
+    debugElement = fixture.debugElement.query(By.css('#booking'));
     element = debugElement.nativeElement;
     expect(element).toBeDefined();
   });

@@ -1,3 +1,4 @@
+import { RestaurantsService } from './restaurants.service';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { firebaseConfig } from './../../firebase.config';
@@ -11,11 +12,17 @@ describe('Service: User', () => {
   const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
+  const mockRestaurantsService = {
+    start() {
+      return;
+    }
+  };
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [AngularFireModule.initializeApp(firebaseConfig),
       ToastrModule.forRoot()],
-      providers: [UserService, AngularFireDatabase, AngularFireAuth, { provide: Router, useValue: mockRouter },
+      providers: [UserService, { provide: RestaurantsService, useValue: mockRestaurantsService},
+        AngularFireDatabase, AngularFireAuth, { provide: Router, useValue: mockRouter },
       ToastrService]
     });
   });

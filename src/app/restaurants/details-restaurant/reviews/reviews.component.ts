@@ -1,3 +1,4 @@
+import { UserService } from './../../../core/services/user.service';
 import { Review } from './../../../models/review';
 import { User } from './../../../models/user';
 import { RestaurantsService } from './../../../core/services/restaurants.service';
@@ -14,10 +15,13 @@ export class ReviewsComponent implements OnInit {
   restaurant: Restaurant;
   starStyle: Array<boolean>;
   reviewIndex: number;
-  constructor(private service: RestaurantsService) { }
+  currentUser: string;
+
+  constructor(private restaurantService: RestaurantsService, private userService: UserService) { }
 
   ngOnInit() {
     this.stylizeStars();
+    this.currentUser = this.userService.userId;
   }
 
   stylizeStars() {
@@ -31,7 +35,12 @@ export class ReviewsComponent implements OnInit {
     this.restaurant.rating.voters++;
     this.restaurant.rating.sum = +this.restaurant.rating.sum + vote;
     this.restaurant.rating.average = +this.restaurant.rating.sum / +this.restaurant.rating.voters;
-    this.service.updateRestaurant(this.restaurant);
+    this.restaurantService.updateRestaurant(this.restaurant);
+    let index = 0;
+    if (this.restaurant.voters) {
+      index = this.restaurant.voters.length;
+    }
+    this.restaurantService.addVoter(this.restaurant.name, this.currentUser, index);
     this.stylizeStars();
   }
 
@@ -43,6 +52,6 @@ export class ReviewsComponent implements OnInit {
     }
     const user = null;
     const newReview = new Review(user, message);
-    this.service.addReview(this.restaurant.name, newReview, this.reviewIndex);
+    this.restaurantService.addReview(this.restaurant.name, newReview, this.reviewIndex);
   }
 }

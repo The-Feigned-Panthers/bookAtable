@@ -1,3 +1,4 @@
+import { RestaurantsService } from './../../core/services/restaurants.service';
 import { UserService } from './../../core/services/user.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -19,11 +20,19 @@ describe('SignupComponent', () => {
     navigate: jasmine.createSpy('navigate')
   };
 
+  const restaurantsServiceMock = {
+    start() {
+      return;
+    }
+  };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AngularFireModule.initializeApp(firebaseConfig), FormsModule, ToastrModule.forRoot()],
       declarations: [ SignupComponent ],
-      providers: [UserService, AngularFireAuth, AngularFireDatabase, {provide: Router, useValue: mockRouter}, ToastrService]
+      providers: [UserService, AngularFireAuth, AngularFireDatabase,
+        {provide: Router, useValue: mockRouter}, ToastrService,
+        {provide: RestaurantsService, useValue: restaurantsServiceMock}]
     })
     .compileComponents();
   }));
