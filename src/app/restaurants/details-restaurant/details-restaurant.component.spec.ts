@@ -1,3 +1,4 @@
+import { User } from './../../models/user';
 import { element } from 'protractor';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -21,11 +22,15 @@ import { DetailsRestaurantComponent } from './details-restaurant.component';
 describe('DetailsRestaurantComponent', () => {
   let component: DetailsRestaurantComponent;
   let fixture: ComponentFixture<DetailsRestaurantComponent>;
+  let debugElement: DebugElement;
+  let element: HTMLElement;
+
   const restaurant = new Restaurant('Test',
     { city: 'city', area: 'area', street: 'street', number: '15' },
     'Bistro', 14, '09:00-23:00', '09:00-23:00', '+3598888888', 'details', 'owner');
+  const user = new User('test', 'test', 'test', 'test', 'owner');
   const route = { get params() { return Observable.from([{ 'name': 'Test' }]); } };
-  const service = {
+  const restaurantService = {
     getDetails(name) {
       return Observable.from([restaurant]);
     },
@@ -33,12 +38,15 @@ describe('DetailsRestaurantComponent', () => {
       return;
     }
   };
+
+  const userService = {
+    getUser(id) {
+      return Observable.of(user);
+    }
+  };
   const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
-
-  let debugElement: DebugElement;
-  let element: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -46,8 +54,12 @@ describe('DetailsRestaurantComponent', () => {
         AngularFireModule.initializeApp(firebaseConfig),
         ToastrModule.forRoot()],
       declarations: [DetailsRestaurantComponent, OverviewComponent, ReviewsComponent, BookingComponent],
-      providers: [UserService, { provide: RestaurantsService, useValue: service }, { provide: Router, useValue: mockRouter },
-        AngularFireAuth, { provide: ActivatedRoute, useValue: route }, AngularFireDatabase, ToastrService]
+      providers: [{ provide: UserService, useValue: userService },
+        { provide: RestaurantsService, useValue: restaurantService },
+        { provide: Router, useValue: mockRouter },
+        AngularFireAuth,
+        { provide: ActivatedRoute, useValue: route },
+        AngularFireDatabase, ToastrService]
     })
       .compileComponents();
   }));
