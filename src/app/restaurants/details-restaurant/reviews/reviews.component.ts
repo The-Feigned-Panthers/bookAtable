@@ -25,10 +25,12 @@ export class ReviewsComponent implements OnInit {
   ngOnInit() {
     this.stylizeStars();
     this.currentUser = this.userService.userId;
-    if (this.restaurant.voters || this.restaurant.voters.indexOf(this.currentUser) < 0) {
-      this.canVote = true;
-    } else {
-      this.canVote = false;
+    if (this.restaurant.voters) {
+      if (this.restaurant.voters.indexOf(this.currentUser) < 0) {
+        this.canVote = true;
+      } else {
+        this.canVote = false;
+      }
     }
   }
 
