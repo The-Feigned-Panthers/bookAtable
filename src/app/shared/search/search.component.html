@@ -1,20 +1,8 @@
 <section>
   <div class="container col-md-offset-2 col-md-8">
     <div class="row">
-          <input type="search" name="search" id="" #searchValue>
+          <input type="search" name="search" placeholder="Search by name" #searchValue>
           <input type="button" (click)="setSearchString(searchValue.value)" value="Go">
-          <!-- <ul class="nav nav-tabs" id="myTab">
-                      <div class="liner"></div>
-                      <li [class.active]="filterProperty === 'name'">
-                          <a title="all" (click)="setProperty('name')"> All restaurants</a>
-                      </li>
-                      <li [class.active]="filterProperty === 'addedAt'">
-                          <a title="latest" (click)="setProperty('addedAt')"> Latest</a>
-                      </li>
-                      <li [class.active]="filterProperty === 'rating'">
-                          <a title="popular" (click)="setProperty('rating')"> Most popular</a>
-                      </li>
-                  </ul> -->
         </div>
 
         <div class="tab-content">
