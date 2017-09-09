@@ -28,7 +28,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="details">Details</label>
       <div class="col-md-4">
-        <textarea class="form-control" id="details" name="details" pattern="^[a-zA-Z0-9_ .-]*$" #details="ngModel" [(ngModel)]="restaurant.details"></textarea>
+        <textarea class="form-control" id="details" name="details" pattern="^[a-zA-Z0-9_ ,!?'.-]*$" #details="ngModel" [(ngModel)]="restaurant.details"></textarea>
         <div *ngIf="details.invalid && (details.dirty || details.touched)" class="alert alert-danger">
           <div *ngIf="details.errors.pattern">
             Details can only contain latin letters and numbers and _ !
