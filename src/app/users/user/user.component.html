@@ -32,7 +32,7 @@
         <div *ngIf="currentUser?.usertype === 'owner'">
             <fieldset>
                 <legend>Your Restaurants</legend>
-                <table *ngIf="currentUser?.restaurants" class="table table-bordered">
+                <table *ngIf="currentUser?.restaurants" class="table table-bordered table-responsive">
                     <tr>
                         <th>Name</th>
                         <th>Details</th>
@@ -47,19 +47,40 @@
                         <th>Options</th>
                     </tr>
                     <tr *ngFor="let restaurant of ownerRestaurants">
-                        <td>{{restaurant.name}}</td>
-                        <td>{{restaurant.details}}</td>
-                        <td>{{restaurant.address.city + ' ' + restaurant.address.area + ' '
-                            + restaurant.address.street + ' ' + restaurant.address.number}}</td>
-                        <td>{{restaurant.contact}}</td>
-                        <td>{{restaurant.openingHoursWeekdays}}</td>
-                        <td>{{restaurant.openingHoursWeekends}}</td>
-                        <td>{{restaurant.photo}}</td>
-                        <td>{{restaurant.rating.average}}</td>
-                        <td>{{restaurant.type}}</td>
-                        <td>{{restaurant.averageBill}}</td>
-                        <td><button class="btn btn-default">Change Photo</button><button class="btn btn-default">Edit Restaurant</button></td>
+                        <td><div class="table-cell-inner">{{restaurant.name}}</div></td>
+                        <td><div class="table-cell-inner">{{restaurant.details}}</div></td>
+                        <td><div class="table-cell-inner">{{restaurant.address.city + ' ' + restaurant.address.area + ' '
+                            + restaurant.address.street + ' ' + restaurant.address.number}}</div></td>
+                        <td><div class="table-cell-inner">{{restaurant.contact}}</div></td>
+                        <td><div class="table-cell-inner">{{restaurant.openingHoursWeekdays}}</div></td>
+                        <td><div class="table-cell-inner">{{restaurant.openingHoursWeekends}}</div></td>
+                        <td><div class="table-cell-inner">{{restaurant.photo}}</div></td>
+                        <td><div class="table-cell-inner">{{restaurant.rating.average}}</div></td>
+                        <td><div class="table-cell-inner">{{restaurant.type}}</div></td>
+                        <td><div class="table-cell-inner">{{restaurant.averageBill}}</div></td>
+                        <td><div class="table-cell-inner"><button class="btn btn-default">Change Photo</button>
+                            <button class="btn btn-default">Edit Restaurant</button>
+                            <button class="btn btn-default">Show Bookings</button></div></td>
                     </tr>
+                    <!-- <tr>
+                        <table class="table table-bordered ">
+                            <tr>
+                                <th>Booked on</th>
+                                <th>Restaurant name</th>
+                                <th>Booking date</th>
+                                <th>Booking time</th>
+                                <th>Number of People</th>
+                                <th>Status</th>
+                            </tr>
+                            <tr *ngFor="let booking of restaurant.bookings">
+                                <td>{{booking.dateBooked}}</td>
+                                <td>{{booking.restaurantName}}</td>
+                                <td>{{booking.date}}</td>
+                                <td>{{booking.time}}</td>
+                                <td>{{booking.numberOfPeople}}</td>
+                            </tr>
+                        </table>
+                    </tr> -->
                 </table>
             </fieldset>
             <a class="btn btn-success" [routerLink]="[ 'create' ]">Add new restaurant</a>

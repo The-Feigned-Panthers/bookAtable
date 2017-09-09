@@ -31,6 +31,6 @@ export class CreateRestaurantComponent implements OnInit {
     this.restaurant.owner = this.currentUser;
     this.restaurantService.updateRestaurant(this.restaurant);
     this.router.navigateByUrl(`/restaurants/${this.restaurant.name}`)
-      .then(res => this.toastr.success('New restaurant created'));
+      .then(res => this.toastr.success('New restaurant created', 'Success', {timeOut: 2000}));
   }
 }
