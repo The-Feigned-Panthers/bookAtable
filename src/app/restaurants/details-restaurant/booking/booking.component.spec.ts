@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Observable } from 'rxjs/Observable';
 import { Restaurant } from './../../../models/restaurant';
 import { Booking } from './../../../models/booking';
@@ -12,24 +13,26 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { DebugElement, Attribute } from '@angular/core';
 
 import { BookingComponent } from './booking.component';
 
 describe('BookingComponent', () => {
   let component: BookingComponent;
   let fixture: ComponentFixture<BookingComponent>;
+  let debugElement: DebugElement;
+  let element: HTMLInputElement;
+  const restaurant = new Restaurant('Test',
+    { city: 'city', area: 'area', street: 'street', number: '15' },
+    'Bistro', 14, '09:00-23:00', '09:00-23:00', '+3598888888', 'details', 'owner');
+
   const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
 
   const restServiceMock = {
-    saveBookingInRestaurant(name: string, id: string) {
-      return;
-    },
-    saveBookingInBookings(booking: Booking) {
-      return;
-    }
+    saveBookingInRestaurant: jasmine.createSpy('saveBookingInRestaurant'),
+    saveBookingInBookings: jasmine.createSpy('saveBookingInBookings')
   };
 
   const user = {
@@ -60,13 +63,26 @@ describe('BookingComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BookingComponent);
     component = fixture.componentInstance;
-    component.restaurant = new Restaurant('Test',
-      { city: 'city', area: 'area', street: 'street', number: '15' },
-      'Bistro', 14, '09:00-23:00', '09:00-23:00', '+3598888888', 'details', 'owner');
+    component.restaurant = restaurant;
+    component.booking = new Booking('', '', restaurant.name, '', '', '0');
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('booking date field should be equal to input value', () => {
+    debugElement = fixture.debugElement.query(By.css('#date'));
+    element = debugElement.nativeElement;
+    element.value = new Date().toDateString();
+    expect(component.booking.date.toString()).toEqual(element.value);
+  });
+
+  it('after click on Book button saveBookingInBookings should be called', () => {
+    debugElement = fixture.debugElement.query(By.css('button'));
+    element = debugElement.nativeElement;
+    element.click();
+    expect(restServiceMock.saveBookingInBookings).toHaveBeenCalled();
   });
 });

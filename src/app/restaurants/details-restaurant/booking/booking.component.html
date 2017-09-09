@@ -46,7 +46,7 @@
       </div>
       <div class="form-group">
         <div class="col-md-offset-4 col-md-5">
-          <button class="btn btn-success" [disabled]="!bookingForm.form.valid" 
+          <button id="book-btn" class="btn btn-success" [disabled]="!bookingForm.form.valid" 
           (click)="book(hourInput.value, minuteInput.value)" *ngIf="!(user | async)?.uid">Book</button>
         </div>
       </div>
