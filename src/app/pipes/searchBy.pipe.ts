@@ -1,4 +1,3 @@
-import { Restaurant } from './../models/restaurant';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

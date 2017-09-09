@@ -14,15 +14,11 @@ export class SearchComponent implements OnInit {
 
   constructor(private restaurantsService: RestaurantsService) { }
 
-  getAll() {
-    this.restaurantsService.getAll()
-      .subscribe(res => {
-        this.restaurants = res;
-      });
-  }
-
   ngOnInit() {
-    this.getAll();
+    this.restaurantsService.getAll()
+    .subscribe(res => {
+      this.restaurants = res;
+    });
     this.searchString = '';
   }
 
