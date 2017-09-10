@@ -34,7 +34,7 @@
       <div class="col-sm-5">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <strong>{{review.user.username}}</strong> <span class="text-muted">commented on {{review?.date}}</span>
+            <strong>{{review.user}}</strong> <span class="text-muted">commented on {{review?.date}}</span>
           </div>
           <div class="panel-body" class="review-message">
             {{review?.message}}
@@ -46,9 +46,9 @@
       <!-- /col-sm-5 -->
     </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="currentUser">
       <div class="col-md-6">
-        <div class="widget-area no-padding blank">
+        <div class="widget-area no-padding">
           <div class="status-upload">
             <form>
               <textarea #reviewText placeholder="Share your review..."></textarea>
