@@ -10,32 +10,31 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   restaurants: Restaurant[];
-  // search: {
-  //   value: string,
-  //   property: string
-  // };
-  searchStr: string;
+  searchValue: string;
+  properties: Array<string>;
 
   constructor(private restaurantsService: RestaurantsService) { }
 
   ngOnInit() {
     this.restaurantsService.getAll()
-    .subscribe(res => {
-      this.restaurants = res;
-    });
-    // this.search = {
-    //   value: '',
-    //   property: ''
-    // };
-    this.searchStr = '';
+      .subscribe(res => {
+        this.restaurants = res;
+      });
+
+    this.searchValue = '';
+    this.properties = ['name'];
   }
 
   setSearchString(searchString: string) {
-    // this.search.value = searchString;
-    this.searchStr = searchString;
+    this.searchValue = searchString;
   }
 
-  // setProperty(property: string) {
-  //   this.search.property = property;
-  // }
+  addProperties(property: string) {
+    if (this.properties.includes(property)) {
+      let index = this.properties.indexOf(property);
+      this.properties.splice(index, 1);
+    } else {
+      this.properties.push(property);
+    }
+  }
 }

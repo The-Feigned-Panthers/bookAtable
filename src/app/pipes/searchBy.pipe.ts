@@ -5,10 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchByPipe implements PipeTransform {
   transform(restaurants: any, args?: any): any {
-    if (restaurants && args !== '') {
-      const searchedValue = args.toLowerCase();
-
-      return restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(searchedValue));
+    if (restaurants && args[0] !== '') {
+      const searchedValue = args[0].toLowerCase();
+      const props = args[1];
+      let result = [];
+      props.forEach(prop => {
+        result.push(...restaurants.filter(restaurant => restaurant[prop].toLowerCase().includes(searchedValue)));
+      });
+      return result;
     }
   }
 }
