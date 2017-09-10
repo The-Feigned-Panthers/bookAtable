@@ -8,4 +8,18 @@ export class AppPage {
   getRootElement() {
     return element(by.css('app-root'));
   }
+  getHeaderElement() {
+    return element(by.css('app-header'));
+  }
+
+  getRouterOutletElement() {
+    return element(by.css('router-outlet'));
+  }
+  getHomeElement() {
+    return element(by.css('app-home'));
+  }
+
+  getFooterElement() {
+    return element(by.css('app-footer'));
+  }
 }

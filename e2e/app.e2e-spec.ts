@@ -5,10 +5,18 @@ describe('book-atable App', () => {
 
   beforeEach(() => {
     page = new AppPage();
+    page.navigateTo();
   });
 
   it('should have app-root element', () => {
-    page.navigateTo();
     expect(page.getRootElement()).toBeDefined();
+  });
+
+  it('should have app-header element', () => {
+    expect(page.getHeaderElement()).toBeDefined();
+  });
+
+  it('should have app-footer element', () => {
+    expect(page.getFooterElement()).toBeDefined();
   });
 });

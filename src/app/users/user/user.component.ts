@@ -21,8 +21,6 @@ export class UserComponent implements OnInit {
   private restaurantService: RestaurantsService) {
     this.ownerRestaurants = [];
     this.currentUser = this.userService.appUser;
-    console.log('init')
-    console.log(this.userService.appUser)
   }
 
   ngOnInit() {
@@ -60,7 +58,6 @@ export class UserComponent implements OnInit {
       const names = Object.keys(this.currentUser.restaurants);
       names.forEach((name) => {
         this.ownerRestaurants.push(this.restaurantService.restaurants.find((res) => res.name === name));
-        // console.log(this.ownerRestaurants);
       });
     } else { return; }
   }

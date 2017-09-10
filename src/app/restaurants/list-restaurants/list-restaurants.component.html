@@ -19,8 +19,8 @@
 
                 <div class="tab-content">
                     <div class="tab-pane fade in active">
-                        <app-restaurant-partial id="restaurants" *ngFor="let restaurant of (restaurants | sortBy: filterProperty)" [restaurant]="restaurant">
-                        </app-restaurant-partial>
+                        <app-restaurant-partial class="restaurants" *ngFor="let restaurant of (restaurants | sortBy: filterProperty)" 
+                        [restaurant]="restaurant"></app-restaurant-partial>
                     </div>
                 </div>
 
@@ -28,3 +28,4 @@
         </div>
     </div>
 </section>
+<div class="control">Control</div>
