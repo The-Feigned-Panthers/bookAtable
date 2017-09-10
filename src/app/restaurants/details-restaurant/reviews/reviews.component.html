@@ -1,7 +1,7 @@
 <div *ngIf="restaurant" class="container">
   <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-3 col-md-offset-2">
         <div class="rating-block">
           <h4>Average user rating</h4>
           <h2 class="bold padding-bottom-7"> {{restaurant?.rating.average | number : '1.2-2'}} <small>/ 5</small></h2>
@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="restaurant.reviews">
+    <div *ngIf="restaurant.reviews" class="col-md-8">
     <div class="row" *ngFor="let review of restaurant?.reviews" class="review-info">
       <div class="col-sm-1">
         <div class="thumbnail">
@@ -34,7 +34,7 @@
       <div class="col-sm-5">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <strong>{{review.user.username}}</strong> <span class="text-muted">commented on {{review?.date}}</span>
+            <strong>{{review.user}}</strong> <span class="text-muted">commented on {{review?.date}}</span>
           </div>
           <div class="panel-body" class="review-message">
             {{review?.message}}
@@ -46,10 +46,9 @@
       <!-- /col-sm-5 -->
     </div>
     </div>
-    <div class="row">
-
+    <div class="row" *ngIf="currentUser">
       <div class="col-md-6">
-        <div class="widget-area no-padding blank">
+        <div class="widget-area no-padding">
           <div class="status-upload">
             <form>
               <textarea #reviewText placeholder="Share your review..."></textarea>

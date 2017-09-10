@@ -1,10 +1,10 @@
 import { User } from './user';
 export class Review {
-    user: User;
+    user: string;
     message: string;
     date: string;
 
-    constructor(user: User, message: string) {
+    constructor(user: string, message: string) {
         this.user = user;
         this.message = message;
         this.date = new Date().toDateString();

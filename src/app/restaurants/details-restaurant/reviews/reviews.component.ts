@@ -15,6 +15,7 @@ export class ReviewsComponent implements OnInit {
   restaurant: Restaurant;
   starStyle: Array<boolean>;
   reviewIndex: number;
+  @Input()
   currentUser: string;
   canVote: boolean;
   wasVoted: boolean;
@@ -61,8 +62,9 @@ export class ReviewsComponent implements OnInit {
     } else {
       this.reviewIndex = 0;
     }
-    const user = null;
-    const newReview = new Review(user, message);
-    this.restaurantService.addReview(this.restaurant.name, newReview, this.reviewIndex);
+    this.userService.getUser(this.currentUser).subscribe(u => {
+      const newReview = new Review(u.username, message);
+      this.restaurantService.addReview(this.restaurant.name, newReview, this.reviewIndex);
+    });
   }
 }

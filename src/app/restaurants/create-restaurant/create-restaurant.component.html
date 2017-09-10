@@ -1,89 +1,91 @@
-<form class="form-horizontal col-md-8" #createForm="ngForm">
-  <fieldset>
-
-    <!-- Form Name -->
-    <legend>Add new restaurant</legend>
-
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="name">Name*</label>
-      <div class="col-md-5">
-        <input id="name" class="form-control input-md" name="name" type="text" placeholder="letters and numbers only" pattern="^[a-zA-Z0-9_ .-]*$"
-          minlength="3" autofocus required="true" #name="ngModel" [(ngModel)]="restaurant.name">
-        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-          <div *ngIf="name.errors.required">
-            Name is required!
-          </div>
-          <div *ngIf="name.errors.pattern">
-            Name can only contain latin letters and numbers and _ !
-          </div>
-          <div *ngIf="name.errors.minlength">
-            Name must be at least 3 characters long!
-          </div>
-        </div>
+<div id="addModal" class="modal fade" role="dialog">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"> ×</button>
+        <h4 class="modal-title">Add new restaurant</h4>
       </div>
-    </div>
+      <form class="form-horizontal col-md-12" #createForm="ngForm">
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="name">Name*</label>
+          <div class="col-md-5">
+            <input id="name" class="form-control input-md" name="name" type="text" placeholder="letters and numbers only" pattern="^[a-zA-Z0-9_ .-]*$"
+              minlength="3" autofocus required="true" #name="ngModel" [(ngModel)]="restaurant.name">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+              <div *ngIf="name.errors.required">
+                Name is required!
+              </div>
+              <div *ngIf="name.errors.pattern">
+                Name can only contain latin letters and numbers and _ !
+              </div>
+              <div *ngIf="name.errors.minlength">
+                Name must be at least 3 characters long!
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <!-- Textarea -->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="details">Details</label>
-      <div class="col-md-4">
-        <textarea class="form-control" id="details" name="details" pattern="^[a-zA-Z0-9_ ,!?'.-]*$" #details="ngModel" [(ngModel)]="restaurant.details"></textarea>
-        <div *ngIf="details.invalid && (details.dirty || details.touched)" class="alert alert-danger">
-          <div *ngIf="details.errors.pattern">
-            Details can only contain latin letters and numbers and _ !
+        <!-- Textarea -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="details">Details</label>
+          <div class="col-md-4">
+            <textarea class="form-control" id="details" name="details" pattern="^[a-zA-Z0-9_ ,!?'.-]*$" #details="ngModel" [(ngModel)]="restaurant.details"></textarea>
+            <div *ngIf="details.invalid && (details.dirty || details.touched)" class="alert alert-danger">
+              <div *ngIf="details.errors.pattern">
+                Details can only contain latin letters and numbers and _ !
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="location">Location*</label>
-      <div class="col-md-3">
-        <input id="city" name="city" type="text" pattern="^[a-zA-Z]*$" placeholder="City" class="form-control input-md" required="true"
-          #city="ngModel" [(ngModel)]="restaurant.address.city">
-        <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
-          <div *ngIf="city.errors.required">
-            City is required!
-          </div>
-          <div *ngIf="city.errors.pattern">
-            City can only contain latin letters !
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="location">Location*</label>
+          <div class="col-md-3">
+            <input id="city" name="city" type="text" pattern="^[a-zA-Z]*$" placeholder="City" class="form-control input-md" required="true"
+              #city="ngModel" [(ngModel)]="restaurant.address.city">
+            <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
+              <div *ngIf="city.errors.required">
+                City is required!
+              </div>
+              <div *ngIf="city.errors.pattern">
+                City can only contain latin letters !
+              </div>
+            </div>
+            <input id="area" name="area" type="text" placeholder="Area" class="form-control input-md" required="true" #area="ngModel"
+              [(ngModel)]="restaurant.address.area">
+            <div *ngIf="area.invalid && (area.dirty || area.touched)" class="alert alert-danger">
+              <div *ngIf="area.errors.required">
+                Area is required!
+              </div>
+              <div *ngIf="area.errors.pattern">
+                Area can only contain latin letters !
+              </div>
+            </div>
+            <input id="street" name="street" type="text" placeholder="Street" class="form-control input-md" required="true" #street="ngModel"
+              [(ngModel)]="restaurant.address.street">
+            <div *ngIf="street.invalid && (street.dirty || street.touched)" class="alert alert-danger">
+              <div *ngIf="street.errors.required">
+                Street is required!
+              </div>
+              <div *ngIf="street.errors.pattern">
+                Street can only contain latin letters !
+              </div>
+            </div>
+            <input id="number" name="number" type="number" placeholder="Number" class="form-control input-md" required="true" #number="ngModel"
+              [(ngModel)]="restaurant.address.number">
+            <div *ngIf="number.invalid && (number.dirty || number.touched)" class="alert alert-danger">
+              <div *ngIf="number.errors.required">
+                Number is required!
+              </div>
+            </div>
           </div>
         </div>
-        <input id="area" name="area" type="text" placeholder="Area" class="form-control input-md" required="true" #area="ngModel"
-          [(ngModel)]="restaurant.address.area">
-        <div *ngIf="area.invalid && (area.dirty || area.touched)" class="alert alert-danger">
-          <div *ngIf="area.errors.required">
-            Area is required!
-          </div>
-          <div *ngIf="area.errors.pattern">
-            Area can only contain latin letters !
-          </div>
-        </div>
-        <input id="street" name="street" type="text" placeholder="Street" class="form-control input-md" required="true" #street="ngModel"
-          [(ngModel)]="restaurant.address.street">
-        <div *ngIf="street.invalid && (street.dirty || street.touched)" class="alert alert-danger">
-          <div *ngIf="street.errors.required">
-            Street is required!
-          </div>
-          <div *ngIf="street.errors.pattern">
-            Street can only contain latin letters !
-          </div>
-        </div>
-        <input id="number" name="number" type="number" placeholder="Number" class="form-control input-md" required="true" #number="ngModel"
-          [(ngModel)]="restaurant.address.number">
-        <div *ngIf="number.invalid && (number.dirty || number.touched)" class="alert alert-danger">
-          <div *ngIf="number.errors.required">
-            Number is required!
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="type">Type</label>
-      <div class="col-md-2">
-        <select id="type" name="type" class="form-control" #type="ngModel" [(ngModel)]="restaurant.type">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="type">Type</label>
+          <div class="col-md-2">
+            <select id="type" name="type" class="form-control" #type="ngModel" [(ngModel)]="restaurant.type">
         <option value="Fast food">Fast food</option>
         <option value="Barbecue">Barbecue</option>
         <option value="Restaurant Buffet">Restaurant Buffet </option>
@@ -94,76 +96,79 @@
         <option value="French food">French food</option>
         <option value="American food">American food</option> 
       </select>
-      </div>
-    </div>
+          </div>
+        </div>
 
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="bill">Average Bill</label>
-      <div class="col-md-2">
-        <input id="bill" name="bill" type="number" pattern="^[0-9]+$" placeholder="10" class="form-control input-md" #bill="ngModel"
-          [(ngModel)]="restaurant.averageBill">
-        <div *ngIf="bill.invalid && (bill.dirty || bill.touched)" class="alert alert-danger">
-          <div *ngIf="bill.errors.pattern">
-            Average Bill can only contain numbers !
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="bill">Average Bill</label>
+          <div class="col-md-2">
+            <input id="bill" name="bill" type="number" pattern="^[0-9]+$" placeholder="10" class="form-control input-md" #bill="ngModel"
+              [(ngModel)]="restaurant.averageBill">
+            <div *ngIf="bill.invalid && (bill.dirty || bill.touched)" class="alert alert-danger">
+              <div *ngIf="bill.errors.pattern">
+                Average Bill can only contain numbers !
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="weekdays">Opening hours weekdays*</label>
+          <div class="col-md-5">
+            <input id="weekdays" name="weekdays" type="text" pattern="^[0-9_ :-]*$" placeholder="09:00 - 22:00" class="form-control input-md"
+              required #weekdays="ngModel" [(ngModel)]="restaurant.openingHoursWeekdays">
+            <div *ngIf="weekdays.invalid && (weekdays.dirty || weekdays.touched)" class="alert alert-danger">
+              <div *ngIf="weekdays.errors.required">
+                Weekdays is required!
+              </div>
+              <div *ngIf="weekdays.errors.pattern">
+                Weekdays field must be in the format 00:00 - 00:00 !
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="weekends">Opening hours weekends*</label>
+          <div class="col-md-5">
+            <input id="weekends" name="weekends" type="text" pattern="^[0-9_ :-]*$" placeholder="09:00 - 22:00" class="form-control input-md"
+              required #weekends="ngModel" [(ngModel)]="restaurant.openingHoursWeekends">
+            <div *ngIf="weekends.invalid && (weekends.dirty || weekends.touched)" class="alert alert-danger">
+              <div *ngIf="weekends.errors.required">
+                Weekends is required!
+              </div>
+              <div *ngIf="weekdays.errors.pattern">
+                Weekends field must be in the format 00:00 - 00:00 !
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="contact">Phone number*</label>
+          <div class="col-md-3">
+            <input id="contact" name="contact" type="text" pattern="^[0-9]*$" placeholder="+359*********" class="form-control input-md"
+              required #contact="ngModel" [(ngModel)]="restaurant.contact">
+
+            <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="alert alert-danger">
+              <div *ngIf="contact.errors.required">
+                Phone number is required!
+              </div>
+              <div *ngIf="contact.errors.pattern">
+                Phone number can only contain numbers !
+              </div>
+            </div>
+            <div>*These fields are required.</div>
+          </div>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <div class="form-group">
+          <div class="col-md-offset-4 col-md-5">
+            <button id="add-btn" class="btn-block btn btn-primary col-md-6" [disabled]="!createForm.form.valid" name="add" (click)="create()">Add</button>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="weekdays">Opening hours weekdays*</label>
-      <div class="col-md-5">
-        <input id="weekdays" name="weekdays" type="text" pattern="^[0-9_ :-]*$" placeholder="09:00 - 22:00" class="form-control input-md"
-          required #weekdays="ngModel" [(ngModel)]="restaurant.openingHoursWeekdays">
-        <div *ngIf="weekdays.invalid && (weekdays.dirty || weekdays.touched)" class="alert alert-danger">
-          <div *ngIf="weekdays.errors.required">
-            Weekdays is required!
-          </div>
-          <div *ngIf="weekdays.errors.pattern">
-            Weekdays field must be in the format 00:00 - 00:00 !
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="weekends">Opening hours weekends*</label>
-      <div class="col-md-5">
-        <input id="weekends" name="weekends" type="text" pattern="^[0-9_ :-]*$" placeholder="09:00 - 22:00" class="form-control input-md"
-          required #weekends="ngModel" [(ngModel)]="restaurant.openingHoursWeekends">
-        <div *ngIf="weekends.invalid && (weekends.dirty || weekends.touched)" class="alert alert-danger">
-          <div *ngIf="weekends.errors.required">
-            Weekends is required!
-          </div>
-          <div *ngIf="weekdays.errors.pattern">
-            Weekends field must be in the format 00:00 - 00:00 !
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="contact">Phone number*</label>
-      <div class="col-md-3">
-        <input id="contact" name="contact" type="text" pattern="^[0-9]*$" placeholder="+359*********" class="form-control input-md"
-          required #contact="ngModel" [(ngModel)]="restaurant.contact">
-        <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="alert alert-danger">
-          <div *ngIf="contact.errors.required">
-            Phone number is required!
-          </div>
-          <div *ngIf="contact.errors.pattern">
-            Phone number can only contain numbers !
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-md-offset-4 col-md-5">
-        <button id="add-btn" class="btn-block" [disabled]="!createForm.form.valid" name="add" class="btn btn-primary" (click)="create()">Add</button>
-        <div>*These fields are required.</div>
-      </div>
-    </div>
-
-  </fieldset>
-</form>
+  </div>
+</div>
