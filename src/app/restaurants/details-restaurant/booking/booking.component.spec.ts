@@ -30,9 +30,20 @@ describe('BookingComponent', () => {
     navigate: jasmine.createSpy('navigate')
   };
 
+  const angularFireAuthMock = {
+    get authState() {
+      return Observable.of({});
+    }
+  };
   const restServiceMock = {
     saveBookingInRestaurant: jasmine.createSpy('saveBookingInRestaurant'),
-    saveBookingInBookings: jasmine.createSpy('saveBookingInBookings')
+    saveBookingInBookings: jasmine.createSpy('saveBookingInBookings'),
+    start() {
+      return;
+    },
+    getAll() {
+      return Observable.create([]);
+    }
   };
 
   const user = {
@@ -53,8 +64,10 @@ describe('BookingComponent', () => {
       imports: [FormsModule, AngularFireModule.initializeApp(firebaseConfig),
         ToastrModule.forRoot()],
       declarations: [BookingComponent],
-      providers: [{ provide: UserService, useValue: usersServiceMock }, { provide: RestaurantsService, useValue: restServiceMock },
-        AngularFireDatabase, AngularFireAuth, { provide: Router, useValue: mockRouter },
+      providers: [{ provide: UserService, useValue: usersServiceMock },
+        { provide: RestaurantsService, useValue: restServiceMock },
+        AngularFireDatabase, {provide: AngularFireAuth, useValue: angularFireAuthMock},
+        { provide: Router, useValue: mockRouter },
         ToastrService]
     })
       .compileComponents();
@@ -70,13 +83,6 @@ describe('BookingComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('booking date field should be equal to input value', () => {
-    debugElement = fixture.debugElement.query(By.css('#date'));
-    element = debugElement.nativeElement;
-    element.value = new Date().toDateString();
-    expect(component.booking.date.toString()).toEqual(element.value);
   });
 
   it('after click on Book button saveBookingInBookings should be called', () => {

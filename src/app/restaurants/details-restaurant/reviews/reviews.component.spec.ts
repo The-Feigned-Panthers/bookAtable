@@ -49,7 +49,7 @@ describe('ReviewsComponent', () => {
     fixture = TestBed.createComponent(ReviewsComponent);
     component = fixture.componentInstance;
     component.restaurant = restaurant;
-    component.restaurant.reviews.push(new Review(new User('user', 'fName', 'lName', 'email', 'owner'), 'Hi!'));
+    component.restaurant.reviews.push(new Review('user', 'Hi!'));
     fixture.detectChanges();
   });
 
@@ -79,7 +79,7 @@ describe('ReviewsComponent', () => {
     debugElement = fixture.debugElement.query(By.css('.review-info'));
     element = debugElement.nativeElement;
     expect(element).toBeDefined();
-    expect(element.textContent).toContain(restaurant.reviews[0].user.username);
+    expect(element.textContent).toContain(restaurant.reviews[0].user);
   });
 
   it('should render date of review correctly', () => {

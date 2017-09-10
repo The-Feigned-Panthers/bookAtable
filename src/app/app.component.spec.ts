@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app.routing';
 import { SignupRoutingModule } from './users/signup/signup.routing.module';
 import { LoginRoutingModule } from './users/login/login.routing.module';
 import { CoreModule } from './core/core.module';
-import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -34,7 +33,6 @@ describe('AppComponent', () => {
         AngularFireDatabaseModule,
         AngularFireAuthModule,
         SharedModule,
-        HomeModule,
         CoreModule.forRoot(),
         LoginRoutingModule,
         SignupRoutingModule,
