@@ -15,13 +15,20 @@ describe('Login page', () => {
         expect(page.getPageTitle().getText()).toBe('Login');
     });
 
-    it('should have input email element', () => {
-        expect(page.getInputEmail()).toBeDefined();
-    });
+    // it('should show correct form fields and button', () => {
 
-    it('should have input password element', () => {
-        expect(page.getInputPassword()).toBeDefined();
-    });
+        it('should have input email element', () => {
+            expect(page.getInputEmail()).toBeDefined();
+        });
+
+        it('should have input password element', () => {
+            expect(page.getInputPassword()).toBeDefined();
+        });
+
+        it('should have submit button element', () => {
+            expect(page.getLoginButton()).toBeDefined();
+        });
+    // });
 
     it('should not login non-existing user and stay at login page', ( () => {
         page.loginIncorrectUser('didexe@gmail.com', '1234567');

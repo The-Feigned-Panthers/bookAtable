@@ -26,6 +26,10 @@ export class LoginPage {
     return element(by.cssContainingText('input', 'password'));
   }
 
+  getLoginButton() {
+    browser.waitForAngularEnabled(false);
+    return element(by.buttonText('Signup'));
+  }
   loginCorrectUser(email, password) {
     const EC = protractor.ExpectedConditions;
     const condition = EC.urlContains('home');
