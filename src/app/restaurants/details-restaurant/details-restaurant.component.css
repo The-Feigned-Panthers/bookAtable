@@ -3,4 +3,17 @@
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
     padding-bottom: 30px;
+    /* border: 1px solid red; */
+}
+
+h1 {
+    margin-left: 20px;
+}
+
+.board {
+    /* border: 1px solid red; */
+}
+
+.row {
+    /* border: 1px solid red; */
 }

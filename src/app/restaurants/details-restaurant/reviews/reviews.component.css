@@ -1,13 +1,13 @@
 body {
-    padding-top: 70px;
+    /* padding-top: 70px; */
   }
   .btn-grey{
       background-color:#D8D8D8;
       color:#FFF;
   }
   .rating-block{
-      background-color:#FAFAFA;
-      border:1px solid #EFEFEF;
+      /* background-color:#FAFAFA; */
+      /* border:1px solid #EFEFEF; */
       padding:15px 15px 20px 15px;
       border-radius:3px;
       margin-bottom: 20px;
@@ -145,4 +145,8 @@ body {
 .panel>.panel-heading:before{
 	border-right-color:#ddd;
 	border-width:8px;
+}
+
+.review-message {
+    padding: 10px;
 }

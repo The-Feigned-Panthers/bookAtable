@@ -13,7 +13,7 @@ export class SignupPage {
   }
 
   getPageTitle() {
-    // browser.waitForAngularEnabled(false);
+    browser.waitForAngularEnabled(false);
     return element(by.tagName('legend'));
   }
   getInputUserName() {
@@ -54,7 +54,6 @@ export class SignupPage {
     const condition = EC.urlContains('home');
 
     // browser.waitForAngularEnabled(false);
-    // browser.wait(element(by.buttonText('Signup')).isDisplayed, 1000);
     element(by.css('#username')).sendKeys(username);
     element(by.id('firstname')).sendKeys(firstname);
     element(by.id('lastname')).sendKeys(lastname);
@@ -71,7 +70,6 @@ export class SignupPage {
     const condition = EC.urlContains('signup');
 
     browser.waitForAngularEnabled(false);
-    // browser.wait(element(by.buttonText('Signup')).isDisplayed, 1000);
     element(by.css('#username')).sendKeys(username);
     element(by.id('firstname')).sendKeys(firstname);
     element(by.id('lastname')).sendKeys(lastname);

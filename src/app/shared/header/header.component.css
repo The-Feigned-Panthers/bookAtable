@@ -15,6 +15,10 @@
     margin-left: 2%;
 }
 
+.navbar-brand:hover{
+    background-color: rgba(255,255,255,0.2);
+}
+
 #navigation {
     margin-top: 2%;
     padding-bottom: 6%;
@@ -26,8 +30,8 @@ a{
 }
 
 .navbar-nav > li > a:hover {
-    font-weight: bold;
-    background: none;
+    /* font-weight: bold; */
+    background-color: rgba(255,255,255,0.2);
 }
 
 .navbar-nav[_ngcontent-c1] > li.active[_ngcontent-c1] > a[_ngcontent-c1], .navbar-nav[_ngcontent-c1] > li.active[_ngcontent-c1] > a[_ngcontent-c1]:focus, .navbar-nav[_ngcontent-c1] > li.active[_ngcontent-c1] > a[_ngcontent-c1]:hover {
