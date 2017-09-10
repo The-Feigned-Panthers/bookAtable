@@ -1,15 +1,18 @@
 <section>
   <div class="container col-md-offset-2 col-md-8">
     <div class="row">
-          <input type="search" name="search" placeholder="Search by name" #searchValue>
-          <input type="button" (click)="setSearchString(searchValue.value)" value="Go">
-        </div>
-
-        <div class="tab-content">
-          <div class="tab-pane fade in active">
-            <app-restaurant-partial *ngFor="let restaurant of (restaurants | searchBy: searchString)" [restaurant]="restaurant">
-            </app-restaurant-partial>
-          </div>
-        </div>
+      <input type="search" name="search" placeholder="Search by name" #searchValue>
+      <input type="button" (click)="setSearchString(searchValue.value)" value="Go">
+    </div>
+    <!-- <div>
+      Search also in:
+      <input type="checkbox" (click)="setProperty('details')" name="details" id=""> Details <input type="checkbox" name="types" id=""> Types
+    </div> -->
+    <div class="tab-content">
+      <div class="tab-pane fade in active">
+        <app-restaurant-partial *ngFor="let restaurant of (restaurants | searchBy: searchStr)" [restaurant]="restaurant">
+        </app-restaurant-partial>
       </div>
+    </div>
+  </div>
 </section>
