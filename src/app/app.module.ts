@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -7,7 +8,6 @@ import { RouterModule, Router } from '@angular/router';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { HomeModule } from './home/home.module';
 import { LoginRoutingModule } from './users/login/login.routing.module';
 import { SignupRoutingModule } from './users/signup/signup.routing.module';
 import { AppRoutingModule } from './app.routing';
@@ -37,11 +37,11 @@ import { DateCheckDirective } from './restaurants/details-restaurant/booking/dat
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     SharedModule,
-    HomeModule,
     CoreModule.forRoot(),
     LoginRoutingModule,
     SignupRoutingModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule
   ],
   declarations: [
     AppComponent,
