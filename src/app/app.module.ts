@@ -1,10 +1,9 @@
+import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { RouterModule, Router } from '@angular/router';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -13,9 +12,6 @@ import { SignupRoutingModule } from './users/signup/signup.routing.module';
 import { AppRoutingModule } from './app.routing';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
 import { firebaseConfig } from './firebase.config';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -30,26 +26,22 @@ import { DateCheckDirective } from './restaurants/details-restaurant/booking/dat
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    FormsModule,
-    ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
     SharedModule,
     CoreModule.forRoot(),
+    ToastrModule.forRoot(),
     LoginRoutingModule,
     SignupRoutingModule,
     AppRoutingModule,
-    CommonModule
   ],
   declarations: [
     AppComponent,
+    HomeComponent,
+    ContactsComponent,
     LoginComponent,
     SignupComponent,
     PasswordMatchDirective,
     DateCheckDirective,
-    ContactsComponent
 ],
   providers: [],
   bootstrap: [AppComponent]

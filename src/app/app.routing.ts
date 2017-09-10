@@ -1,5 +1,5 @@
 import { ContactsComponent } from './contacts/contacts.component';
-import { SearchComponent } from './shared/search/search.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './users/login/login.component';
 import { ListRestaurantsComponent } from './restaurants/list-restaurants/list-restaurants.component';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
@@ -8,9 +8,9 @@ import { NgModule } from '@angular/core';
 import { SignupComponent } from './users/signup/signup.component';
 
 const routes: Routes = [
-  { path: 'restaurants', loadChildren: './restaurants/restaurants.module#RestaurantsModule' },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: SearchComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'restaurants', loadChildren: './restaurants/restaurants.module#RestaurantsModule' },
   { path: 'users', loadChildren: './users/users.module#UsersModule' },
   { path: 'contacts', component: ContactsComponent},
   { path: '**', component: NotFoundComponent }
@@ -20,7 +20,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes,
     { preloadingStrategy: PreloadAllModules }
-    // { enableTracing: true }
   )],
   exports: [RouterModule],
   providers: []

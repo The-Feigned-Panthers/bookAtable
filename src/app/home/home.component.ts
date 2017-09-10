@@ -1,13 +1,13 @@
-import { Restaurant } from './../../models/restaurant';
-import { RestaurantsService } from './../../core/services/restaurants.service';
+import { Restaurant } from './../models/restaurant';
+import { RestaurantsService } from './../core/services/restaurants.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class SearchComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   restaurants: Restaurant[];
   // search: {
