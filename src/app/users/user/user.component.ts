@@ -40,7 +40,6 @@ export class UserComponent implements OnInit {
   // });
     if (!this.currentUser) {
       setTimeout(() => {
-        console.log('waiting');
         if (this.currentUser.usertype === 'owner') {
           this.getOwnerRestaurants();
         }

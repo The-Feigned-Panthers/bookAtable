@@ -20,7 +20,6 @@ export class RestaurantsService {
     this.firebaseRestaurants.subscribe(rest => {
       if (rest) {
         this.restaurants = rest;
-        console.log(this.restaurants);
       }
     });
    }

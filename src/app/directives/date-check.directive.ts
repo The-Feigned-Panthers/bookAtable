@@ -5,7 +5,6 @@ function validateDate(): ValidatorFn  {
             return (control: AbstractControl) => {
                 const dateBooking = Date.parse(control.value.toString());
                 const dateNow = Date.now();
-                console.log('checking date');
                 if (dateNow > dateBooking) {
                     return {
                     dateCheck: {
@@ -26,7 +25,6 @@ export class DateCheckDirective implements Validator {
     validator: ValidatorFn;
 
     constructor() {
-        console.log('constructing date');
         this.validator = validateDate();
      }
 

@@ -1,4 +1,3 @@
-import { DateCheckDirective } from './date-check.directive';
 import { RestaurantsService } from './../../../core/services/restaurants.service';
 import { UserService } from './../../../core/services/user.service';
 import { Restaurant } from './../../../models/restaurant';
@@ -51,7 +50,6 @@ export class BookingComponent implements OnInit {
     }
     this.restaurantsService.saveBookingInRestaurant(this.restaurantName, this.booking, this.bookingIndex);
     this.userService.bookATable(id);
-    this.booking = new Booking({firstName: '', lastName: '', email: ''}, '', '', '', '', '');
   }
 
 }

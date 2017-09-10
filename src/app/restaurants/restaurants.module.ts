@@ -1,3 +1,4 @@
+import { DateCheckDirective } from './../directives/date-check.directive';
 import { RestaurantsListResolver } from './restaurants-list-resolver';
 import { RestaurantsGuardService } from './restaurants-guard.service';
 import { SortByPipe } from './../pipes/sort-by.pipe';
@@ -26,7 +27,8 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
     OverviewComponent,
     ReviewsComponent,
     BookingComponent,
-    SortByPipe
+    SortByPipe,
+    DateCheckDirective
 ],
   providers: [RestaurantsGuardService, RestaurantsListResolver],
 })

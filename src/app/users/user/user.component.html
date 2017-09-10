@@ -11,6 +11,7 @@
     <div class="col-md-10">
         <fieldset>
             <legend>Your Bookings</legend>
+            <div *ngIf="!currentUser?.bookings">You have no bookings.</div>
             <table *ngIf="currentUser?.bookings" class="table table-bordered table-inverse">
                 <thead class="thead-inverse">
                     <tr>
@@ -34,6 +35,7 @@
         <div *ngIf="currentUser?.usertype === 'owner'">
             <fieldset>
                 <legend>Your Restaurants</legend>
+                <div *ngIf="!currentUser?.restaurants">You have no restaurants.</div>
                 <div *ngIf="currentUser?.restaurants">
                     <table *ngFor="let restaurant of ownerRestaurants" class="table table-bordered table-responsive">
                         <app-edit [restaurant]="restaurant"></app-edit>

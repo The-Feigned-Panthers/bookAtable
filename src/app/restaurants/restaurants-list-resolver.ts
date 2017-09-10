@@ -9,9 +9,6 @@ export class RestaurantsListResolver implements Resolve<any> {
     constructor(private service: RestaurantsService) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Restaurant[]> {
-        console.log('in resolver');
-        return this.service.getAll().map((res, i) => {
-            return res;
-        });
+        return this.service.getAll();
     }
 }

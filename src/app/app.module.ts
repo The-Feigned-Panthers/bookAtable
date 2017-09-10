@@ -18,9 +18,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './users/signup/signup.component';
 import { LoginComponent } from './users/login/login.component';
-import { PasswordMatchDirective } from './users/signup/password-match.directive';
+import { PasswordMatchDirective } from './directives/password-match.directive';
 import { ContactsComponent } from './contacts/contacts.component';
-import { DateCheckDirective } from './restaurants/details-restaurant/booking/date-check.directive';
 
 @NgModule({
   imports: [
@@ -41,7 +40,6 @@ import { DateCheckDirective } from './restaurants/details-restaurant/booking/dat
     LoginComponent,
     SignupComponent,
     PasswordMatchDirective,
-    DateCheckDirective,
 ],
   providers: [],
   bootstrap: [AppComponent]
