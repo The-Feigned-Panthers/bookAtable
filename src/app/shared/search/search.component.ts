@@ -8,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
- 
+
   restaurants: Restaurant[];
-  searchString: string;
+  // search: {
+  //   value: string,
+  //   property: string
+  // };
+  searchStr: string;
 
   constructor(private restaurantsService: RestaurantsService) { }
 
@@ -19,10 +23,19 @@ export class SearchComponent implements OnInit {
     .subscribe(res => {
       this.restaurants = res;
     });
-    this.searchString = '';
+    // this.search = {
+    //   value: '',
+    //   property: ''
+    // };
+    this.searchStr = '';
   }
 
   setSearchString(searchString: string) {
-    this.searchString = searchString;
+    // this.search.value = searchString;
+    this.searchStr = searchString;
   }
+
+  // setProperty(property: string) {
+  //   this.search.property = property;
+  // }
 }

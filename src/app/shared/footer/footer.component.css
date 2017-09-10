@@ -1,13 +1,18 @@
-.noBullets{
+.noBullets {
     list-style:none;
     padding:auto;
 }
 
-#last-footer h5{
+#last-footer h5 {
     text-align:center;
 }
-.footlinks li a{
+
+#last-footer {
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    border: 0px;
+}
+.footlinks li a {
 text-align:center;
 margin-left:5px ;
 }
-.subscribe li{padding:3px;}

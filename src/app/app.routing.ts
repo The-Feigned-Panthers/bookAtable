@@ -1,6 +1,5 @@
 import { ContactsComponent } from './contacts/contacts.component';
 import { SearchComponent } from './shared/search/search.component';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './users/login/login.component';
 import { ListRestaurantsComponent } from './restaurants/list-restaurants/list-restaurants.component';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
@@ -11,9 +10,8 @@ import { SignupComponent } from './users/signup/signup.component';
 const routes: Routes = [
   { path: 'restaurants', loadChildren: './restaurants/restaurants.module#RestaurantsModule' },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: SearchComponent },
   { path: 'users', loadChildren: './users/users.module#UsersModule' },
-  { path: 'search', component: SearchComponent },
   { path: 'contacts', component: ContactsComponent},
   { path: '**', component: NotFoundComponent }
 
