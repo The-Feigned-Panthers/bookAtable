@@ -12,8 +12,8 @@
         <fieldset>
             <legend>Your Bookings</legend>
             <div *ngIf="!currentUser?.bookings">You have no bookings.</div>
-            <table *ngIf="currentUser?.bookings" class="table table-bordered table-inverse">
-                <thead class="thead-inverse">
+            <table *ngIf="currentUser?.bookings" class="table table-bordered">
+                <thead>
                     <tr>
                         <th>Booked on</th>
                         <th>Restaurant name</th>
@@ -23,103 +23,111 @@
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tr *ngFor="let booking of userBookings">
-                    <td>{{booking.dateBooked}}</td>
-                    <td>{{booking.restaurantName}}</td>
-                    <td>{{booking.date}}</td>
-                    <td>{{booking.time}}</td>
-                    <td>{{booking.numberOfPeople}}</td>
-                </tr>
+                <tbody>
+                    <tr *ngFor="let booking of userBookings">
+                        <td>{{booking.dateBooked}}</td>
+                        <td>{{booking.restaurantName}}</td>
+                        <td>{{booking.date}}</td>
+                        <td>{{booking.time}}</td>
+                        <td>{{booking.numberOfPeople}}</td>
+                    </tr>
+                </tbody>
             </table>
         </fieldset>
-        <div *ngIf="currentUser?.usertype === 'owner'">
+        <div *ngIf="currentUser?.usertype === 'owner'" >
             <fieldset>
                 <legend>Your Restaurants</legend>
                 <div *ngIf="!currentUser?.restaurants">You have no restaurants.</div>
-                <div *ngIf="currentUser?.restaurants">
-                    <table *ngFor="let restaurant of ownerRestaurants" class="table table-bordered table-responsive">
+                <div *ngIf="currentUser?.restaurants" class="table-responsive">
+                    <table *ngFor="let restaurant of ownerRestaurants" class="table table-bordered">
                         <app-edit [restaurant]="restaurant"></app-edit>
                         <app-upload-photo [restaurant]="restaurant"></app-upload-photo>
-                        <tr>
-                            <th>Name</th>
-                            <th>Details</th>
-                            <th>Address</th>
-                            <th>Contact</th>
-                            <th>O H wekdays</th>
-                            <th>O H weekends</th>
-                            <th>Photo</th>
-                            <th>Rating</th>
-                            <th>Type</th>
-                            <th>Avrg bill</th>
-                            <th>Options</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="table-cell-inner">{{restaurant.name}}</div>
-                            </td>
-                            <td>
-                                <div class="table-cell-inner">{{restaurant.details}}</div>
-                            </td>
-                            <td>
-                                <div class="table-cell-inner">{{restaurant.address.city + ' ' + restaurant.address.area + ' ' + restaurant.address.street
-                                    + ' ' + restaurant.address.number}}</div>
-                            </td>
-                            <td>
-                                <div class="table-cell-inner">{{restaurant.contact}}</div>
-                            </td>
-                            <td>
-                                <div class="table-cell-inner">{{restaurant.openingHoursWeekdays}}</div>
-                            </td>
-                            <td>
-                                <div class="table-cell-inner">{{restaurant.openingHoursWeekends}}</div>
-                            </td>
-                            <td>
-                                <div class="table-cell-inner">{{restaurant.photo}}</div>
-                            </td>
-                            <td>
-                                <div class="table-cell-inner">{{restaurant.rating.average}}</div>
-                            </td>
-                            <td>
-                                <div class="table-cell-inner">{{restaurant.type}}</div>
-                            </td>
-                            <td>
-                                <div class="table-cell-inner">{{restaurant.averageBill}}</div>
-                            </td>
-                            <td>
-                                <div class="table-cell-inner"><button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#uploadModal">
-                                <span class="glyphicon glyphicon-picture"></span>
-                                Update photo
-                              </button>
-                                    <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#editModal">
-                                  <span class="glyphicon glyphicon-pencil"></span>
-                                  Edit restaurant
-                              </button>
-                                    <button class="btn btn-default">Show Bookings</button></div>
-                            </td>
-                        </tr>
-                        <tr *ngIf="restaurant.bookings">
-                            <td colspan="11">
-                                <table class="table table-bordered ">
-                                    <tr>
-                                        <th>Booked on</th>
-                                        <th>Restaurant name</th>
-                                        <th>Booking date</th>
-                                        <th>Booking time</th>
-                                        <th>Number of People</th>
-                                        <th>Booked by</th>
-                                        <th>Status</th>
-                                    </tr>
-                                    <tr *ngFor="let booking of restaurant.bookings">
-                                        <td>{{booking.dateBooked}}</td>
-                                        <td>{{booking.restaurantName}}</td>
-                                        <td>{{booking.date}}</td>
-                                        <td>{{booking.time}}</td>
-                                        <td>{{booking.numberOfPeople}}</td>
-                                        <td>{{booking.user.firstName + ' ' + booking.user.lastName + ', ' + booking.user.email}}</td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Details</th>
+                                <th>Address</th>
+                                <th>Contact</th>
+                                <th>O H wekdays</th>
+                                <th>O H weekends</th>
+                                <th>Photo</th>
+                                <th>Rating</th>
+                                <th>Type</th>
+                                <th>Avrg bill</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="table-cell-inner">{{restaurant.name}}</div>
+                                </td>
+                                <td>
+                                    <div class="table-cell-inner">{{restaurant.details}}</div>
+                                </td>
+                                <td>
+                                    <div class="table-cell-inner">{{restaurant.address.city + ' ' + restaurant.address.area + ' ' + restaurant.address.street
+                                        + ' ' + restaurant.address.number}}</div>
+                                </td>
+                                <td>
+                                    <div class="table-cell-inner">{{restaurant.contact}}</div>
+                                </td>
+                                <td>
+                                    <div class="table-cell-inner">{{restaurant.openingHoursWeekdays}}</div>
+                                </td>
+                                <td>
+                                    <div class="table-cell-inner">{{restaurant.openingHoursWeekends}}</div>
+                                </td>
+                                <td>
+                                    <div class="table-cell-inner">{{restaurant.photo}}</div>
+                                </td>
+                                <td>
+                                    <div class="table-cell-inner">{{restaurant.rating.average}}</div>
+                                </td>
+                                <td>
+                                    <div class="table-cell-inner">{{restaurant.type}}</div>
+                                </td>
+                                <td>
+                                    <div class="table-cell-inner">{{restaurant.averageBill}}</div>
+                                </td>
+                                <td>
+                                    <div class="table-cell-inner"><button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#uploadModal">
+                                    Update photo
+                                </button>
+                                        <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#editModal">
+                                    Edit restaurant
+                                </button>
+                                        <button class="btn btn-default">Show Bookings</button></div>
+                                </td>
+                            </tr>
+                            <tr *ngIf="restaurant.bookings">
+                                <td colspan="11">
+                                    <table class="table table-bordered ">
+                                        <thead>
+                                            <tr>
+                                                <th>Booked on</th>
+                                                <th>Restaurant name</th>
+                                                <th>Booking date</th>
+                                                <th>Booking time</th>
+                                                <th>Number of People</th>
+                                                <th>Booked by</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let booking of restaurant.bookings">
+                                                <td>{{booking.dateBooked}}</td>
+                                                <td>{{booking.restaurantName}}</td>
+                                                <td>{{booking.date}}</td>
+                                                <td>{{booking.time}}</td>
+                                                <td>{{booking.numberOfPeople}}</td>
+                                                <td>{{booking.user.firstName + ' ' + booking.user.lastName + ', ' + booking.user.email}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div class="col-md-offset-5">
@@ -129,7 +137,7 @@
                     <app-create-restaurant></app-create-restaurant>
                 </div>
             </fieldset>
-            <router-outlet></router-outlet>
+            <!-- <router-outlet></router-outlet> -->
         </div>
     </div>
 </div>

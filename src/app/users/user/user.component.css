@@ -16,3 +16,19 @@
 legend{
     border-bottom: 1px solid black;
 }
+
+.table>tbody>tr>td {
+    border: 1px solid white;
+}
+.table-bordered>thead>tr>th {
+    border: 1px solid white;
+}
+
+table {
+    max-width: 100%;
+}
+
+fieldset {
+    display:table-cell;
+    width: 100%;
+}
