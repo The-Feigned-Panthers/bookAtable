@@ -1,5 +1,6 @@
+import { HomeComponent } from './home/home.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { PasswordMatchDirective } from './users/signup/password-match.directive';
+import { PasswordMatchDirective } from './directives/password-match.directive';
 import { SignupComponent } from './users/signup/signup.component';
 import { LoginComponent } from './users/login/login.component';
 import { AppRoutingModule } from './app.routing';
@@ -16,7 +17,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { TestBed, async } from '@angular/core/testing';
-
 import { AppComponent } from './app.component';
 import { APP_BASE_HREF } from '@angular/common';
 
@@ -43,7 +43,8 @@ describe('AppComponent', () => {
         LoginComponent,
         SignupComponent,
         PasswordMatchDirective,
-        ContactsComponent
+        ContactsComponent,
+        HomeComponent
     ],
     providers: [{provide: APP_BASE_HREF, useValue: '/'}]
     }).compileComponents();

@@ -14,7 +14,7 @@ import * as firebase from 'firebase/app';
 export class HeaderComponent implements OnInit {
   user: Observable<firebase.User>;
   username: string;
-  constructor(private userService: UserService, private searchService: SearchService, private toastr: ToastrService) {
+  constructor(private userService: UserService,  private toastr: ToastrService) {
   }
 
   logout() {
