@@ -1,4 +1,3 @@
-import { HomeComponent } from './../../home/home.component';
 import { AppRoutingModule } from './../../app.routing';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
