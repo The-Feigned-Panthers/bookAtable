@@ -1,54 +1,55 @@
 <form class="form-horizontal col-md-offset-1 col-md-9" #bookingForm="ngForm">
     <fieldset>
-      <legend>Book a table</legend>
-      <div class="form-group">
-          <label class="col-md-4 control-label" for="date">Date*</label>  
-          <div class="col-md-5" *ngIf="booking">
-            <input id="date" name="date" type="text" class="form-control" ngModel
-              #date="ngModel" [(ngModel)]="booking.date" required appDateCheck>
-              <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
-                  <div *ngIf="date.errors.required">
-                      Date is required!
-                  </div>
-                  <div *ngIf="date.errors.dateCheck">
-                      Date cannot be before today!
-                  </div>
-              </div>
-          </div>
-        </div>
-      <div class="form-group">
-          <label class="col-md-4 control-label" for="type">Time*</label>
-          <div class="col-md-5">
-            <select id="hours" name="hours" class="form-control" required #hourInput>
+        <div id="booking-form">
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="date">Date*</label>
+                <div class="col-md-5" *ngIf="booking">
+                    <input id="date" name="date" type="text" class="form-control" ngModel #date="ngModel" [(ngModel)]="booking.date" required
+                        appDateCheck>
+                    <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
+                        <div *ngIf="date.errors.required">
+                            Date is required!
+                        </div>
+                        <div *ngIf="date.errors.dateCheck">
+                            Date cannot be before today!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="type">Time*</label>
+                <div class="col-md-5">
+                    <select id="hours" name="hours" class="form-control" required #hourInput>
                 <option value="" disabled>select hours</option>
                 <option *ngFor="let hour of hours" [value]="hour" required>{{hour}}</option>
               </select>
-              <select id="minutes" name="minutes" class="form-control" required #minuteInput>
+                    <select id="minutes" name="minutes" class="form-control" required #minuteInput>
                   <option value="" disabled>select minutes</option>
                   <option *ngFor="let minute of minutes" name="minute" [value]="minute">{{minute}}</option>
               </select>
-          </div>
-      </div>
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="numberofpeople">People*</label>
-        <div class="col-md-5" *ngIf="booking">
-          <input id="numberofpeople" name="numberofpeople" class="form-control" type="number" placeholder="number of people" 
-            #numberofpeople="ngModel" [(ngModel)]="booking.numberOfPeople" required pattern="^[^-]?[1-9]{1,1}">
-            <div *ngIf="numberofpeople.invalid && (numberofpeople.dirty || numberofpeople.touched)" class="alert alert-danger">
-                <div *ngIf="numberofpeople.errors.required">
-                    Number of people is required!
                 </div>
-                <div *ngIf="numberofpeople.errors.pattern">
-                    Number of people can be between 1 and 99!
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="numberofpeople">People*</label>
+                <div class="col-md-5" *ngIf="booking">
+                    <input id="numberofpeople" name="numberofpeople" class="form-control" type="number" placeholder="number of people" #numberofpeople="ngModel"
+                        [(ngModel)]="booking.numberOfPeople" required pattern="^[^-]?[1-9]{1,1}">
+                    <div *ngIf="numberofpeople.invalid && (numberofpeople.dirty || numberofpeople.touched)" class="alert alert-danger">
+                        <div *ngIf="numberofpeople.errors.required">
+                            Number of people is required!
+                        </div>
+                        <div *ngIf="numberofpeople.errors.pattern">
+                            Number of people can be between 1 and 99!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-5">
+                    <button id="book-btn" class="btn btn-success" [disabled]="!bookingForm.form.valid" (click)="book(hourInput.value, minuteInput.value)"
+                        *ngIf="!(user | async)?.uid">Book</button>
                 </div>
             </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="col-md-offset-4 col-md-5">
-          <button id="book-btn" class="btn btn-success" [disabled]="!bookingForm.form.valid" 
-          (click)="book(hourInput.value, minuteInput.value)" *ngIf="!(user | async)?.uid">Book</button>
-        </div>
-      </div>
     </fieldset>
-  </form>
+</form>
