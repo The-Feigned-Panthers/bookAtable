@@ -25,12 +25,13 @@ a{
     font-size: 15pt;
 }
 
-a:hover {
-    background-color: rgba(217, 194, 194, 0.2) !important;
-    border-radius: 4px;
+.navbar-nav > li > a:hover {
     font-weight: bold;
+    background: none;
 }
 
-.nav > .active {
-    background-color: rgba(217, 194, 194, 0.2) !important;
+.navbar-nav[_ngcontent-c1] > li.active[_ngcontent-c1] > a[_ngcontent-c1], .navbar-nav[_ngcontent-c1] > li.active[_ngcontent-c1] > a[_ngcontent-c1]:focus, .navbar-nav[_ngcontent-c1] > li.active[_ngcontent-c1] > a[_ngcontent-c1]:hover {
+    background-color: rgba(255,255,255,0.2) !important;
+    border-radius: 3px;
+    border: 0;
 }

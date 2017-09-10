@@ -13,13 +13,13 @@ const userRoutes: Routes = [
         component: UserComponent,
         canActivate: [UserGuardService],
         // resolve: { user: UserResolver },
-        children: [
-          {
-            path: 'create',
-            component: CreateRestaurantComponent,
-            canActivate: [UserAddRestaurantGuardService]
-          }
-        ]
+        // children: [
+        //   {
+        //     path: 'create',
+        //     component: CreateRestaurantComponent,
+        //     canActivate: [UserAddRestaurantGuardService]
+        //   }
+        // ]
   }
 ];
 
