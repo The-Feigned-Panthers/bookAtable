@@ -1,0 +1,113 @@
+<div class="signup col-md-8 col-md-offset-2">
+<form class="form-horizontal col-md-offset-1 col-md-9" #signupForm="ngForm">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend class="legend">Register</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4" for="name">Username*</label>
+            <div class="col-md-5">
+                <input type="text" id="username" #username="ngModel" [(ngModel)]="appUser.username" name="username" placeholder="letters and numbers only"
+                    class="form-control" pattern="^\w+$" required minlength="6" autofocus>
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                    <div *ngIf="username.errors.required">
+                        Username is required!
+                    </div>
+                    <div *ngIf="username.errors.pattern">
+                        Username can only contain latin letters and numbers and _ !
+                    </div>
+                    <div *ngIf="username.errors.minlength">
+                        Username must be at least 6 characters long!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4" for="email">Email*</label>
+            <div class="col-md-5">
+                <input type="email" id="email" name="email" #email="ngModel" [(ngModel)]="appUser.email" placeholder="valid email" class="form-control"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                        Email is required!
+                    </div>
+                    <div *ngIf="email.errors.pattern">
+                        Not a valid email!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4" for="names">Names*</label>
+            <div class="col-md-5">
+                <input type="text" class="form-control" id="firstname" pattern="^[a-zA-Z]+$" required placeholder="first name" minlength="2"
+                    [(ngModel)]="appUser.firstname" name="firstname" #firstname="ngModel">
+                <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger">
+                    <div *ngIf="firstname.errors.required">
+                        First name is required!
+                    </div>
+                    <div *ngIf="firstname.errors.minlength">
+                        First name must be at least two letters long!
+                    </div>
+                    <div *ngIf="firstname.errors.pattern">
+                        First name must contain latin letters only!
+                    </div>
+                </div>
+                <input type="text" id="lastname" [(ngModel)]="appUser.lastname" name="lastname" #lastname="ngModel" placeholder="last name"
+                    class="form-control" required pattern="^[a-zA-Z]+$" minlength="2">
+                <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger">
+                    <div *ngIf="lastname.errors.required">
+                        Last name is required!
+                    </div>
+                    <div *ngIf="lastname.errors.minlength">
+                        Last name must be at least two letters long!
+                    </div>
+                    <div *ngIf="lastname.errors.pattern">
+                        First name must contain latin letters only!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4" for="password">Password*</label>
+            <div class="col-md-5">
+                <input type="password" id="password" #password="ngModel" [(ngModel)]="userPassword" name="password" placeholder="password"
+                    class="form-control" required minlength="6">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                    <div *ngIf="password.errors.required">
+                        Password is required!
+                    </div>
+                    <div *ngIf="password.errors.minlength">
+                        Password must be at least 6 characters long!
+                    </div>
+                </div>
+                <input type="password" id="passwordcheck" name="passwordcheck" #passwordcheck="ngModel" [(ngModel)]="passwordCheck" placeholder="repeat password"
+                    class="form-control" required appPasswordMatch="password">
+                <div *ngIf="passwordcheck.invalid && (passwordcheck.dirty || passwordcheck.touched)" class="alert alert-danger">
+                    <div *ngIf="passwordcheck.errors.required">
+                        Please confirm the password!
+                    </div>
+                    <div *ngIf="passwordcheck.errors.passwordMatch">
+                        Passwords do not match!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4" for="usertype">User or owner*</label>
+            <div class="col-md-5">
+                <input id="radio1" type="radio" [(ngModel)]="appUser.usertype" value="owner" name="usertype" required> Owner
+                <br>
+                <input id="radio2" type="radio" [(ngModel)]="appUser.usertype" value="user" name="usertype" required> User
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-5">
+                <button class="btn btn-success" [disabled]="!signupForm.form.valid" (click)="signupWithEmail()">Signup</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+</div>
