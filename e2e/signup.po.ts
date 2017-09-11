@@ -60,7 +60,7 @@ export class SignupPage {
     element(by.id('email')).sendKeys(email);
     element(by.id('password')).sendKeys(password);
     element(by.id('passwordcheck')).sendKeys(passwordcheck);
-    element(by.id('radio1')).isSelected();
+    element(by.id('radio1')).click();
     element(by.buttonText('Signup')).click();
     browser.wait(condition, 1000);
   }
@@ -76,7 +76,7 @@ export class SignupPage {
     element(by.id('email')).sendKeys(email);
     element(by.id('password')).sendKeys(password);
     element(by.id('passwordcheck')).sendKeys(passwordcheck);
-    element(by.id('radio1')).isSelected();
+    element(by.id('radio1')).click();
     element(by.buttonText('Signup')).click();
     browser.wait(condition, 1000);
   }
