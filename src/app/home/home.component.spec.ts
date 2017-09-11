@@ -30,7 +30,7 @@ describe('SearchComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
-    component.searchStr = 'te';
+    component.searchValue = 'te';
     component.restaurants = [restaurant];
     fixture.detectChanges();
   });

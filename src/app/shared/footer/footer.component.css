@@ -13,6 +13,10 @@
     border: 0px;
 }
 .footlinks li a {
-text-align:center;
-margin-left:5px ;
+    text-align:center;
+    margin-left:5px ;
+}
+
+a {
+    color: white;
 }

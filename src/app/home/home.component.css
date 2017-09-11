@@ -35,6 +35,9 @@
 }
 
 #home {
+    min-height: 450px;
+}
+#home-msg {
     text-align: center;
     height: 100%;
     color: white;
@@ -43,4 +46,8 @@
 
 #results {
     padding-top: 5%;
+}
+
+#options {
+    color: white;
 }

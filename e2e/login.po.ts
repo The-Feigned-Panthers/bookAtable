@@ -51,4 +51,13 @@ export class LoginPage {
     element(by.buttonText('Login')).click();
     browser.wait(condition, 1000);
   }
+
+  logoutUser() {
+    const EC = protractor.ExpectedConditions;
+    const condition = EC.urlContains('home');
+
+    browser.waitForAngularEnabled(false);
+    element(by.id('logout-btn')).click();
+    browser.wait(condition, 1000);
+  }
 }

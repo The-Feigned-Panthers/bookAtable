@@ -40,4 +40,10 @@ describe('Login page', () => {
         expect(page.getLocation()).toBe('http://localhost:49152/home');
     }));
 
+    it('should successfully logout user and show login button', ( () => {
+        page.navigateTo('/home');
+        page.logoutUser();
+        expect(page.getLoginButton()).toBeDefined();
+    }));
+
 });

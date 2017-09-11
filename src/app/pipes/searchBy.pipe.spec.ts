@@ -18,7 +18,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { SearchByPipe } from './searchBy.pipe';
-import { Restaurant } from "../models/restaurant";
+import { Restaurant } from '../models/restaurant';
 
 describe('Pipe: SearchBy', () => {
   let component: DetailsRestaurantComponent;
@@ -70,17 +70,17 @@ describe('Pipe: SearchBy', () => {
   });
 
   it('should find restaurant with passed name', () => {
-    let result = pipe.transform([restaurant1], 'Test');
+    const result = pipe.transform([restaurant1], ['Test', ['name']]);
     expect(result[0].name).toEqual('Test');
   });
 
   it('should find specific number of restaurants containing search pattern in their names', () => {
-    let result = pipe.transform([restaurant1, restaurant2, restaurant3], 'Rest');
+    const result = pipe.transform([restaurant1, restaurant2, restaurant3], ['Rest', ['name']]);
     expect(result.length).toEqual(2);
   });
 
   it('should not return restaurants with empty search pattern', () => {
-    let result = pipe.transform([restaurant1], '');
-    expect(result).toBeUndefined;
+    const result = pipe.transform([restaurant1], ['', ['name']]);
+    expect(result).toBeUndefined();
   });
 });
