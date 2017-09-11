@@ -1,29 +1,46 @@
-import { firebaseConfig } from './firebase.config';
+import { HomeComponent } from './home/home.component';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
-import * as firebase from 'firebase/app';
+
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { LoginRoutingModule } from './users/login/login.routing.module';
+import { SignupRoutingModule } from './users/signup/signup.routing.module';
+import { AppRoutingModule } from './app.routing';
+
+import { AngularFireModule } from 'angularfire2';
+import { firebaseConfig } from './firebase.config';
+import { ToastrModule } from 'ngx-toastr';
+
+import { AppComponent } from './app.component';
+import { SignupComponent } from './users/signup/signup.component';
+import { LoginComponent } from './users/login/login.component';
+import { PasswordMatchDirective } from './directives/password-match.directive';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-],
   imports: [
     BrowserModule,
-    FormsModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule
+    SharedModule,
+    CoreModule.forRoot(),
+    ToastrModule.forRoot(),
+    LoginRoutingModule,
+    SignupRoutingModule,
+    AppRoutingModule,
   ],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ContactsComponent,
+    LoginComponent,
+    SignupComponent,
+    PasswordMatchDirective,
+],
   providers: [],
   bootstrap: [AppComponent]
 })

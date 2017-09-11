@@ -1,0 +1,22 @@
+.noBullets {
+    list-style:none;
+    padding:auto;
+}
+
+#last-footer h5 {
+    text-align:center;
+}
+
+#last-footer {
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    border: 0px;
+}
+.footlinks li a {
+    text-align:center;
+    margin-left:5px ;
+}
+
+a {
+    color: white;
+}

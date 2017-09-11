@@ -1,0 +1,58 @@
+<div *ngIf="restaurant" class="col-md-12" id="details">
+  <h1>
+    {{restaurant?.name}}
+  </h1>
+  <div class="col-md-5">
+      <img [src]="restaurant?.photo" class="img-rounded img-responsive" alt=""> 
+  </div>
+  <section>
+    <div class="container col-md-7">
+      <div class="row">
+        <div class="board">
+          <div class="board-inner">
+            <ul class="nav nav-tabs" id="myTab">
+              <div class="liner"></div>
+              <li class="active">
+                <a href="#overview" data-toggle="tab" title="overview">
+                  <span class="round-tabs one">
+                    <i class="glyphicon glyphicon-info-sign"></i>
+                  </span> 
+                </a>
+              </li>
+
+              <li>
+                <a href="#reviews" data-toggle="tab" title="reviews">
+                  <span class="round-tabs two">
+                    <i class="glyphicon glyphicon-star"></i>
+                  </span> 
+                </a>
+              </li>
+              <li>
+                <a href="#booking" data-toggle="tab" title="booking">
+                  <span class="round-tabs three">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="overview">
+              <app-overview [restaurant]="restaurant"></app-overview>
+            </div>
+            <div class="tab-pane fade" id="reviews">
+              <app-reviews [restaurant]="restaurant"></app-reviews>
+            </div>
+            <div class="tab-pane fade" id="booking">
+              <app-booking [restaurant]="restaurant"></app-booking>
+            </div>
+
+            <div class="clearfix"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

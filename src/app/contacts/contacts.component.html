@@ -1,0 +1,112 @@
+<div class="col-md-12" id="contacts">
+    <div class="col-md-10">
+        <h3>Contact us about anything related to our company or services. We will do our best to get back to you as soon as possible.</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-6" id="contact-info">
+            <div class="row col1">
+                <div class="col-xs-3">
+                    <i class="fa fa-map-marker" style="font-size:16px;"></i>   Address
+                </div>
+                <div class="col-xs-9">
+                    bul. "Aleksandar Malinov" 31, 1729 g.k. Mladost 1A, Sofia
+                </div>
+            </div>
+
+            <div class="row col1">
+                <div class="col-sm-3">
+                    <i class="fa fa-phone"></i>   Phone
+                </div>
+                <div class="col-sm-9">
+                    +(91) 123 277 4239
+                </div>
+            </div>
+            <div class="row col1">
+                <div class="col-sm-3">
+                    <i class="fa fa-fax"></i>   Fax
+                </div>
+                <div class="col-sm-9">
+                    123 123 4567
+                </div>
+            </div>
+            <div class="row col1">
+                <div class="col-sm-3">
+                    <i class="fa fa-envelope"></i>   Email
+                </div>
+                <div class="col-sm-9">
+                    <a href="mailto:info@yourdomain.com">thefeignedpanthers@gmail.com</a>
+                </div>
+            </div><br>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.494372144443!2d23.377300715220752!3d42.650878024679045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa86940322e46b%3A0x9dcf2a89d173b821!2sTelerik+Academy!5e0!3m2!1sbg!2sbg!4v1504873468902"
+                width="100%" height="230" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+        </div>
+        <div class="col-md-6">
+            <form #contactForm="ngForm">
+                <div class="form-group">
+                    <label>First Name*</label>
+                    <input type="text" class="form-control" #firstName="ngModel" name="firstName" [(ngModel)]="message.firstName" pattern="^[a-zA-Z]+$"
+                        minlength="2" required/>
+                    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+                        <div *ngIf="firstName.errors.required">
+                            First name is required!
+                        </div>
+                        <div *ngIf="firstName.errors.minlength">
+                            First name must be at least two letters long!
+                        </div>
+                        <div *ngIf="firstName.errors.pattern">
+                            First name must contain latin letters only!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Last Name*</label>
+                    <input type="text" class="form-control" #lastName="ngModel" name="lastName" [(ngModel)]="message.lastName" pattern="^[a-zA-Z]+$"
+                        minlength="2" required/>
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+                        <div *ngIf="lastName.errors.required">
+                            Last name is required!
+                        </div>
+                        <div *ngIf="lastName.errors.minlength">
+                            Last name must be at least two letters long!
+                        </div>
+                        <div *ngIf="lastName.errors.pattern">
+                            First name must contain latin letters only!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email*</label>
+                    <input type="email" class="form-control" #email="ngModel" name="email" [(ngModel)]="message.email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                        required/>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                        <div *ngIf="email.errors.required">
+                            Email is required!
+                        </div>
+                        <div *ngIf="email.errors.pattern">
+                            Not a valid email!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" name="subject" class="form-control" #subject="ngModel" [(ngModel)]="message.subject" />
+                    
+                </div>
+                <div class="form-group">
+                    <label>Your Question*</label>
+                    <textarea class="form-control" rows="4" name="question" #question="ngModel" [(ngModel)]="message.question" required></textarea>
+                    <small>*These fields are required.</small>
+                    <div *ngIf="question.invalid && (question.dirty || question.touched)" class="alert alert-danger">
+                        <div *ngIf="question.errors.required">
+                           Question is required!
+                        </div>
+                    </div>
+                </div>
+                
+                <input type="submit" class="btn btn-md col-md-4 col-md-offset-4" value="Send" [disabled]="!contactForm.form.valid" (click)="send()" />
+            </form>
+            
+        </div>
+    </div>
+</div>
