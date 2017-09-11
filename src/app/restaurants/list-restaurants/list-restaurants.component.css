@@ -1,6 +1,7 @@
 a{
     color: white;
     font-size: 15pt;
+    cursor: pointer;
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
