@@ -17,6 +17,10 @@ export class EditComponent implements OnInit {
   ngOnInit() {
   }
 
+  delete(){
+    this.restaurant.visible = false;
+    this.service.updateRestaurant(this.restaurant);
+  }
   edit(details, city, area, street, number, type, bill, weekdays, weekends, contact) {
     this.restaurant.details = details;
     this.restaurant.address.city = city;

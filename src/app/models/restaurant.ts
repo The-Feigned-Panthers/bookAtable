@@ -25,6 +25,7 @@ export class Restaurant {
     addedAt: string;
     owner: string;
     voters: string[];
+    visible: boolean;
 
     constructor(name, address, type, averageBill,
         openingHoursWeekdays, openingHoursWeekends, contact, details, owner) {

@@ -25,7 +25,8 @@ export class ListRestaurantsComponent implements OnInit {
   getAll() {
     this.service.getAll()
       .subscribe(res => {
-        this.restaurants = res;
+        // filter does not work :(
+        this.restaurants = res.filter(rests => rests.visible === true);
       });
   }
 
