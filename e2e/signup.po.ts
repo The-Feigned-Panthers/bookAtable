@@ -61,7 +61,7 @@ export class SignupPage {
     element(by.id('password')).sendKeys(password);
     element(by.id('passwordcheck')).sendKeys(passwordcheck);
     element(by.id('radio1')).isSelected();
-    element(by.buttonText('Sugnup')).click();
+    element(by.buttonText('Signup')).click();
     browser.wait(condition, 1000);
   }
 
