@@ -56,7 +56,10 @@ export class UserComponent implements OnInit {
     if (this.currentUser.restaurants) {
       const names = Object.keys(this.currentUser.restaurants);
       names.forEach((name) => {
-        this.ownerRestaurants.push(this.restaurantService.restaurants.find((res) => res.name === name));
+        const restaurnat = this.restaurantService.restaurants.find((res) => res.name === name);
+        if (restaurnat) {
+          this.ownerRestaurants.push(restaurnat);
+        }
       });
     } else { return; }
   }
