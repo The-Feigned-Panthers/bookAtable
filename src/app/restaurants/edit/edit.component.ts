@@ -12,14 +12,14 @@ export class EditComponent implements OnInit {
   @Input()
   restaurant: Restaurant;
 
-  constructor(private service: RestaurantsService) { }
+  constructor(private restaurantService: RestaurantsService) { }
 
   ngOnInit() {
   }
 
-  delete(){
+  delete() {
     this.restaurant.visible = false;
-    this.service.updateRestaurant(this.restaurant);
+    this.restaurantService.updateRestaurant(this.restaurant);
   }
   edit(details, city, area, street, number, type, bill, weekdays, weekends, contact) {
     this.restaurant.details = details;
@@ -31,7 +31,7 @@ export class EditComponent implements OnInit {
     this.restaurant.openingHoursWeekdays = weekdays;
     this.restaurant.openingHoursWeekends = weekends;
     this.restaurant.contact = contact;
-    this.service.updateRestaurant(this.restaurant);
+    this.restaurantService.updateRestaurant(this.restaurant);
   }
 
 }
