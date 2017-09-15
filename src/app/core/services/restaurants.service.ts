@@ -22,12 +22,17 @@ export class RestaurantsService {
         this.restaurants = rest;
       }
     });
-   }
+  }
   start() {
     return;
   }
   getAll(): Observable<Restaurant[]> {
-    return this.db.list('/places');
+    return this.db.list('/places', {
+      query: {
+        orderByChild: 'visible',
+        equalTo: true
+      }
+    });
   }
 
   getDetails(name: string): Observable<Restaurant> {
@@ -58,7 +63,7 @@ export class RestaurantsService {
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef.child(`${this.basePath}/${name}/pic_${new Date().toDateString()}`).put(upload.file);
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      (snapshot) =>  {
+      (snapshot) => {
       },
       (error) => {
         console.log(error);
